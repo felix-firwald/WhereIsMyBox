@@ -127,6 +127,12 @@
     <Compile Include="SpecialButton.Designer.cs">
       <DependentUpon>SpecialButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_Blocked.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Blocked.Designer.cs">
+      <DependentUpon>UC_Blocked.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AuthForm.resx">
       <DependentUpon>AuthForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +157,9 @@
     </Compile>
     <EmbeddedResource Include="SpecialButton.resx">
       <DependentUpon>SpecialButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Blocked.resx">
+      <DependentUpon>UC_Blocked.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -196,6 +205,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="static\icons\warning.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="static\icons\lock.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

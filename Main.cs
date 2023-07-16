@@ -11,24 +11,56 @@ using System.Windows.Forms;
 
 namespace WhereIsMyBox
 {
+    public enum Status
+    {
+        Operator,
+        Moderator,
+        Administrator
+    }
     public partial class Main : Form
     {
+        public Status userStatus = Status.Administrator;
         public Main()
         {
             InitializeComponent();
             SetMainStyle();
+            SetUserControl(new UC_Blocked());
+            setLabelStatus();
         }
         private void SetMainStyle()
         {
-            Size maxSize = new Size(
-                Convert.ToInt16(System.Windows.SystemParameters.PrimaryScreenWidth / 2),
-                Convert.ToInt16(System.Windows.SystemParameters.PrimaryScreenHeight - 100)
-            );
+            //Size maxSize = new Size(
+                //Convert.ToInt16(System.Windows.SystemParameters.PrimaryScreenWidth / 2),
+                //Convert.ToInt16(System.Windows.SystemParameters.PrimaryScreenHeight - 100)
+            //);
             SpecialButton yb = new SpecialButton();
-            this.MaximumSize = maxSize;
+            //this.MaximumSize = maxSize;
             this.BackColor = ColorTheme.MainBackground;
             this.panelBottom.BackColor = ColorTheme.PanelBackground;
             //this.panelLeft.BackColor = ColorTheme.PanelBackground;
+        }
+        private void setLabelStatus()
+        {
+            switch(userStatus)
+            {
+                case Status.Operator:
+                    this.UserStatusLabel.Text = "Оператор";
+                    break;
+                case Status.Moderator:
+                    this.UserStatusLabel.Text = "Модератор";
+                    break;
+                case Status.Administrator:
+                    this.UserStatusLabel.Text = "Администратор";
+                    this.UserStatusLabel.ForeColor = Color.Purple;
+                    break;
+            }
+            this.Text = $"Where Is My Box ({this.UserStatusLabel.Text})";
+        }
+        private void SetUserControl(UserControl uc)
+        {
+            this.panelMain.Controls.Clear();
+            this.panelMain.Controls.Add(uc);
+            this.panelMain.Dock= DockStyle.Fill;
         }
 
         private void Main_Load(object sender, EventArgs e)
