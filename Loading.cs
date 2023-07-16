@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Appearance;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,8 +20,7 @@ namespace WhereIsMyBox
         public Loading(String processName="Выполняется загрузка данных...")
         {
             InitializeComponent();
-            Appearance.ColorTheme theme = new Appearance.ColorTheme();
-            this.BackColor = theme.GetMain();
+            this.BackColor = ColorTheme.MainBackground;
             ChangeProcessName(processName);
         }
 

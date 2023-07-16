@@ -18,36 +18,6 @@ namespace Appearance
         public static Color TextBox = Color.FromArgb(222, 226, 230);
         public static Color TextLabel = Color.FromArgb(33, 37, 41);
         public static Color Button = Color.FromArgb(252, 163, 17);
-
-        public Color GetMain()
-        {
-            return MainBackground;
-        }
-
-        public Color GetPanel()
-        {
-            return PanelBackground;
-        }
-
-        public Color GetSubPanel()
-        {
-            return SubPanelBackground;
-        }
-
-        public Color GetTextBox()
-        {
-            return TextBox;
-        }
-
-        public Color GetTextLabel()
-        {
-            return TextLabel;
-        }
-
-        public Color GetButton()
-        {
-            return Button;
-        }
     }
 }
 
@@ -74,7 +44,7 @@ namespace WhereIsMyBox
                 Console.WriteLine(Application.ProductName);
                 if (File.Exists(initFile))
                 {
-                    Application.Run(new AuthForm(false));
+                    Application.Run(new AuthForm(TypeOfAuth.SignIn));
                 }
                 else
                 {
@@ -92,7 +62,7 @@ namespace WhereIsMyBox
                     //File.Encrypt(configFile);
                     File.SetAttributes(configFile, FileAttributes.Hidden);
                     loadd.Close();
-                    Application.Run(new AuthForm(true));
+                    Application.Run(new AuthForm(TypeOfAuth.SignUp));
                 }
             }
             catch (Exception e)
