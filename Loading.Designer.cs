@@ -41,21 +41,25 @@
             this.progressBar1.Step = 1;
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 0;
+            this.progressBar1.UseWaitCursor = true;
             this.progressBar1.Value = 40;
             // 
             // textProcess
             // 
             this.textProcess.AutoSize = true;
+            this.textProcess.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.textProcess.Location = new System.Drawing.Point(13, 13);
             this.textProcess.Name = "textProcess";
             this.textProcess.Size = new System.Drawing.Size(202, 13);
             this.textProcess.TabIndex = 1;
             this.textProcess.Text = "Выполняется загрузка базы данных...";
+            this.textProcess.UseWaitCursor = true;
             // 
             // Loading
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(294, 81);
             this.ControlBox = false;
             this.Controls.Add(this.textProcess);
