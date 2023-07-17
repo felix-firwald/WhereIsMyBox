@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WhereIsMyBox.Classes;
 
 namespace WhereIsMyBox
 {
@@ -19,25 +20,36 @@ namespace WhereIsMyBox
     }
     public partial class Main : Form
     {
-        public Status userStatus = Status.Administrator;
+        public Status userStatus;
+        public bool locked = false;
         public Main()
         {
             InitializeComponent();
-            SetMainStyle();
             SetUserControl(new UC_Blocked());
-            setLabelStatus();
+            ApplyUserData();
+            
+            
         }
-        private void SetMainStyle()
+
+        public void ApplyUserData()
         {
-            //Size maxSize = new Size(
-                //Convert.ToInt16(System.Windows.SystemParameters.PrimaryScreenWidth / 2),
-                //Convert.ToInt16(System.Windows.SystemParameters.PrimaryScreenHeight - 100)
-            //);
-            SpecialButton yb = new SpecialButton();
-            //this.MaximumSize = maxSize;
-            this.BackColor = ColorTheme.MainBackground;
-            this.panelBottom.BackColor = ColorTheme.PanelBackground;
-            //this.panelLeft.BackColor = ColorTheme.PanelBackground;
+            ConfigInfo config = new ConfigInfo().ReadConfig();
+            this.LocationOfUser.Text = config.location;
+            this.Login.Text = config.login;
+            this.UserStatusLabel.Text = config.status;
+            switch (config.status)
+            {
+                case "Администратор":
+                    userStatus = Status.Administrator;
+                    break;
+                case "Модератор":
+                    userStatus = Status.Moderator;
+                    break;
+                case "Оператор":
+                    userStatus = Status.Operator;
+                    break;
+            }
+            setLabelStatus();
         }
         private void setLabelStatus()
         {
@@ -60,7 +72,6 @@ namespace WhereIsMyBox
         {
             this.panelMain.Controls.Clear();
             this.panelMain.Controls.Add(uc);
-            this.panelMain.Dock= DockStyle.Fill;
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -85,13 +96,31 @@ namespace WhereIsMyBox
 
         private void LocationOfUser_Click(object sender, EventArgs e)
         {
-            ChangeLocation locationForm = new ChangeLocation();
+            ChangeLocation locationForm = new ChangeLocation(TypeOfForm.Change);
             locationForm.ShowDialog();
         }
 
         private void LocationOfUser_MouseLeave(object sender, EventArgs e)
         {
             this.LocationOfUser.ForeColor = SystemColors.ControlText;
+        }
+
+        private void buttonLock_MouseEnter(object sender, EventArgs e)
+        {
+            this.buttonLock.IconColor = ColorTheme.TextHovered;
+        }
+
+        private void buttonLock_MouseLeave(object sender, EventArgs e)
+        {
+            this.buttonLock.IconColor = Color.DimGray;
+        }
+
+        private void buttonLock_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AuthForm auth = new AuthForm(TypeOfAuth.Unlock);
+            auth.ShowDialog();
+            this.Show();
         }
     }
 }

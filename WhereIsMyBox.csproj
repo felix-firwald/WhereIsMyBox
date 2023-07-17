@@ -76,6 +76,9 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FontAwesome.Sharp, Version=6.3.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
+      <HintPath>packages\FontAwesome.Sharp.6.3.0\lib\net48\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -95,55 +98,59 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthForm.cs">
+    <Compile Include="Classes\C_ConfigInfo.cs" />
+    <Compile Include="Forms\AuthForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AuthForm.Designer.cs">
+    <Compile Include="Forms\AuthForm.Designer.cs">
       <DependentUpon>AuthForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChangeLocation.cs">
+    <Compile Include="Forms\ChangeLocation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangeLocation.Designer.cs">
+    <Compile Include="Forms\ChangeLocation.Designer.cs">
       <DependentUpon>ChangeLocation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Loading.cs">
+    <Compile Include="Forms\Loading.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Loading.Designer.cs">
+    <Compile Include="Forms\Loading.Designer.cs">
       <DependentUpon>Loading.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main.cs">
+    <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
+    <Compile Include="Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Rejected.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Rejected.Designer.cs">
+      <DependentUpon>Rejected.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpecialButton.cs">
+    <Compile Include="Forms\UC_Blocked.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SpecialButton.Designer.cs">
-      <DependentUpon>SpecialButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_Blocked.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_Blocked.Designer.cs">
+    <Compile Include="Forms\UC_Blocked.Designer.cs">
       <DependentUpon>UC_Blocked.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AuthForm.resx">
+    <EmbeddedResource Include="Forms\AuthForm.resx">
       <DependentUpon>AuthForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChangeLocation.resx">
+    <EmbeddedResource Include="Forms\ChangeLocation.resx">
       <DependentUpon>ChangeLocation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Loading.resx">
+    <EmbeddedResource Include="Forms\Loading.resx">
       <DependentUpon>Loading.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
+    <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Rejected.resx">
+      <DependentUpon>Rejected.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -155,12 +162,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SpecialButton.resx">
-      <DependentUpon>SpecialButton.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC_Blocked.resx">
+    <EmbeddedResource Include="Forms\UC_Blocked.resx">
       <DependentUpon>UC_Blocked.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -208,6 +213,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="static\icons\lock.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="static\icons\rejected.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

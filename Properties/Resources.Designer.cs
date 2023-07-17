@@ -103,6 +103,16 @@ namespace WhereIsMyBox.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap rejected {
+            get {
+                object obj = ResourceManager.GetObject("rejected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap slash_panel {
             get {
                 object obj = ResourceManager.GetObject("slash-panel", resourceCulture);

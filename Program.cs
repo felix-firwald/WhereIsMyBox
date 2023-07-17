@@ -33,15 +33,18 @@ namespace WhereIsMyBox
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
-
+        public static string getAppDataPath()
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            return $"{path}\\{Application.ProductName}";
+        }
         [STAThread]
         static void Main()
         {
             try
             {
-                string appdataPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\{Application.ProductName}";
+                string appdataPath = getAppDataPath();
                 string initFile = $"{appdataPath}\\init.wimb";
-                string configFile = $"{appdataPath}\\config.wimb";
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Console.WriteLine(initFile);
@@ -61,7 +64,7 @@ namespace WhereIsMyBox
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Возникла критическая ошибка:\n\n{e}", "Ошибка");
+                MessageBox.Show($"Возникла критическая ошибка:\n\n{e}\nПрограмма будет закрыта.", "Ошибка");
             }
         }
     }

@@ -32,7 +32,7 @@
             this.buttonOk = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panelControls = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelUser = new System.Windows.Forms.Label();
             this.comboUsers = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.inputPassword = new System.Windows.Forms.TextBox();
@@ -78,7 +78,7 @@
             // 
             // panelControls
             // 
-            this.panelControls.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panelControls.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(57)))), ((int)(((byte)(61)))));
             this.panelControls.Controls.Add(this.buttonClose);
             this.panelControls.Controls.Add(this.buttonOk);
             this.panelControls.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -87,26 +87,31 @@
             this.panelControls.Size = new System.Drawing.Size(384, 51);
             this.panelControls.TabIndex = 1;
             // 
-            // label1
+            // labelUser
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(9, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Пользователь:";
+            this.labelUser.AutoSize = true;
+            this.labelUser.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelUser.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.labelUser.Location = new System.Drawing.Point(9, 9);
+            this.labelUser.Name = "labelUser";
+            this.labelUser.Size = new System.Drawing.Size(84, 13);
+            this.labelUser.TabIndex = 2;
+            this.labelUser.Text = "Пользователь:";
             // 
             // comboUsers
             // 
+            this.comboUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(65)))));
+            this.comboUsers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboUsers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboUsers.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            this.comboUsers.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.comboUsers.FormattingEnabled = true;
             this.comboUsers.Location = new System.Drawing.Point(12, 30);
             this.comboUsers.Name = "comboUsers";
             this.comboUsers.Size = new System.Drawing.Size(360, 21);
             this.comboUsers.TabIndex = 3;
+            this.comboUsers.Tag = "64; 64; 65";
             this.toolTipAuth.SetToolTip(this.comboUsers, "Имя пользователя учетной записи");
             // 
             // label2
@@ -153,18 +158,21 @@
             // 
             // AuthForm
             // 
+            this.AcceptButton = this.buttonOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(81)))), ((int)(((byte)(87)))));
+            this.CancelButton = this.buttonClose;
             this.ClientSize = new System.Drawing.Size(384, 185);
             this.ControlBox = false;
             this.Controls.Add(this.checkVisible);
             this.Controls.Add(this.inputPassword);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboUsers);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelUser);
             this.Controls.Add(this.panelControls);
-            this.MinimumSize = new System.Drawing.Size(400, 200);
+            this.MaximumSize = new System.Drawing.Size(400, 224);
+            this.MinimumSize = new System.Drawing.Size(400, 224);
             this.Name = "AuthForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -180,7 +188,7 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Panel panelControls;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelUser;
         private System.Windows.Forms.ComboBox comboUsers;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox inputPassword;

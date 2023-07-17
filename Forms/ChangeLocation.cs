@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -12,22 +13,36 @@ using System.Windows.Forms;
 
 namespace WhereIsMyBox
 {
+    public enum TypeOfForm
+    {
+        Set,
+        Change
+    }
     public partial class ChangeLocation : Form
     {
-        public ChangeLocation()
+        
+        public ChangeLocation(TypeOfForm type)
         {
             InitializeComponent();
             SetStyle();
+            if (type == TypeOfForm.Set) {
+                this.Text = "Установить локацию";
+                this.textWarning.Text = "Указанная вами локация " +
+                    "будет отображаться для других пользователей. " +
+                    "Это необходимо для того, чтобы нужный короб было проще найти.";
+                this.buttonOk.Text = "Установить";
+                this.buttonClose.Visible = false;
+            }
         }
-
+        private string newLocation = "A1";
+        public string GetLocation()
+        {
+            return newLocation;
+        }
         private void SetStyle()
         {
             this.BackColor = ColorTheme.MainBackground;
             this.panelBottom.BackColor = ColorTheme.PanelBackground;
-            //this.buttonOk.BackColor = ColorTheme.Button;
-            //this.buttonOk.FlatAppearance.MouseOverBackColor = ColorTheme.ButtonHovered;
-            //this.buttonOk.FlatAppearance.MouseDownBackColor = ColorTheme.ButtonPressed;
-            //this.buttonOk.FlatAppearance.BorderColor = ColorTheme.ButtonBorder;
         }
 
         private string ConcatenateResult()
@@ -90,6 +105,12 @@ namespace WhereIsMyBox
             }
             ConcatenateResult();
             ValidateResult();
+        }
+
+        private void buttonOk_Click(object sender, EventArgs e)
+        {
+            newLocation = this.resultLocation.Text;
+            this.Close();
         }
     }
 }
