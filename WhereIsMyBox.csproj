@@ -83,6 +83,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -111,6 +112,18 @@
     <Compile Include="Forms\ChangeLocation.Designer.cs">
       <DependentUpon>ChangeLocation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Elements\GrayButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Elements\GrayButton.Designer.cs">
+      <DependentUpon>GrayButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Elements\UC_BoxInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Elements\UC_BoxInfo.Designer.cs">
+      <DependentUpon>UC_BoxInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Loading.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +142,12 @@
     <Compile Include="Forms\Rejected.Designer.cs">
       <DependentUpon>Rejected.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UC_Boxes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UC_Boxes.Designer.cs">
+      <DependentUpon>UC_Boxes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\UC_Blocked.cs">
@@ -143,6 +162,12 @@
     <EmbeddedResource Include="Forms\ChangeLocation.resx">
       <DependentUpon>ChangeLocation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Elements\GrayButton.resx">
+      <DependentUpon>GrayButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Elements\UC_BoxInfo.resx">
+      <DependentUpon>UC_BoxInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Loading.resx">
       <DependentUpon>Loading.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Rejected.resx">
       <DependentUpon>Rejected.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UC_Boxes.resx">
+      <DependentUpon>UC_Boxes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

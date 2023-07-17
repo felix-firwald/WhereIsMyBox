@@ -61,6 +61,7 @@
             // 
             this.buttonClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
             this.buttonClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.buttonClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
             this.buttonClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
@@ -145,11 +146,12 @@
             // 
             this.checkVisible.AutoSize = true;
             this.checkVisible.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkVisible.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkVisible.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.checkVisible.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkVisible.Location = new System.Drawing.Point(12, 110);
+            this.checkVisible.Location = new System.Drawing.Point(12, 112);
             this.checkVisible.Name = "checkVisible";
-            this.checkVisible.Size = new System.Drawing.Size(116, 17);
+            this.checkVisible.Size = new System.Drawing.Size(113, 17);
             this.checkVisible.TabIndex = 6;
             this.checkVisible.Text = "показать пароль";
             this.checkVisible.TextAlign = System.Drawing.ContentAlignment.TopCenter;

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WhereIsMyBox.Classes;
+using WhereIsMyBox.Forms;
 
 namespace WhereIsMyBox
 {
@@ -25,7 +26,8 @@ namespace WhereIsMyBox
         public Main()
         {
             InitializeComponent();
-            SetUserControl(new UC_Blocked());
+            SetUserControl(new UC_Boxes());
+            //SetUserControl(new UC_Blocked());
             ApplyUserData();
             
             
@@ -70,8 +72,10 @@ namespace WhereIsMyBox
         }
         private void SetUserControl(UserControl uc)
         {
-            this.panelMain.Controls.Clear();
-            this.panelMain.Controls.Add(uc);
+            this.panelContent.Controls.Clear();
+            //this.tableLayoutMain.Controls.Add(uc);
+            //this.panelMain.Size;
+            this.panelContent.Controls.Add(uc);
         }
 
         private void Main_Load(object sender, EventArgs e)
