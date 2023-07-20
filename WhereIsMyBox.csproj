@@ -100,84 +100,97 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\C_ConfigInfo.cs" />
-    <Compile Include="Forms\AuthForm.cs">
+    <Compile Include="Classes\Permission.cs" />
+    <Compile Include="Forms\OneInstanceElements\AuthForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AuthForm.Designer.cs">
+    <Compile Include="Forms\OneInstanceElements\AuthForm.Designer.cs">
       <DependentUpon>AuthForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ChangeLocation.cs">
+    <Compile Include="Forms\OneInstanceElements\ChangeLocation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ChangeLocation.Designer.cs">
+    <Compile Include="Forms\OneInstanceElements\ChangeLocation.Designer.cs">
       <DependentUpon>ChangeLocation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Elements\GrayButton.cs">
+    <Compile Include="Forms\ReusableElements\GrayButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Forms\Elements\GrayButton.Designer.cs">
+    <Compile Include="Forms\ReusableElements\GrayButton.Designer.cs">
       <DependentUpon>GrayButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Elements\UC_BoxInfo.cs">
+    <Compile Include="Forms\ReusableElements\UC_BoxInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\Elements\UC_BoxInfo.Designer.cs">
+    <Compile Include="Forms\ReusableElements\UC_BoxInfo.Designer.cs">
       <DependentUpon>UC_BoxInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Loading.cs">
+    <Compile Include="Forms\OneInstanceElements\Loading.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Loading.Designer.cs">
+    <Compile Include="Forms\OneInstanceElements\Loading.Designer.cs">
       <DependentUpon>Loading.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Main.cs">
+    <Compile Include="Forms\OneInstanceElements\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Main.Designer.cs">
+    <Compile Include="Forms\OneInstanceElements\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Rejected.cs">
+    <Compile Include="Forms\OneInstanceElements\Rejected.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Rejected.Designer.cs">
+    <Compile Include="Forms\OneInstanceElements\Rejected.Designer.cs">
       <DependentUpon>Rejected.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UC_Boxes.cs">
+    <Compile Include="Forms\ReusableElements\WhiteButton.xaml.cs">
+      <DependentUpon>WhiteButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReusableElements\YellowButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\ReusableElements\YellowButton.Designer.cs">
+      <DependentUpon>YellowButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OneInstanceElements\UC_Boxes.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\UC_Boxes.Designer.cs">
+    <Compile Include="Forms\OneInstanceElements\UC_Boxes.Designer.cs">
       <DependentUpon>UC_Boxes.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Forms\UC_Blocked.cs">
+    <Compile Include="Forms\OneInstanceElements\UC_Blocked.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\UC_Blocked.Designer.cs">
+    <Compile Include="Forms\OneInstanceElements\UC_Blocked.Designer.cs">
       <DependentUpon>UC_Blocked.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\AuthForm.resx">
+    <EmbeddedResource Include="Forms\OneInstanceElements\AuthForm.resx">
       <DependentUpon>AuthForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ChangeLocation.resx">
+    <EmbeddedResource Include="Forms\OneInstanceElements\ChangeLocation.resx">
       <DependentUpon>ChangeLocation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Elements\GrayButton.resx">
+    <EmbeddedResource Include="Forms\ReusableElements\GrayButton.resx">
       <DependentUpon>GrayButton.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Elements\UC_BoxInfo.resx">
+    <EmbeddedResource Include="Forms\ReusableElements\UC_BoxInfo.resx">
       <DependentUpon>UC_BoxInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Loading.resx">
+    <EmbeddedResource Include="Forms\OneInstanceElements\Loading.resx">
       <DependentUpon>Loading.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Main.resx">
+    <EmbeddedResource Include="Forms\OneInstanceElements\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Rejected.resx">
+    <EmbeddedResource Include="Forms\OneInstanceElements\Rejected.resx">
       <DependentUpon>Rejected.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UC_Boxes.resx">
+    <EmbeddedResource Include="Forms\ReusableElements\YellowButton.resx">
+      <DependentUpon>YellowButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OneInstanceElements\UC_Boxes.resx">
       <DependentUpon>UC_Boxes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -190,7 +203,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Forms\UC_Blocked.resx">
+    <EmbeddedResource Include="Forms\OneInstanceElements\UC_Blocked.resx">
       <DependentUpon>UC_Blocked.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -245,5 +258,12 @@
   <ItemGroup>
     <None Include="static\icons\rejected.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Page Include="Forms\ReusableElements\WhiteButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

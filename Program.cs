@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Security.Cryptography;
 
 
-namespace Appearance
+namespace Common
 {
     public struct ColorTheme
     {

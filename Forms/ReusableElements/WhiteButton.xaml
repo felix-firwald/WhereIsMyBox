@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="WhereIsMyBox.Forms.ReusableElements.WhiteButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WhereIsMyBox.Forms.ReusableElements"
+             mc:Ignorable="d" 
+             d:DesignHeight="23" d:DesignWidth="150" MouseLeftButtonDown="OnLeftMouseClick">
+    <Grid Cursor="Hand">
+        <Border Name="BorderMain" CornerRadius="15,0,0,15" Background="White">
+            <Label x:Name="ButtonText" Content="{Binding Text}" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Border>
+        <Grid.Triggers>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation To="#d3d7eb" Duration="0:0:0.5" Storyboard.TargetName="BorderMain"  Storyboard.TargetProperty="Background.Color"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+            <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation To="#ff525157" Duration="0:0:0.2" Storyboard.TargetName="BorderMain" Storyboard.TargetProperty="Background.Color"/>
+                        <ColorAnimation To="White" Duration="0:0:0.2" Storyboard.TargetName="ButtonText" Storyboard.TargetProperty="Foreground.Color"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Grid.Triggers>
+    </Grid>
+</UserControl>

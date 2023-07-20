@@ -32,6 +32,7 @@
             this.tableLayoutMain = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutFunc = new System.Windows.Forms.TableLayoutPanel();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.tableLayoutLeft = new System.Windows.Forms.TableLayoutPanel();
             this.tableFindTop = new System.Windows.Forms.TableLayoutPanel();
@@ -40,12 +41,14 @@
             this.buttonCancelFind = new FontAwesome.Sharp.IconButton();
             this.HelpTextFind = new System.Windows.Forms.Label();
             this.tableMicroActions = new System.Windows.Forms.TableLayoutPanel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.grayButton4 = new WhereIsMyBox.Forms.Elements.GrayButton();
+            this.grayButton3 = new WhereIsMyBox.Forms.Elements.GrayButton();
             this.grayButton1 = new WhereIsMyBox.Forms.Elements.GrayButton();
             this.grayButton2 = new WhereIsMyBox.Forms.Elements.GrayButton();
-            this.grayButton3 = new WhereIsMyBox.Forms.Elements.GrayButton();
             this.BoxInfoPanel = new WhereIsMyBox.Forms.Elements.UC_BoxInfo();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutMain.SuspendLayout();
+            this.tableLayoutFunc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.SuspendLayout();
@@ -89,6 +92,7 @@
             this.tableLayoutFunc.ColumnCount = 2;
             this.tableLayoutFunc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutFunc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutFunc.Controls.Add(this.elementHost1, 1, 0);
             this.tableLayoutFunc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutFunc.Location = new System.Drawing.Point(3, 63);
             this.tableLayoutFunc.Name = "tableLayoutFunc";
@@ -98,9 +102,19 @@
             this.tableLayoutFunc.Size = new System.Drawing.Size(894, 84);
             this.tableLayoutFunc.TabIndex = 1;
             // 
+            // elementHost1
+            // 
+            this.elementHost1.Location = new System.Drawing.Point(450, 3);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(200, 78);
+            this.elementHost1.TabIndex = 1;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = null;
+            // 
             // splitContainerMain
             // 
             this.splitContainerMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tableLayoutMain.SetColumnSpan(this.splitContainerMain, 2);
             this.splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerMain.IsSplitterFixed = true;
             this.splitContainerMain.Location = new System.Drawing.Point(3, 153);
@@ -115,10 +129,9 @@
             // splitContainerMain.Panel2
             // 
             this.splitContainerMain.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(57)))), ((int)(((byte)(61)))));
-            this.splitContainerMain.Panel2MinSize = 50;
+            this.splitContainerMain.Panel2MinSize = 200;
             this.splitContainerMain.Size = new System.Drawing.Size(894, 444);
             this.splitContainerMain.SplitterDistance = 297;
-            this.splitContainerMain.SplitterIncrement = 12;
             this.splitContainerMain.TabIndex = 2;
             // 
             // tableLayoutLeft
@@ -233,21 +246,69 @@
             // 
             // tableMicroActions
             // 
-            this.tableMicroActions.ColumnCount = 3;
+            this.tableMicroActions.ColumnCount = 4;
             this.tableMicroActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableMicroActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableMicroActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableMicroActions.Controls.Add(this.grayButton1, 2, 0);
-            this.tableMicroActions.Controls.Add(this.grayButton2, 1, 0);
+            this.tableMicroActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableMicroActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableMicroActions.Controls.Add(this.grayButton4, 0, 0);
             this.tableMicroActions.Controls.Add(this.grayButton3, 0, 0);
+            this.tableMicroActions.Controls.Add(this.grayButton1, 3, 0);
+            this.tableMicroActions.Controls.Add(this.grayButton2, 2, 0);
             this.tableMicroActions.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tableMicroActions.Location = new System.Drawing.Point(170, 405);
+            this.tableMicroActions.Location = new System.Drawing.Point(132, 405);
             this.tableMicroActions.Name = "tableMicroActions";
             this.tableMicroActions.RowCount = 1;
             this.tableMicroActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableMicroActions.Size = new System.Drawing.Size(122, 34);
+            this.tableMicroActions.Size = new System.Drawing.Size(160, 34);
             this.tableMicroActions.TabIndex = 2;
             this.tableMicroActions.Visible = false;
+            // 
+            // grayButton4
+            // 
+            this.grayButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.grayButton4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.grayButton4.EnteredColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(170)))), ((int)(((byte)(255)))));
+            this.grayButton4.FlatAppearance.BorderSize = 0;
+            this.grayButton4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.grayButton4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.grayButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.grayButton4.IconChar = FontAwesome.Sharp.IconChar.MapMarkedAlt;
+            this.grayButton4.IconColor = System.Drawing.Color.DimGray;
+            this.grayButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.grayButton4.IconSize = 20;
+            this.grayButton4.Location = new System.Drawing.Point(43, 3);
+            this.grayButton4.Name = "grayButton4";
+            this.grayButton4.PermissionMode = WhereIsMyBox.Classes.PermissionMode.Cascade;
+            this.grayButton4.RequiredPermission = WhereIsMyBox.Classes.PermissionGroup.Admin;
+            this.grayButton4.Size = new System.Drawing.Size(34, 23);
+            this.grayButton4.TabIndex = 3;
+            this.grayButton4.Tag = "82; 81; 87";
+            this.toolTip1.SetToolTip(this.grayButton4, "Показать на карте");
+            this.grayButton4.UseVisualStyleBackColor = false;
+            // 
+            // grayButton3
+            // 
+            this.grayButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.grayButton3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.grayButton3.EnteredColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(170)))), ((int)(((byte)(255)))));
+            this.grayButton3.FlatAppearance.BorderSize = 0;
+            this.grayButton3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.grayButton3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.grayButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.grayButton3.IconChar = FontAwesome.Sharp.IconChar.List;
+            this.grayButton3.IconColor = System.Drawing.Color.DimGray;
+            this.grayButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.grayButton3.IconSize = 20;
+            this.grayButton3.Location = new System.Drawing.Point(3, 3);
+            this.grayButton3.Name = "grayButton3";
+            this.grayButton3.PermissionMode = WhereIsMyBox.Classes.PermissionMode.Rising;
+            this.grayButton3.RequiredPermission = WhereIsMyBox.Classes.PermissionGroup.Moderator;
+            this.grayButton3.Size = new System.Drawing.Size(34, 23);
+            this.grayButton3.TabIndex = 2;
+            this.grayButton3.Tag = "82; 81; 87";
+            this.toolTip1.SetToolTip(this.grayButton3, "Просмотреть историю движения короба");
+            this.grayButton3.UseVisualStyleBackColor = false;
             // 
             // grayButton1
             // 
@@ -262,9 +323,11 @@
             this.grayButton1.IconColor = System.Drawing.Color.DimGray;
             this.grayButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.grayButton1.IconSize = 20;
-            this.grayButton1.Location = new System.Drawing.Point(83, 3);
+            this.grayButton1.Location = new System.Drawing.Point(123, 3);
             this.grayButton1.Name = "grayButton1";
-            this.grayButton1.Size = new System.Drawing.Size(36, 23);
+            this.grayButton1.PermissionMode = WhereIsMyBox.Classes.PermissionMode.Cascade;
+            this.grayButton1.RequiredPermission = WhereIsMyBox.Classes.PermissionGroup.Moderator;
+            this.grayButton1.Size = new System.Drawing.Size(34, 23);
             this.grayButton1.TabIndex = 0;
             this.grayButton1.Tag = "82; 81; 87";
             this.toolTip1.SetToolTip(this.grayButton1, "Добавить найденный короб к своему ведению");
@@ -283,35 +346,16 @@
             this.grayButton2.IconColor = System.Drawing.Color.DimGray;
             this.grayButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.grayButton2.IconSize = 20;
-            this.grayButton2.Location = new System.Drawing.Point(43, 3);
+            this.grayButton2.Location = new System.Drawing.Point(83, 3);
             this.grayButton2.Name = "grayButton2";
+            this.grayButton2.PermissionMode = WhereIsMyBox.Classes.PermissionMode.Cascade;
+            this.grayButton2.RequiredPermission = WhereIsMyBox.Classes.PermissionGroup.Moderator;
             this.grayButton2.Size = new System.Drawing.Size(34, 23);
             this.grayButton2.TabIndex = 1;
             this.grayButton2.Tag = "82; 81; 87";
             this.toolTip1.SetToolTip(this.grayButton2, "Добавить временный комментарий к коробу (может быть переопределен другим пользова" +
         "телем)");
             this.grayButton2.UseVisualStyleBackColor = false;
-            // 
-            // grayButton3
-            // 
-            this.grayButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.grayButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.grayButton3.EnteredColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(170)))), ((int)(((byte)(255)))));
-            this.grayButton3.FlatAppearance.BorderSize = 0;
-            this.grayButton3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.grayButton3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.grayButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.grayButton3.IconChar = FontAwesome.Sharp.IconChar.List;
-            this.grayButton3.IconColor = System.Drawing.Color.DimGray;
-            this.grayButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.grayButton3.IconSize = 20;
-            this.grayButton3.Location = new System.Drawing.Point(3, 3);
-            this.grayButton3.Name = "grayButton3";
-            this.grayButton3.Size = new System.Drawing.Size(34, 23);
-            this.grayButton3.TabIndex = 2;
-            this.grayButton3.Tag = "82; 81; 87";
-            this.toolTip1.SetToolTip(this.grayButton3, "Просмотреть историю движения короба");
-            this.grayButton3.UseVisualStyleBackColor = false;
             // 
             // BoxInfoPanel
             // 
@@ -334,6 +378,7 @@
             this.Size = new System.Drawing.Size(900, 600);
             this.tableLayoutMain.ResumeLayout(false);
             this.tableLayoutMain.PerformLayout();
+            this.tableLayoutFunc.ResumeLayout(false);
             this.splitContainerMain.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
             this.splitContainerMain.ResumeLayout(false);
@@ -364,5 +409,7 @@
         private Elements.GrayButton grayButton3;
         private System.Windows.Forms.ToolTip toolTip1;
         private Elements.UC_BoxInfo BoxInfoPanel;
+        private Elements.GrayButton grayButton4;
+        private System.Windows.Forms.Integration.ElementHost elementHost1;
     }
 }

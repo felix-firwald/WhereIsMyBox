@@ -46,7 +46,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(57)))), ((int)(((byte)(62)))));
             this.panel1.Controls.Add(this.buttonClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 76);
+            this.panel1.Location = new System.Drawing.Point(0, 111);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(384, 50);
             this.panel1.TabIndex = 0;
@@ -83,16 +83,17 @@
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(3);
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(384, 76);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(384, 111);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Image = global::WhereIsMyBox.Properties.Resources.rejected;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 9);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(69, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(63, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -105,12 +106,13 @@
             this.tableLayoutText.Controls.Add(this.title, 0, 0);
             this.tableLayoutText.Controls.Add(this.text, 0, 1);
             this.tableLayoutText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutText.Location = new System.Drawing.Point(81, 6);
+            this.tableLayoutText.Location = new System.Drawing.Point(81, 9);
+            this.tableLayoutText.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.tableLayoutText.Name = "tableLayoutText";
             this.tableLayoutText.RowCount = 2;
             this.tableLayoutText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutText.Size = new System.Drawing.Size(297, 64);
+            this.tableLayoutText.Size = new System.Drawing.Size(297, 96);
             this.tableLayoutText.TabIndex = 1;
             // 
             // title
@@ -141,12 +143,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(81)))), ((int)(((byte)(87)))));
-            this.ClientSize = new System.Drawing.Size(384, 126);
+            this.ClientSize = new System.Drawing.Size(384, 161);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
-            this.MaximumSize = new System.Drawing.Size(400, 400);
-            this.MinimumSize = new System.Drawing.Size(400, 165);
+            this.MaximumSize = new System.Drawing.Size(400, 200);
+            this.MinimumSize = new System.Drawing.Size(400, 200);
             this.Name = "Rejected";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

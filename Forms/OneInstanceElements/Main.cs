@@ -1,36 +1,21 @@
-﻿using Appearance;
+﻿using Common;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WhereIsMyBox.Classes;
 using WhereIsMyBox.Forms;
 
 namespace WhereIsMyBox
 {
-    public enum Status
-    {
-        Operator,
-        Moderator,
-        Administrator
-    }
     public partial class Main : Form
     {
-        public Status userStatus;
+        public PermissionGroup userStatus;
         public bool locked = false;
         public Main()
         {
             InitializeComponent();
             SetUserControl(new UC_Boxes());
-            //SetUserControl(new UC_Blocked());
             ApplyUserData();
-            
-            
         }
 
         public void ApplyUserData()
@@ -39,34 +24,14 @@ namespace WhereIsMyBox
             this.LocationOfUser.Text = config.location;
             this.Login.Text = config.login;
             this.UserStatusLabel.Text = config.status;
-            switch (config.status)
-            {
-                case "Администратор":
-                    userStatus = Status.Administrator;
-                    break;
-                case "Модератор":
-                    userStatus = Status.Moderator;
-                    break;
-                case "Оператор":
-                    userStatus = Status.Operator;
-                    break;
-            }
+            Permission.SetPermissionGroup(Permission.GetGroupByVisibleName(config.status));
             setLabelStatus();
         }
         private void setLabelStatus()
         {
-            switch(userStatus)
+            if (userStatus == PermissionGroup.Admin)
             {
-                case Status.Operator:
-                    this.UserStatusLabel.Text = "Оператор";
-                    break;
-                case Status.Moderator:
-                    this.UserStatusLabel.Text = "Модератор";
-                    break;
-                case Status.Administrator:
-                    this.UserStatusLabel.Text = "Администратор";
-                    this.UserStatusLabel.ForeColor = Color.Purple;
-                    break;
+                this.UserStatusLabel.ForeColor = Color.Purple;
             }
             this.Text = $"Where Is My Box ({this.UserStatusLabel.Text})";
         }

@@ -1,4 +1,4 @@
-﻿using Appearance;
+﻿using Common;
 using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
+using WhereIsMyBox.Classes;
 
 namespace WhereIsMyBox.Forms.Elements
 {
@@ -17,6 +18,9 @@ namespace WhereIsMyBox.Forms.Elements
     {
         
         private Color enteredColor = ColorTheme.TextHovered;
+        private PermissionGroup requiredPermission;
+        private PermissionMode permissionMode;
+
         public GrayButton()
         {
             this.Text = "";
@@ -28,13 +32,19 @@ namespace WhereIsMyBox.Forms.Elements
             this.FlatAppearance.BorderSize = 0;
             this.IconSize = 20;
             this.IconColor = Color.DimGray;
-            this.Text = null;
             this.EnteredColor = ColorTheme.TextHovered;
             this.Cursor = System.Windows.Forms.Cursors.Hand;
 
         }
-        [Description("Цвет при наведении"), Category("Оформление действий")]
+        [Description("Цвет при наведении"), Category("Главное")]
         public Color EnteredColor { get => enteredColor; set => enteredColor = value; }
+
+        [Description("Группа прав"), Category("Главное")]
+        public PermissionGroup RequiredPermission { get => requiredPermission; set => requiredPermission = value; }
+
+        [Description("Режим прав"), Category("Главное")]
+        public PermissionMode PermissionMode { get => permissionMode; set => permissionMode = value; }
+
 
         protected override void OnPaint(PaintEventArgs pe)
         {
@@ -53,7 +63,12 @@ namespace WhereIsMyBox.Forms.Elements
 
         private void GrayButton_Click(object sender, EventArgs e)
         {
+            bool permissionResult = Permission.IsUserHavePermission(this.requiredPermission, permissionMode);
             this.IconColor = Color.White;
+            if (!permissionResult)
+            {
+                Permission.RaisePermissionError(this.requiredPermission);
+            }
         }
 
         private void GrayButton_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)

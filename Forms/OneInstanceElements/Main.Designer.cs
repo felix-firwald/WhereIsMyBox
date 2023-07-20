@@ -42,6 +42,9 @@
             this.buttonLock = new FontAwesome.Sharp.IconButton();
             this.tableLayoutMain = new System.Windows.Forms.TableLayoutPanel();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.whiteButton1 = new WhereIsMyBox.Forms.ReusableElements.WhiteButton();
             this.tableLayoutStatus = new System.Windows.Forms.TableLayoutPanel();
             this.UserStatusLabel = new System.Windows.Forms.Label();
             this.tableLayoutLogin = new System.Windows.Forms.TableLayoutPanel();
@@ -62,6 +65,7 @@
             this.tableLayoutBottomInfo.SuspendLayout();
             this.tableLayoutMain.SuspendLayout();
             this.panelLeft.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutStatus.SuspendLayout();
             this.tableLayoutLogin.SuspendLayout();
             this.tableLayoutLocation.SuspendLayout();
@@ -224,6 +228,7 @@
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panelLeft.Controls.Add(this.tableLayoutPanel1);
             this.panelLeft.Controls.Add(this.tableLayoutStatus);
             this.panelLeft.Controls.Add(this.tableLayoutLogin);
             this.panelLeft.Controls.Add(this.tableLayoutLocation);
@@ -235,6 +240,32 @@
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(200, 488);
             this.panelLeft.TabIndex = 0;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.elementHost1, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 388);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 100);
+            this.tableLayoutPanel1.TabIndex = 3;
+            // 
+            // elementHost1
+            // 
+            this.elementHost1.Location = new System.Drawing.Point(6, 55);
+            this.elementHost1.Margin = new System.Windows.Forms.Padding(6, 5, 0, 5);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(194, 40);
+            this.elementHost1.TabIndex = 0;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.whiteButton1;
             // 
             // tableLayoutStatus
             // 
@@ -376,6 +407,7 @@
             this.tableLayoutBottomInfo.PerformLayout();
             this.tableLayoutMain.ResumeLayout(false);
             this.panelLeft.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutStatus.ResumeLayout(false);
             this.tableLayoutStatus.PerformLayout();
             this.tableLayoutLogin.ResumeLayout(false);
@@ -404,5 +436,8 @@
         private FontAwesome.Sharp.IconButton buttonLock;
         private System.Windows.Forms.NotifyIcon notifyIconMain;
         private System.Windows.Forms.Panel panelContent;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Integration.ElementHost elementHost1;
+        private Forms.ReusableElements.WhiteButton whiteButton1;
     }
 }
