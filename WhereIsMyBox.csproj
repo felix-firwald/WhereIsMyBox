@@ -104,7 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\C_ConfigInfo.cs" />
-    <Compile Include="Classes\Models\Main.cs" />
+    <Compile Include="Classes\Models\Model.cs" />
     <Compile Include="Classes\Models\ModelBoxes.cs" />
     <Compile Include="Classes\Models\ModelUsers.cs" />
     <Compile Include="Classes\Permission.cs" />
@@ -126,10 +126,10 @@
     <Compile Include="Forms\ReusableElements\GrayButton.Designer.cs">
       <DependentUpon>GrayButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ReusableElements\UC_BoxInfo.cs">
+    <Compile Include="Forms\OneInstanceElements\UC_BoxInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\ReusableElements\UC_BoxInfo.Designer.cs">
+    <Compile Include="Forms\OneInstanceElements\UC_BoxInfo.Designer.cs">
       <DependentUpon>UC_BoxInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\OneInstanceElements\Loading.cs">
@@ -182,7 +182,7 @@
     <EmbeddedResource Include="Forms\ReusableElements\GrayButton.resx">
       <DependentUpon>GrayButton.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ReusableElements\UC_BoxInfo.resx">
+    <EmbeddedResource Include="Forms\OneInstanceElements\UC_BoxInfo.resx">
       <DependentUpon>UC_BoxInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OneInstanceElements\Loading.resx">

@@ -3,6 +3,7 @@ using System;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using WhereIsMyBox.Classes.Models;
 
 namespace WhereIsMyBox.Forms
 {
@@ -24,6 +25,8 @@ namespace WhereIsMyBox.Forms
         private void buttonFind_MouseEnter(object sender, EventArgs e)
         {
             this.buttonFind.IconColor = ColorTheme.TextHovered;
+            
+
         }
 
         private void buttonFind_MouseLeave(object sender, EventArgs e)
@@ -57,8 +60,22 @@ namespace WhereIsMyBox.Forms
         {
             this.inputFind.Text = this.inputFind.Text.ToUpper();
             this.HelpTextFind.Text = $"Поиск короба №{this.inputFind.Text}...";
-            this.tableMicroActions.Visible = true;
-            this.BoxInfoPanel.Visible = true;
+            ModelBoxes foundBox = new ModelBoxes();
+            if (foundBox.GetBoxByNumber(this.inputFind.Text))
+            {
+                string [] result = foundBox.GetSplitedNumber();
+                this.BoxInfoPanel.changeData(
+                    prefix: result[0],
+                    postfix: result[1],
+                    initLocation: foundBox.initialLocation,
+                    currLocation: foundBox.currentLocation,
+                    status: foundBox.status
+                );
+                this.tableMicroActions.Visible = true;
+                this.BoxInfoPanel.Visible = true;
+            }
+            
+
         }
 
         private void inputFind_Enter(object sender, EventArgs e)

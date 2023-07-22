@@ -232,7 +232,14 @@ namespace DatabaseRequests
                 }
             }
             resulting += ")\n";
-            result = resulting;
+            if (result == "")
+            {
+                result = resulting;
+            }
+            else
+            {
+                result += $"\n{resulting}";
+            }
             return this;
         }
 

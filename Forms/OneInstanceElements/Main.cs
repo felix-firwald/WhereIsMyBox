@@ -17,8 +17,8 @@ namespace WhereIsMyBox
             InitializeComponent();
             SetUserControl(new UC_Boxes());
             ApplyUserData();
-            ModelBoxes mod = new ModelBoxes();
-            mod.GetAllObjects();
+            //ModelBoxes mod = new ModelBoxes();
+            //mod.AddBox();
         }
 
         public void ApplyUserData()
