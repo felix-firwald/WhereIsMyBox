@@ -30,7 +30,6 @@ namespace WhereIsMyBox.Classes.Models
                     Console.WriteLine(sqlreader["number"].ToString());
                 }
             }
-        }
-        public void 
+        } 
     }
 }
