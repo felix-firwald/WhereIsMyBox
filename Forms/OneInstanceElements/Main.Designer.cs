@@ -43,8 +43,6 @@
             this.tableLayoutMain = new System.Windows.Forms.TableLayoutPanel();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.whiteButton1 = new WhereIsMyBox.Forms.ReusableElements.WhiteButton();
             this.tableLayoutStatus = new System.Windows.Forms.TableLayoutPanel();
             this.UserStatusLabel = new System.Windows.Forms.Label();
             this.tableLayoutLogin = new System.Windows.Forms.TableLayoutPanel();
@@ -54,6 +52,8 @@
             this.panelContent = new System.Windows.Forms.Panel();
             this.toolTipMain = new System.Windows.Forms.ToolTip(this.components);
             this.notifyIconMain = new System.Windows.Forms.NotifyIcon(this.components);
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.whiteButton1 = new WhereIsMyBox.Forms.ReusableElements.WhiteButton();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             labelLocation = new System.Windows.Forms.Label();
@@ -257,16 +257,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 100);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
-            // elementHost1
-            // 
-            this.elementHost1.Location = new System.Drawing.Point(6, 55);
-            this.elementHost1.Margin = new System.Windows.Forms.Padding(6, 5, 0, 5);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(194, 40);
-            this.elementHost1.TabIndex = 0;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = this.whiteButton1;
-            // 
             // tableLayoutStatus
             // 
             this.tableLayoutStatus.ColumnCount = 1;
@@ -382,6 +372,16 @@
             this.notifyIconMain.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIconMain.Icon")));
             this.notifyIconMain.Text = "WIMB";
             this.notifyIconMain.Visible = true;
+            // 
+            // elementHost1
+            // 
+            this.elementHost1.Location = new System.Drawing.Point(6, 55);
+            this.elementHost1.Margin = new System.Windows.Forms.Padding(6, 5, 0, 5);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(194, 40);
+            this.elementHost1.TabIndex = 0;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.whiteButton1;
             // 
             // Main
             // 

@@ -6,7 +6,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
-
+using WhereIsMyBox.Classes.Models;
+using MySql.Data.MySqlClient;
+using System.Windows.Shapes;
+using System.Xml;
 
 namespace Common
 {
@@ -64,7 +67,7 @@ namespace WhereIsMyBox
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Возникла критическая ошибка:\n\n{e}\nПрограмма будет закрыта.", "Ошибка");
+                MessageBox.Show($"Возникла критическая ошибка:\n\n{e}\n\nПрограмма будет закрыта.", "Ошибка");
             }
         }
     }

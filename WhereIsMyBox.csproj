@@ -79,6 +79,10 @@
     <Reference Include="FontAwesome.Sharp, Version=6.3.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
       <HintPath>packages\FontAwesome.Sharp.6.3.0\lib\net48\FontAwesome.Sharp.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data, Version=8.1.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -100,6 +104,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\C_ConfigInfo.cs" />
+    <Compile Include="Classes\Models\Main.cs" />
+    <Compile Include="Classes\Models\ModelBoxes.cs" />
+    <Compile Include="Classes\Models\ModelUsers.cs" />
     <Compile Include="Classes\Permission.cs" />
     <Compile Include="Forms\OneInstanceElements\AuthForm.cs">
       <SubType>Form</SubType>
@@ -264,6 +271,5 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

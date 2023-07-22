@@ -3,6 +3,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using WhereIsMyBox.Classes;
+using WhereIsMyBox.Classes.Models;
 using WhereIsMyBox.Forms;
 
 namespace WhereIsMyBox
@@ -16,6 +17,8 @@ namespace WhereIsMyBox
             InitializeComponent();
             SetUserControl(new UC_Boxes());
             ApplyUserData();
+            ModelBoxes mod = new ModelBoxes();
+            mod.GetAllObjects();
         }
 
         public void ApplyUserData()
