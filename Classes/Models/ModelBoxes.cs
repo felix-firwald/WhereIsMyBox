@@ -13,7 +13,6 @@ namespace WhereIsMyBox.Classes.Models
         public string status { get; set; }
         public string type { get; set; }
         public string note { get; set; }
-        public string user { get; set; }
         public DateTime willFree { get; set; }
         public ModelBoxes() : base()
         {
@@ -87,7 +86,6 @@ namespace WhereIsMyBox.Classes.Models
                     status = sqlreader["status"].ToString();
                     type = sqlreader["type"].ToString();
                     note = sqlreader["note"].ToString();
-                    user = "-";
                     willFree = DateTime.Now;
                     return true;
                 }

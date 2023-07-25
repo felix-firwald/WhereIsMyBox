@@ -11,12 +11,13 @@ namespace WhereIsMyBox.Forms
     public partial class UC_Boxes : UserControl
     {
         ModelBoxes foundBox = new ModelBoxes();
+        string login;
         public UC_Boxes(string username)
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             this.Focus();
-            this.foundBox.user = username;
+            this.login = username;
         }
 
         private void CopyAllToolStrip_Click(object sender, EventArgs e)
@@ -56,7 +57,7 @@ namespace WhereIsMyBox.Forms
                     currLocation: foundBox.currentPlace,
                     status: foundBox.status,
                     comment: foundBox.note,
-                    user: foundBox.user,
+                    user: this.login,
                     willBeFree: foundBox.willFree
                 );
                 this.tableMicroActions.Visible = true;
@@ -134,6 +135,7 @@ namespace WhereIsMyBox.Forms
         {
             ModelUsing use = new ModelUsing();
             use.box = foundBox;
+            use.customer = this.login;
             use.AddBoxIntoUsing(120);
         }
     }

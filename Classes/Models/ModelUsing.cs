@@ -35,7 +35,7 @@ namespace WhereIsMyBox.Classes.Models
                 );
                 conn.Open();
                 SqlCommand cmd = conn.CreateCommand();
-                //Console.WriteLine(GetRequest());
+                Console.WriteLine(GetRequest(false));
                 cmd.CommandText = GetRequest();
                 cmd.ExecuteNonQuery();
             }
