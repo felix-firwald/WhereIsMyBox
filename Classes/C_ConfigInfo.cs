@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,8 +23,15 @@ namespace WhereIsMyBox.Classes
         {
             this.login = login;
             this.location = location;
-            this.password = password;
+            this.password = HashPassword(password);
             this.status = status;
+        }
+        private string HashPassword(string pwd)
+        {
+            SHA256 hash = SHA256.Create();
+            string result = Encoding.UTF8.GetString(hash.ComputeHash(Encoding.UTF8.GetBytes(pwd)));
+            Console.WriteLine(result);
+            return result;
         }
         public ConfigInfo WriteConfig()
         {
@@ -71,7 +79,7 @@ namespace WhereIsMyBox.Classes
         }
         public bool IsPasswordRight(string pwd)
         {
-            return password == pwd;
+            return password == HashPassword(pwd);
         }
     }
 }

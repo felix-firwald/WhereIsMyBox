@@ -22,14 +22,29 @@ namespace WhereIsMyBox.Forms.Elements
             string postfix,
             string initLocation,
             string currLocation,
-            string status   // добавить остальное
+            string status,
+            string comment,
+            string user,
+            DateTime willBeFree // добавить остальное
         )
         {
             this.labelPrefix.Text = prefix;
             this.labelPostfix.Text = postfix;
             this.initialLocation.Text = initLocation;
-            this.currentLocation.Text = currLocation;
             this.status.Text = status;
+            this.note.Text = comment;
+            if (status == "Доступен")
+            {
+                this.currentLocation.Text = initLocation;
+                this.user.Text = "-";
+                this.willFree.Text = "СЕЙЧАС";
+            }
+            else
+            {
+                this.currentLocation.Text = currLocation;
+                this.user.Text = user;
+                this.willFree.Text = willBeFree.ToString();
+            }
         }
     }
 }

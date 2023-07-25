@@ -4,15 +4,17 @@ using System.Data.SqlClient;
 
 namespace WhereIsMyBox.Classes.Models
 {
-    internal class ModelBoxes : Model
+    internal sealed class ModelBoxes : Model
     {
         public int id { get; private set; }
         public string number { get; set; }
         public string initialLocation { get; set; }
-        public string currentLocation { get; set; }
+        public string currentPlace { get; set; }
         public string status { get; set; }
-
-        public string category { get; set; }
+        public string type { get; set; }
+        public string note { get; set; }
+        public string user { get; set; }
+        public DateTime willFree { get; set; }
         public ModelBoxes() : base()
         {
             tableName = "Boxes";
@@ -29,10 +31,10 @@ namespace WhereIsMyBox.Classes.Models
                 }
                 else
                 {
-                    prefix += item;
+                    prefix += item;                   
                 }
             }
-            return new string[] { prefix, postfix };
+            return new string[2] { prefix, postfix };
         }
         public void GetAllObjects()
         {
@@ -50,21 +52,26 @@ namespace WhereIsMyBox.Classes.Models
                 }
             }
         }
-        public void AddBox(string onStatus="Created")
+        public void AddBox(string onStatus="Created")   // НЕ ДОПИСАНО!
         {
-            if ((number??initialLocation??currentLocation) == null)
+            if ((number??initialLocation??currentPlace) == null)
             {
                 throw new Exception(
                     $"One or more of arguments for \"AddBox\" is null!\n" +
                     $"number={number}, initialLocation={initialLocation}, " +
-                    $"currentLocation={currentLocation}."
+                    $"currentLocation={currentPlace}."
                 );
             }
+            
             this.status = onStatus;
+            Insert(
+                "number, initialLocation, currentPlace, status, type, note",
+                $"{this.number}, {this.initialLocation}, {this.currentPlace}, {this.status}, {this.type}, {this.note}"
+            );
         }
         public bool GetBoxByNumber(string num)
         {
-            Select("*").WhereEqual("number", new RValue(num.ToString(), Types.STR));
+            Select("*").WhereEqual("number", num);
             using (var conn = GetConnection(DatabasePermissions.All))
             {
                 conn.Open();
@@ -76,11 +83,16 @@ namespace WhereIsMyBox.Classes.Models
                     id = Convert.ToInt16(sqlreader["id"].ToString());
                     number = sqlreader["number"].ToString();
                     initialLocation = sqlreader["initialLocation"].ToString();
-                    currentLocation = sqlreader["currentLocation"].ToString();
+                    currentPlace = sqlreader["currentPlace"].ToString();
                     status = sqlreader["status"].ToString();
+                    type = sqlreader["type"].ToString();
+                    note = sqlreader["note"].ToString();
+                    user = "-";
+                    willFree = DateTime.Now;
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
     }
 }

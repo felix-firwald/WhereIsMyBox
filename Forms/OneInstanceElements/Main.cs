@@ -15,7 +15,7 @@ namespace WhereIsMyBox
         public Main()
         {
             InitializeComponent();
-            SetUserControl(new UC_Boxes());
+            SetUserControl(new UC_Boxes(this.Login.Text));
             ApplyUserData();
             //ModelBoxes mod = new ModelBoxes();
             //mod.AddBox();
@@ -74,7 +74,7 @@ namespace WhereIsMyBox
 
         private void LocationOfUser_MouseLeave(object sender, EventArgs e)
         {
-            this.LocationOfUser.ForeColor = SystemColors.ControlText;
+            this.LocationOfUser.ForeColor = Color.FromArgb(211, 215, 235);
         }
 
         private void buttonLock_MouseEnter(object sender, EventArgs e)

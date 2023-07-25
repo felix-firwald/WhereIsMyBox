@@ -33,14 +33,14 @@
             System.Windows.Forms.Label label9;
             System.Windows.Forms.Label label10;
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.willFree = new System.Windows.Forms.Label();
+            this.user = new System.Windows.Forms.Label();
             this.initialLocation = new System.Windows.Forms.Label();
             this.labelPrefix = new System.Windows.Forms.Label();
             this.labelPostfix = new System.Windows.Forms.Label();
             this.currentLocation = new System.Windows.Forms.Label();
             this.status = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.note = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
@@ -107,8 +107,8 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.label14, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label13, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.willFree, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.user, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.initialLocation, 1, 1);
             this.tableLayoutPanel1.Controls.Add(label1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelPrefix, 0, 0);
@@ -116,7 +116,7 @@
             this.tableLayoutPanel1.Controls.Add(label5, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.currentLocation, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.status, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label8, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.note, 1, 4);
             this.tableLayoutPanel1.Controls.Add(label9, 0, 3);
             this.tableLayoutPanel1.Controls.Add(label10, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.label11, 0, 5);
@@ -136,35 +136,37 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(343, 356);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // label14
+            // willFree
             // 
-            this.label14.AutoSize = true;
-            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label14.Font = new System.Drawing.Font("Segoe UI Semilight", 11F);
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
-            this.label14.Location = new System.Drawing.Point(174, 238);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(166, 30);
-            this.label14.TabIndex = 13;
-            this.label14.Text = "12:00:00 14.08.2023";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.willFree.AutoSize = true;
+            this.willFree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.willFree.Font = new System.Drawing.Font("Segoe UI Semilight", 11F);
+            this.willFree.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
+            this.willFree.Location = new System.Drawing.Point(174, 238);
+            this.willFree.Name = "willFree";
+            this.willFree.Size = new System.Drawing.Size(166, 30);
+            this.willFree.TabIndex = 13;
+            this.willFree.Text = "12:00:00 14.08.2023";
+            this.willFree.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label13
+            // user
             // 
-            this.label13.AutoSize = true;
-            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semilight", 11F);
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
-            this.label13.Location = new System.Drawing.Point(174, 208);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(166, 30);
-            this.label13.TabIndex = 12;
-            this.label13.Text = "d.magon";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.user.AutoSize = true;
+            this.user.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.user.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.user.Font = new System.Drawing.Font("Segoe UI Semilight", 11F);
+            this.user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
+            this.user.Location = new System.Drawing.Point(174, 208);
+            this.user.Name = "user";
+            this.user.Size = new System.Drawing.Size(166, 30);
+            this.user.TabIndex = 12;
+            this.user.Text = "d.magon";
+            this.user.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // initialLocation
             // 
             this.initialLocation.AutoSize = true;
+            this.initialLocation.Cursor = System.Windows.Forms.Cursors.Hand;
             this.initialLocation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.initialLocation.Font = new System.Drawing.Font("Segoe UI Semilight", 11F);
             this.initialLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
@@ -178,6 +180,7 @@
             // labelPrefix
             // 
             this.labelPrefix.AutoSize = true;
+            this.labelPrefix.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.labelPrefix.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelPrefix.Font = new System.Drawing.Font("Segoe UI Semilight", 20F);
             this.labelPrefix.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
@@ -191,6 +194,7 @@
             // labelPostfix
             // 
             this.labelPostfix.AutoSize = true;
+            this.labelPostfix.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelPostfix.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelPostfix.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelPostfix.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
@@ -204,6 +208,7 @@
             // currentLocation
             // 
             this.currentLocation.AutoSize = true;
+            this.currentLocation.Cursor = System.Windows.Forms.Cursors.Hand;
             this.currentLocation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.currentLocation.Font = new System.Drawing.Font("Segoe UI Semilight", 11F);
             this.currentLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
@@ -227,18 +232,19 @@
             this.status.Text = "Изъят";
             this.status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label8
+            // note
             // 
-            this.label8.AutoSize = true;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semilight", 11F);
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
-            this.label8.Location = new System.Drawing.Point(174, 178);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(166, 30);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Не забирать!";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.note.AutoSize = true;
+            this.note.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.note.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.note.Font = new System.Drawing.Font("Segoe UI Semilight", 11F);
+            this.note.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
+            this.note.Location = new System.Drawing.Point(174, 178);
+            this.note.Name = "note";
+            this.note.Size = new System.Drawing.Size(166, 30);
+            this.note.TabIndex = 7;
+            this.note.Text = "Не забирать!";
+            this.note.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label11
             // 
@@ -287,10 +293,10 @@
         private System.Windows.Forms.Label labelPostfix;
         private System.Windows.Forms.Label currentLocation;
         private System.Windows.Forms.Label status;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label note;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label willFree;
+        private System.Windows.Forms.Label user;
     }
 }

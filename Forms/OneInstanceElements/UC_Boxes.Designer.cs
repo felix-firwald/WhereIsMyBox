@@ -32,7 +32,6 @@
             this.tableLayoutMain = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutFunc = new System.Windows.Forms.TableLayoutPanel();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.tableLayoutLeft = new System.Windows.Forms.TableLayoutPanel();
             this.tableFindTop = new System.Windows.Forms.TableLayoutPanel();
@@ -41,14 +40,13 @@
             this.buttonCancelFind = new FontAwesome.Sharp.IconButton();
             this.HelpTextFind = new System.Windows.Forms.Label();
             this.tableMicroActions = new System.Windows.Forms.TableLayoutPanel();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.grayButton4 = new WhereIsMyBox.Forms.Elements.GrayButton();
             this.grayButton3 = new WhereIsMyBox.Forms.Elements.GrayButton();
-            this.grayButton1 = new WhereIsMyBox.Forms.Elements.GrayButton();
+            this.MicroButtonAdd = new WhereIsMyBox.Forms.Elements.GrayButton();
             this.grayButton2 = new WhereIsMyBox.Forms.Elements.GrayButton();
             this.BoxInfoPanel = new WhereIsMyBox.Forms.Elements.UC_BoxInfo();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutMain.SuspendLayout();
-            this.tableLayoutFunc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.SuspendLayout();
@@ -92,7 +90,6 @@
             this.tableLayoutFunc.ColumnCount = 2;
             this.tableLayoutFunc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutFunc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutFunc.Controls.Add(this.elementHost1, 1, 0);
             this.tableLayoutFunc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutFunc.Location = new System.Drawing.Point(3, 63);
             this.tableLayoutFunc.Name = "tableLayoutFunc";
@@ -101,15 +98,6 @@
             this.tableLayoutFunc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 84F));
             this.tableLayoutFunc.Size = new System.Drawing.Size(894, 84);
             this.tableLayoutFunc.TabIndex = 1;
-            // 
-            // elementHost1
-            // 
-            this.elementHost1.Location = new System.Drawing.Point(450, 3);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(200, 78);
-            this.elementHost1.TabIndex = 1;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = null;
             // 
             // splitContainerMain
             // 
@@ -207,6 +195,7 @@
             this.inputFind.TabIndex = 1;
             this.inputFind.Tag = "64; 64; 65";
             this.inputFind.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.inputFind.MouseClick += new System.Windows.Forms.MouseEventHandler(this.inputFind_MouseClick);
             this.inputFind.TextChanged += new System.EventHandler(this.inputFind_TextChanged);
             this.inputFind.Enter += new System.EventHandler(this.inputFind_Enter);
             // 
@@ -253,7 +242,7 @@
             this.tableMicroActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableMicroActions.Controls.Add(this.grayButton4, 0, 0);
             this.tableMicroActions.Controls.Add(this.grayButton3, 0, 0);
-            this.tableMicroActions.Controls.Add(this.grayButton1, 3, 0);
+            this.tableMicroActions.Controls.Add(this.MicroButtonAdd, 3, 0);
             this.tableMicroActions.Controls.Add(this.grayButton2, 2, 0);
             this.tableMicroActions.Dock = System.Windows.Forms.DockStyle.Right;
             this.tableMicroActions.Location = new System.Drawing.Point(132, 405);
@@ -310,28 +299,29 @@
             this.toolTip1.SetToolTip(this.grayButton3, "Просмотреть историю движения короба");
             this.grayButton3.UseVisualStyleBackColor = false;
             // 
-            // grayButton1
+            // MicroButtonAdd
             // 
-            this.grayButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.grayButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.grayButton1.EnteredColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(170)))), ((int)(((byte)(255)))));
-            this.grayButton1.FlatAppearance.BorderSize = 0;
-            this.grayButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.grayButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.grayButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.grayButton1.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
-            this.grayButton1.IconColor = System.Drawing.Color.DimGray;
-            this.grayButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.grayButton1.IconSize = 20;
-            this.grayButton1.Location = new System.Drawing.Point(123, 3);
-            this.grayButton1.Name = "grayButton1";
-            this.grayButton1.PermissionMode = WhereIsMyBox.Classes.PermissionMode.Cascade;
-            this.grayButton1.RequiredPermission = WhereIsMyBox.Classes.PermissionGroup.Moderator;
-            this.grayButton1.Size = new System.Drawing.Size(34, 23);
-            this.grayButton1.TabIndex = 0;
-            this.grayButton1.Tag = "82; 81; 87";
-            this.toolTip1.SetToolTip(this.grayButton1, "Добавить найденный короб к своему ведению");
-            this.grayButton1.UseVisualStyleBackColor = false;
+            this.MicroButtonAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.MicroButtonAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MicroButtonAdd.EnteredColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(170)))), ((int)(((byte)(255)))));
+            this.MicroButtonAdd.FlatAppearance.BorderSize = 0;
+            this.MicroButtonAdd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.MicroButtonAdd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.MicroButtonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MicroButtonAdd.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
+            this.MicroButtonAdd.IconColor = System.Drawing.Color.DimGray;
+            this.MicroButtonAdd.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.MicroButtonAdd.IconSize = 20;
+            this.MicroButtonAdd.Location = new System.Drawing.Point(123, 3);
+            this.MicroButtonAdd.Name = "MicroButtonAdd";
+            this.MicroButtonAdd.PermissionMode = WhereIsMyBox.Classes.PermissionMode.Cascade;
+            this.MicroButtonAdd.RequiredPermission = WhereIsMyBox.Classes.PermissionGroup.Moderator;
+            this.MicroButtonAdd.Size = new System.Drawing.Size(34, 23);
+            this.MicroButtonAdd.TabIndex = 0;
+            this.MicroButtonAdd.Tag = "82; 81; 87";
+            this.toolTip1.SetToolTip(this.MicroButtonAdd, "Добавить найденный короб к своему ведению");
+            this.MicroButtonAdd.UseVisualStyleBackColor = false;
+            this.MicroButtonAdd.Click += new System.EventHandler(this.MicroButtonAdd_Click);
             // 
             // grayButton2
             // 
@@ -373,12 +363,11 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(81)))), ((int)(((byte)(87)))));
             this.Controls.Add(this.tableLayoutMain);
-            this.MinimumSize = new System.Drawing.Size(600, 500);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "UC_Boxes";
             this.Size = new System.Drawing.Size(900, 600);
             this.tableLayoutMain.ResumeLayout(false);
             this.tableLayoutMain.PerformLayout();
-            this.tableLayoutFunc.ResumeLayout(false);
             this.splitContainerMain.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
             this.splitContainerMain.ResumeLayout(false);
@@ -404,12 +393,11 @@
         private System.Windows.Forms.Label HelpTextFind;
         private FontAwesome.Sharp.IconButton buttonCancelFind;
         private System.Windows.Forms.TableLayoutPanel tableMicroActions;
-        private Elements.GrayButton grayButton1;
+        private Elements.GrayButton MicroButtonAdd;
         private Elements.GrayButton grayButton2;
         private Elements.GrayButton grayButton3;
         private System.Windows.Forms.ToolTip toolTip1;
         private Elements.UC_BoxInfo BoxInfoPanel;
         private Elements.GrayButton grayButton4;
-        private System.Windows.Forms.Integration.ElementHost elementHost1;
     }
 }

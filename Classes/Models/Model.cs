@@ -1,4 +1,5 @@
 ﻿
+using DatabaseRequests;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace DatabaseRequests
         readonly public static SqlConnection connection;
         public static void OpenConnection()
         {
-            if (connection.State != ConnectionState.Open) 
+            if (connection.State != ConnectionState.Open)
             {
                 connection.Open();
             }
@@ -47,102 +48,14 @@ namespace DatabaseRequests
         INT,
         STR
     }
-
-    public struct Column
-    {
-        public Model table;
-        public string name;
-        public string type;
-        public string defaultValue;
-        public Model foreignKey;
-        public bool autoincrement;
-        public bool isNull;
-        public bool uniq;
-
-        public override string ToString()
-        {
-            return $"{table}.{name}";
-        }
-        public string CreateString()
-        {
-            string resultDefault = "";
-            if (defaultValue.Length > 0)
-            {
-                resultDefault = $" DEFAULT '{defaultValue}'";
-            }
-            string foreign = "";
-            if (foreignKey != null)
-            {
-                foreign = $" FOREIGN KEY ({name}) REFERENCES {foreignKey}(id)";
-            }
-            string resultNull = "";
-            if (!isNull)
-            {
-                resultNull = " NOT NULL";
-            }
-            string unique = "";
-            if (uniq)
-            {
-                unique = " UNIQUE";
-            }
-            string ai = "";
-            if (autoincrement)
-            {
-                ai = " AUTO_INCREMENT";
-            }
-            return $"{name} {type.ToUpper()}{foreign}{ai}{resultDefault}{resultNull}{unique}";
-        }
-        public Column(
-            Model tableName,
-            string columnName,
-            string typeOfColumn,
-            bool nullVal,
-            bool uniqVal,
-            String defaultVal,
-            bool autoIncrement = false,
-            Model foreign = null) : this()
-        {
-            this.table = tableName;
-            name = columnName;
-            type = typeOfColumn;
-            foreignKey = foreign;
-            autoincrement = autoIncrement;
-            defaultValue = defaultVal;
-            isNull = nullVal;
-            uniq = uniqVal;
-        }
-    }
     /// <summary>
     /// RValue структура нужна для правильного отображения данных в зависимости от их типа
     /// </summary>
-    public struct RValue
-    {
-        public Types type;
-        public string value;
-        public override string ToString()
-        {
-            switch (type)
-            {
-                case Types.INT:
-                    return value;
-                case Types.STR:
-                    return $"'{value}'";
-                default:
-                    throw new Exception($"Unknow type for RValue: {type}");
-            }
-        }
-        public RValue(string val, Types typ = Types.STR) : this()
-        {
-            type = typ;
-            value = val;
-        }
-    }
     public abstract class Model
     {
         private string result;
         private bool isWhereAlready;
         protected string tableName;
-        public List<Column> columns = new List<Column>(12);
         public Model()
         {
             result = "";
@@ -152,56 +65,15 @@ namespace DatabaseRequests
         {
             return tableName;
         }
-        private string SwitchOnType(Types type = Types.STR)
-        {
-            switch (type)
-            {
-                case Types.STR:
-                    return "'";
-                case Types.INT:
-                    return "";
-            }
-            return "'";
-        }
         /// <summary>
         /// Добавить столбец в бд. Необходимо применять перед вызовом метода CreateTable().
         /// Например:   Request.AddColumn(name, type, true).CreateTable().Execute()
         /// </summary>
-        public void AddColumn(string name, string type, bool isNull = false, bool isUniq = false, string defaultValue = "", Model foreign = null)
-        {
-            this.columns.Append(
-                new Column(
-                    tableName: this,
-                    columnName: name,
-                    typeOfColumn: type,
-                    nullVal: isNull,
-                    uniqVal: isUniq,
-                    defaultVal: defaultValue,
-                    foreign: foreign
-                    )
-            );
-        }
+
         /// <summary>
         /// Сгенерирует запрос к базе данных о создании таблицы, для выполнения запроса применить Execute().
         /// Например:   Request.CreateTable().Execute()
         /// </summary>
-        public Model CreateTable()
-        {
-            string res = "";
-            int count = 0;
-            foreach (Column col in columns)
-            {
-                if (count != 0)
-                {
-                    res += ", ";
-                }
-                count++;
-                res += col.ToString();
-            }
-            result = $"CREATE TABLE {tableName}({res})";
-            return this;
-        }
-
         public Model Select(string selection)
         {
             string resulting;
@@ -210,36 +82,9 @@ namespace DatabaseRequests
             return this;
         }
 
-        public Model Insert(RValue[] args)
+        public Model Insert(string fields, string values)
         {
-            string resulting;
-            resulting = $"INSERT INTO {tableName}\nVALUES (";
-            if (args.Length == 1)
-            {
-                resulting += args[0].ToString();
-            }
-            else
-            {
-                int count = 0;
-                foreach (var arg in args)
-                {
-                    if (count != 0)
-                    {
-                        resulting += ", ";
-                    }
-                    count++;
-                    resulting += arg.ToString();
-                }
-            }
-            resulting += ")\n";
-            if (result == "")
-            {
-                result = resulting;
-            }
-            else
-            {
-                result += $"\n{resulting}";
-            }
+            result += $"INSERT INTO {tableName} ({fields})\nVALUES ({values})";
             return this;
         }
 
@@ -251,61 +96,67 @@ namespace DatabaseRequests
             return this;
         }
 
-        private Model Where(string cell, string comparator, string value)
+        private Model Where(string cell, string comparator, string value, bool isStr)
         {
             string resulting;
-            // String s = SwitchOnType(type);
+            string c = "";
+            if (isStr) 
+            {
+                c = "'";
+            }
             if (isWhereAlready)
             {
-                resulting = result + $" AND {cell} {comparator} {value}\n";
+                resulting = result + $" AND {cell} {comparator} {c}{value}{c}\n";
                 result = resulting;
                 return this;
             }
             else
             {
                 isWhereAlready = true;
-                resulting = result + $"WHERE {cell} {comparator} {value}\n";
+                resulting = result + $"WHERE {cell} {comparator} {c}{value}{c}\n";
                 result = resulting;
                 return this;
             }
 
         }
+        protected Model Delete()
+        {
+            result += $"DELETE FROM {this.tableName}\n";
+            return this;
+        }
 
-        public Model WhereEqual(String cell, RValue value)
+        public Model WhereEqual(string cell, string value, bool isStr=true)
         // Where A (left arg) = B (right arg)
         {
-            return Where(cell, "=", value.ToString());
+            return Where(cell, "=", value, isStr);
         }
-        public Model WhereNotEqual(String cell, RValue value)
+        public Model WhereNotEqual(string cell, string value, bool isStr = true)
         // Where A (left arg) != B (right arg)
         {
-            return Where(cell, "<>", value.ToString());
+            return Where(cell, "<>", value, isStr);
         }
-        public Model WhereLess(String cell, RValue value)
+        public Model WhereLess(string cell, string value, bool isStr = true)
         // Where A (left arg) < B (right arg)
         {
-            return Where(cell, "<", value.ToString());
+            return Where(cell, "<", value, isStr);
         }
-        public Model WhereMore(String cell, RValue value)
+        public Model WhereMore(string cell, string value, bool isStr = true)
         // Where A (left arg) > B (right arg)
         {
-            return Where(cell, ">", value.ToString());
+            return Where(cell, ">", value, isStr);
         }
-        public Model WhereBetween(String cell, RValue valueA, RValue valueB)
+        public Model WhereBetween(string cell, string left, string right, bool isStr = true)
         // Where A (left arg) BETWEEN B (central arg) AND C (right arg)
         {
-            String a = valueA.ToString();
-            String b = valueB.ToString();
-            return Where(cell, "BETWEEN", $"{a} AND {b}");
+            return Where(cell, "BETWEEN", $"{left} AND {right}", isStr);
         }
-        public Model WhereIn(String cell, string[] args, Types type = Types.STR)
+        public Model WhereIn(String cell, string[] args)
         // Where A (left arg) IN (args)
         {
-            String s = SwitchOnType(type);
             String resultingString = "(";
             if (args.Length == 1)
             {
-                resultingString += $"{s}{args[0]}{s}";
+                resultingString += $"'{args[0]}'";
             }
             else
             {
@@ -317,11 +168,11 @@ namespace DatabaseRequests
                         resultingString += ", ";
                     }
                     count++;
-                    resultingString += $"{s}{arg}{s}";
+                    resultingString += $"'{arg}'";
                 }
             }
             resultingString += ")\n";
-            return Where(cell, "IN", resultingString);
+            return Where(cell, "IN", resultingString, false);
         }
         /// <summary>
         /// Возвращает MySqlConnection с подставленными значениями, предварительно проверяя доступ
@@ -339,10 +190,13 @@ namespace DatabaseRequests
             return new SqlConnection(
             DatabaseManager.path);
         }
-        protected string GetRequest()
+        protected string GetRequest(bool clear=true)
         {
             string tmp = result;
-            Clear();
+            if (clear)
+            {
+                Clear();
+            }
             return tmp;
         }
         protected void Clear()
@@ -351,10 +205,10 @@ namespace DatabaseRequests
         }
         protected bool CheckPermission(DatabasePermissions permission)
         {
-            switch(permission) 
+            switch (permission)
             {
                 case DatabasePermissions.All: return true;
-                case DatabasePermissions.AdminOnly: 
+                case DatabasePermissions.AdminOnly:
                     return Permission.IsUserHavePermission(PermissionGroup.Admin, PermissionMode.Monopoly);
                 case DatabasePermissions.ModeratorAndAdmin:
                     return Permission.IsUserHavePermission(PermissionGroup.Moderator, PermissionMode.Rising);
@@ -367,7 +221,7 @@ namespace DatabaseRequests
                 default: throw new Exception($"Unknown permission type \"{permission}\" got.");
             }
         }
-        
+
     }
 }
 

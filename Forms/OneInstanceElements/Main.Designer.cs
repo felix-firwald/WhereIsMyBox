@@ -43,6 +43,8 @@
             this.tableLayoutMain = new System.Windows.Forms.TableLayoutPanel();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.whiteButton1 = new WhereIsMyBox.Forms.ReusableElements.WhiteButton();
             this.tableLayoutStatus = new System.Windows.Forms.TableLayoutPanel();
             this.UserStatusLabel = new System.Windows.Forms.Label();
             this.tableLayoutLogin = new System.Windows.Forms.TableLayoutPanel();
@@ -52,8 +54,6 @@
             this.panelContent = new System.Windows.Forms.Panel();
             this.toolTipMain = new System.Windows.Forms.ToolTip(this.components);
             this.notifyIconMain = new System.Windows.Forms.NotifyIcon(this.components);
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.whiteButton1 = new WhereIsMyBox.Forms.ReusableElements.WhiteButton();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             labelLocation = new System.Windows.Forms.Label();
@@ -100,6 +100,7 @@
             labelLocation.AutoSize = true;
             labelLocation.Dock = System.Windows.Forms.DockStyle.Fill;
             labelLocation.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            labelLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
             labelLocation.Location = new System.Drawing.Point(3, 0);
             labelLocation.Name = "labelLocation";
             labelLocation.Size = new System.Drawing.Size(194, 28);
@@ -112,6 +113,7 @@
             labelLogin.AutoSize = true;
             labelLogin.Dock = System.Windows.Forms.DockStyle.Fill;
             labelLogin.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            labelLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
             labelLogin.Location = new System.Drawing.Point(3, 0);
             labelLogin.Name = "labelLogin";
             labelLogin.Size = new System.Drawing.Size(194, 28);
@@ -124,6 +126,7 @@
             labelStatus.AutoSize = true;
             labelStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             labelStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F);
+            labelStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
             labelStatus.Location = new System.Drawing.Point(3, 0);
             labelStatus.Name = "labelStatus";
             labelStatus.Size = new System.Drawing.Size(194, 28);
@@ -136,7 +139,7 @@
             this.panelBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(57)))), ((int)(((byte)(61)))));
             this.panelBottom.Controls.Add(this.tableLayoutBottom);
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom.Location = new System.Drawing.Point(0, 488);
+            this.panelBottom.Location = new System.Drawing.Point(0, 588);
             this.panelBottom.Name = "panelBottom";
             this.panelBottom.Size = new System.Drawing.Size(984, 73);
             this.panelBottom.TabIndex = 0;
@@ -222,12 +225,12 @@
             this.tableLayoutMain.Name = "tableLayoutMain";
             this.tableLayoutMain.RowCount = 1;
             this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutMain.Size = new System.Drawing.Size(984, 488);
+            this.tableLayoutMain.Size = new System.Drawing.Size(984, 588);
             this.tableLayoutMain.TabIndex = 1;
             // 
             // panelLeft
             // 
-            this.panelLeft.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.panelLeft.Controls.Add(this.tableLayoutPanel1);
             this.panelLeft.Controls.Add(this.tableLayoutStatus);
             this.panelLeft.Controls.Add(this.tableLayoutLogin);
@@ -238,8 +241,9 @@
             this.panelLeft.MaximumSize = new System.Drawing.Size(210, 0);
             this.panelLeft.MinimumSize = new System.Drawing.Size(190, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(200, 488);
+            this.panelLeft.Size = new System.Drawing.Size(200, 588);
             this.panelLeft.TabIndex = 0;
+            this.panelLeft.Tag = "";
             // 
             // tableLayoutPanel1
             // 
@@ -248,7 +252,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.elementHost1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 388);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 488);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -256,6 +260,16 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 100);
             this.tableLayoutPanel1.TabIndex = 3;
+            // 
+            // elementHost1
+            // 
+            this.elementHost1.Location = new System.Drawing.Point(6, 55);
+            this.elementHost1.Margin = new System.Windows.Forms.Padding(6, 5, 0, 5);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(194, 40);
+            this.elementHost1.TabIndex = 0;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.whiteButton1;
             // 
             // tableLayoutStatus
             // 
@@ -278,6 +292,7 @@
             this.UserStatusLabel.AutoSize = true;
             this.UserStatusLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.UserStatusLabel.Font = new System.Drawing.Font("Segoe UI Light", 16F);
+            this.UserStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
             this.UserStatusLabel.Location = new System.Drawing.Point(3, 28);
             this.UserStatusLabel.Name = "UserStatusLabel";
             this.UserStatusLabel.Size = new System.Drawing.Size(194, 30);
@@ -307,6 +322,7 @@
             this.Login.AutoSize = true;
             this.Login.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Login.Font = new System.Drawing.Font("Segoe UI Light", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Login.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
             this.Login.Location = new System.Drawing.Point(3, 28);
             this.Login.Name = "Login";
             this.Login.Size = new System.Drawing.Size(194, 42);
@@ -337,6 +353,7 @@
             this.LocationOfUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LocationOfUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LocationOfUser.Font = new System.Drawing.Font("Segoe UI Light", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LocationOfUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
             this.LocationOfUser.Location = new System.Drawing.Point(3, 28);
             this.LocationOfUser.Name = "LocationOfUser";
             this.LocationOfUser.Size = new System.Drawing.Size(194, 42);
@@ -353,7 +370,7 @@
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.Location = new System.Drawing.Point(203, 3);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(778, 482);
+            this.panelContent.Size = new System.Drawing.Size(778, 582);
             this.panelContent.TabIndex = 1;
             // 
             // toolTipMain
@@ -373,26 +390,16 @@
             this.notifyIconMain.Text = "WIMB";
             this.notifyIconMain.Visible = true;
             // 
-            // elementHost1
-            // 
-            this.elementHost1.Location = new System.Drawing.Point(6, 55);
-            this.elementHost1.Margin = new System.Windows.Forms.Padding(6, 5, 0, 5);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(194, 40);
-            this.elementHost1.TabIndex = 0;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = this.whiteButton1;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(81)))), ((int)(((byte)(87)))));
-            this.ClientSize = new System.Drawing.Size(984, 561);
+            this.ClientSize = new System.Drawing.Size(984, 661);
             this.Controls.Add(this.tableLayoutMain);
             this.Controls.Add(this.panelBottom);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(950, 500);
+            this.MinimumSize = new System.Drawing.Size(950, 700);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "";
@@ -429,7 +436,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutBottomInfo;
         private System.Windows.Forms.Label LocationOfUser;
         private System.Windows.Forms.TableLayoutPanel tableLayoutLogin;
-        private System.Windows.Forms.Label Login;
         private System.Windows.Forms.ToolTip toolTipMain;
         private System.Windows.Forms.TableLayoutPanel tableLayoutStatus;
         private System.Windows.Forms.Label UserStatusLabel;
@@ -439,5 +445,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Integration.ElementHost elementHost1;
         private Forms.ReusableElements.WhiteButton whiteButton1;
+        public System.Windows.Forms.Label Login;
     }
 }

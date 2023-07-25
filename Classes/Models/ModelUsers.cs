@@ -1,26 +1,35 @@
 ﻿
 using DatabaseRequests;
-using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI.Common;
 using System;
 using System.Data.SqlClient;
-using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows;
+using static System.Security.Cryptography.SHA256;
 
 namespace WhereIsMyBox.Classes.Models
 {
     internal class ModelUsers : Model
     {
+        public int id { get; private set; }
+        public string login { get; set; }
+        public string password {
+            private get { return password; }
+            set { password = HashPassword(value); } 
+        }
         public ModelUsers() : base()
         {
             tableName = "Users";
-            AddColumn(name:"id", type:"int");
-            AddColumn(name: "name", type: "nvarchar(50)");
             
+        }
+        private string HashPassword(string pwd)
+        {
+            SHA256 hash = SHA256.Create();
+            return Convert.ToString(hash.ComputeHash(Encoding.ASCII.GetBytes(pwd)));
         }
         public void GetAllUsers()
         {
-            using (var conn = GetConnection(DatabasePermissions.All))
+            using (var conn = GetConnection(DatabasePermissions.AdminOnly))
             {
                 Select("*");
                 conn.Open();
@@ -32,6 +41,25 @@ namespace WhereIsMyBox.Classes.Models
                     Console.WriteLine(sqlreader.ToString());
                 }
             }
+        }
+        public bool IsRightPassword() 
+        {
+            using (var conn = GetConnection(DatabasePermissions.All))
+            {
+                Select("password").WhereEqual("login", login).WhereEqual("password", password);
+                conn.Open();
+                SqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = GetRequest();
+                SqlDataReader sqlreader = cmd.ExecuteReader();
+                if (sqlreader.Read()) 
+                { 
+                    return true; 
+                }
+                return false;
+            }
+        }
+        public void GetUserById()
+        {
         }
     }
 }
