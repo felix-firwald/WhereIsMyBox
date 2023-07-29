@@ -19,6 +19,7 @@ namespace WhereIsMyBox
             InitializeComponent();
             ApplyUserData(); 
             SetUserControl(new UC_Boxes(this.Login.Text));
+            NavbarSwitch();
             //ModelBoxes mod = new ModelBoxes();
             //mod.AddBox();
         }
@@ -107,6 +108,10 @@ namespace WhereIsMyBox
                 if (!item.isChecked)
                 {
                     item.DeselectItem();
+                }
+                else
+                {
+                    item.SelectItem();
                 }
             }
         }

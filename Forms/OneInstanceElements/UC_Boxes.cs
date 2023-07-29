@@ -20,7 +20,9 @@ namespace WhereIsMyBox.Forms
             this.Dock = DockStyle.Fill;
             this.Focus();
             this.login = username;
+            this.inputSeize.KeyDown += new KeyEventHandler(inputSeize_KeyDown);
         }
+        #region Validate Input Functions
         private bool BoxNumberValidateFormat(string number)
         {
             return Regex.IsMatch(number, @"^[a-zA-Z]\w*[1-9]$");
@@ -29,17 +31,14 @@ namespace WhereIsMyBox.Forms
         {
             return number.Length > 5;
         }
+        #endregion
 
-        private void CopyAllToolStrip_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(sender.ToString());
-        }
+        
+        #region FindPanel Main
 
         private void buttonFind_MouseEnter(object sender, EventArgs e)
         {
             this.buttonFind.IconColor = ColorTheme.TextHovered;
-            
-
         }
 
         private void buttonFind_MouseLeave(object sender, EventArgs e)
@@ -85,10 +84,6 @@ namespace WhereIsMyBox.Forms
             loadform.Close();
         }
 
-        private void inputFind_Enter(object sender, EventArgs e)
-        {
-           
-        }
 
         private void buttonCancelFind_Click(object sender, EventArgs e)
         {
@@ -131,11 +126,8 @@ namespace WhereIsMyBox.Forms
                 this.buttonFind.Enabled = false;
             }
         }
+        
 
-        private void elementHost2_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
-        {
-
-        }
 
         private void inputFind_MouseClick(object sender, MouseEventArgs e)
         {
@@ -145,11 +137,9 @@ namespace WhereIsMyBox.Forms
                 Clipboard.SetText(this.inputFind.Text);
             }
         }
+        #endregion
 
-
-
-        
-
+        #region FindPanel LittleButtons
         private void buttonAddBox_Click(object sender, EventArgs e)
         {
             ModelUsing use = new ModelUsing();
@@ -178,5 +168,55 @@ namespace WhereIsMyBox.Forms
         {
 
         }
+
+        #endregion
+
+        #region SeizePanel Top
+        private void inputSeize_TextChanged(object sender, EventArgs e)
+        {
+            bool regex = BoxNumberValidateFormat(this.inputSeize.Text);
+            bool length = BoxNumberValidateLength(this.inputSeize.Text);
+            if (regex && length)
+            {
+                this.inputSeize.ForeColor = Color.LightGreen;
+                this.buttonAddToSeized.Enabled = true;
+            }
+            else if (regex)
+            {
+                this.inputSeize.ForeColor = ColorTheme.TextHovered;
+                this.buttonAddToSeized.Enabled = false;
+            }
+            else
+            {
+                this.inputSeize.ForeColor = Color.IndianRed;
+                this.buttonAddToSeized.Enabled = false;
+            }
+        }
+
+        private void buttonClearSeizingBox_Click(object sender, EventArgs e)
+        {
+            this.inputSeize.Text = "";
+        }
+
+
+        private void buttonSettingsForSeize_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void buttonAddToSeized_Click(object sender, EventArgs e)
+        {
+            this.inputSeize.Text.ToUpper();
+        }
+        #endregion
+
+        private void inputSeize_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonAddToSeized_Click(sender, e);
+            }
+        }
+
+        
     }
 }
