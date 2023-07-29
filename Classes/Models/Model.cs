@@ -193,14 +193,16 @@ namespace DatabaseRequests
         protected string GetRequest(bool clear=true)
         {
             string tmp = result;
+            Console.WriteLine(tmp);
             if (clear)
             {
                 Clear();
             }
             return tmp;
         }
-        protected void Clear()
+        public void Clear()
         {
+            isWhereAlready = false;
             result = "";
         }
         protected bool CheckPermission(DatabasePermissions permission)

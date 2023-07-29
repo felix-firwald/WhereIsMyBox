@@ -34,6 +34,9 @@
             // iconButton1
             // 
             this.iconButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconButton1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
             this.iconButton1.IconColor = System.Drawing.Color.DimGray;
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -47,6 +50,7 @@
             // GrayButton
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(81)))), ((int)(((byte)(87)))));
+            this.FlatAppearance.BorderSize = 0;
             this.Tag = "82; 81; 87";
             this.UseVisualStyleBackColor = false;
             this.Click += new System.EventHandler(this.GrayButton_Click);

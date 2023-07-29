@@ -251,16 +251,16 @@ for location in BOX_LOCATIONS:
     create_location(location)
     print(location)
 
-
+randing = [*range(17111, 17117), *range(17231, 17240), *range(17561, 17572)]
 batch_number = 111001
 for first in ascii_uppercase:
     for second in ascii_uppercase:
-        for num in range(17234, 17237):
+        for num in randing:
             loc = choice(BOX_LOCATIONS)
             box = f"{first}{second}{num}"
             create_box(box, loc, "A1")
-            print(f"{box} - {loc}")
-            for j in range(1, 7):
+            print(f"\n\n{box} - {loc}")
+            for j in range(1, randint(3, 7)):
                 print(f"{box}: {batch_number}")
                 create_batch(batch_number, box)
                 batch_number += 1

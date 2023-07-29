@@ -1,10 +1,12 @@
 ﻿using Common;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using WhereIsMyBox.Classes;
 using WhereIsMyBox.Classes.Models;
 using WhereIsMyBox.Forms;
+using WhereIsMyBox.Forms.ReusableElements;
 
 namespace WhereIsMyBox
 {
@@ -77,22 +79,36 @@ namespace WhereIsMyBox
             this.LocationOfUser.ForeColor = Color.FromArgb(211, 215, 235);
         }
 
-        private void buttonLock_MouseEnter(object sender, EventArgs e)
-        {
-            this.buttonLock.IconColor = ColorTheme.TextHovered;
-        }
+        //private void buttonLock_MouseEnter(object sender, EventArgs e)
+       // {
+         //   this.buttonLock.IconColor = ColorTheme.TextHovered;
+       // }
 
-        private void buttonLock_MouseLeave(object sender, EventArgs e)
-        {
-            this.buttonLock.IconColor = Color.DimGray;
-        }
+        //private void buttonLock_MouseLeave(object sender, EventArgs e)
+        //{
+          //  this.buttonLock.IconColor = Color.DimGray;
+        //}
 
-        private void buttonLock_Click(object sender, EventArgs e)
+       // private void buttonLock_Click(object sender, EventArgs e)
+        //{
+        //    this.Hide();
+         //   AuthForm auth = new AuthForm(TypeOfAuth.Unlock);
+         //   auth.ShowDialog();
+          //  this.Show();
+        //}
+
+        private void NavbarSwitch()
         {
-            this.Hide();
-            AuthForm auth = new AuthForm(TypeOfAuth.Unlock);
-            auth.ShowDialog();
-            this.Show();
+            List<Navbar> navbarList = new List<Navbar> { 
+                navbarAdmin, navbarBoxManager, navbarMain,
+            };
+            foreach(Navbar item in navbarList)
+            {
+                if (!item.isChecked)
+                {
+                    item.DeselectItem();
+                }
+            }
         }
     }
 }

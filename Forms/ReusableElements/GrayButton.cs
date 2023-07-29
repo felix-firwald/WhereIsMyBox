@@ -53,10 +53,18 @@ namespace WhereIsMyBox.Forms.Elements
 
         private void GrayButton_MouseEnter(object sender, EventArgs e)
         {
+            SetEnteredColor();
+        }
+        private void SetEnteredColor()
+        {
             this.IconColor = enteredColor;
         }
 
         private void GrayButton_MouseLeave(object sender, EventArgs e)
+        {
+            SetStandartColor();
+        }
+        private void SetStandartColor()
         {
             this.IconColor = Color.DimGray;
         }
@@ -68,6 +76,8 @@ namespace WhereIsMyBox.Forms.Elements
             if (!permissionResult)
             {
                 Permission.RaisePermissionError(this.requiredPermission);
+                this.Enabled = false;
+                SetStandartColor();
             }
         }
 

@@ -1,0 +1,18 @@
+private void buttonShowQr_Click(object sender, EventArgs e)
+{
+    Barcode qrWindow = new Barcode(foundBox.number);
+    qrWindow.Show();
+}
+
+private void MicroButtonAdd_Click(object sender, EventArgs e)
+{
+    
+}
+
+IN DESIGNER
+
+        private Elements.GrayButton MicroButtonAdd;
+        private Elements.GrayButton buttonShowInMap;
+        private Elements.GrayButton buttonShowHistory;
+        private Elements.GrayButton buttonShowQr;
+        private Elements.GrayButton grayButton1;

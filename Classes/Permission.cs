@@ -104,11 +104,9 @@ namespace WhereIsMyBox.Classes
             }
             string description = $"Это действие может совершать только {groupName}{addToDescription}. " +
                 $"Если вас добавили в группу \"{groupName}\" недавно — попробуйте перезапустить программу";
-            Rejected form = new Rejected(
-                "Ошибка прав доступа!",
-                description
-            );
-            form.ShowDialog();
+            MessageBox.Show(description, "Ошибка прав доступа!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //Rejected form = new Rejected("Ошибка прав доступа!", description);
+            //form.ShowDialog();
         }
     }
 }

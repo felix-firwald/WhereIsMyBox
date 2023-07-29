@@ -8,7 +8,7 @@
              d:DesignHeight="23" d:DesignWidth="150" MouseLeftButtonDown="OnLeftMouseClick">
     <Grid Cursor="Hand">
         <Border Name="BorderMain" CornerRadius="6,0,0,6" Background="White">
-            <Label x:Name="ButtonText" Content="{Binding Text}" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Label x:Name="ButtonText" Content="" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Border>
         <Grid.Triggers>
             <EventTrigger RoutedEvent="MouseEnter">

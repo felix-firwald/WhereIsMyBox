@@ -22,6 +22,7 @@ namespace WhereIsMyBox.Forms.Elements
             string postfix,
             string initLocation,
             string currLocation,
+            string type,
             string status,
             string comment,
             string user,
@@ -31,6 +32,7 @@ namespace WhereIsMyBox.Forms.Elements
             this.labelPrefix.Text = prefix;
             this.labelPostfix.Text = postfix;
             this.initialLocation.Text = initLocation;
+            this.type.Text = type;
             this.status.Text = status;
             this.note.Text = comment;
             if (status == "Доступен")

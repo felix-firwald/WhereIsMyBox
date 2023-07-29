@@ -39,12 +39,12 @@
             this.tableLayoutBottom = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutBottomInfo = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonLock = new FontAwesome.Sharp.IconButton();
             this.tableLayoutMain = new System.Windows.Forms.TableLayoutPanel();
             this.panelLeft = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.whiteButton1 = new WhereIsMyBox.Forms.ReusableElements.WhiteButton();
+            this.tableLayoutNavigation = new System.Windows.Forms.TableLayoutPanel();
+            this.navbarMain = new WhereIsMyBox.Forms.ReusableElements.Navbar();
+            this.navbarBoxManager = new WhereIsMyBox.Forms.ReusableElements.Navbar();
+            this.navbarAdmin = new WhereIsMyBox.Forms.ReusableElements.Navbar();
             this.tableLayoutStatus = new System.Windows.Forms.TableLayoutPanel();
             this.UserStatusLabel = new System.Windows.Forms.Label();
             this.tableLayoutLogin = new System.Windows.Forms.TableLayoutPanel();
@@ -54,6 +54,7 @@
             this.panelContent = new System.Windows.Forms.Panel();
             this.toolTipMain = new System.Windows.Forms.ToolTip(this.components);
             this.notifyIconMain = new System.Windows.Forms.NotifyIcon(this.components);
+            this.grayButton1 = new WhereIsMyBox.Forms.Elements.GrayButton();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             labelLocation = new System.Windows.Forms.Label();
@@ -65,7 +66,7 @@
             this.tableLayoutBottomInfo.SuspendLayout();
             this.tableLayoutMain.SuspendLayout();
             this.panelLeft.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutNavigation.SuspendLayout();
             this.tableLayoutStatus.SuspendLayout();
             this.tableLayoutLogin.SuspendLayout();
             this.tableLayoutLocation.SuspendLayout();
@@ -153,7 +154,7 @@
             this.tableLayoutBottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutBottom.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutBottom.Controls.Add(this.tableLayoutBottomInfo, 1, 0);
-            this.tableLayoutBottom.Controls.Add(this.buttonLock, 2, 0);
+            this.tableLayoutBottom.Controls.Add(this.grayButton1, 2, 0);
             this.tableLayoutBottom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutBottom.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutBottom.Name = "tableLayoutBottom";
@@ -191,27 +192,6 @@
             this.tableLayoutBottomInfo.Size = new System.Drawing.Size(778, 67);
             this.tableLayoutBottomInfo.TabIndex = 1;
             // 
-            // buttonLock
-            // 
-            this.buttonLock.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonLock.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonLock.FlatAppearance.BorderSize = 0;
-            this.buttonLock.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(57)))), ((int)(((byte)(61)))));
-            this.buttonLock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(57)))), ((int)(((byte)(61)))));
-            this.buttonLock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLock.IconChar = FontAwesome.Sharp.IconChar.Key;
-            this.buttonLock.IconColor = System.Drawing.Color.DimGray;
-            this.buttonLock.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.buttonLock.IconSize = 35;
-            this.buttonLock.Location = new System.Drawing.Point(887, 3);
-            this.buttonLock.Name = "buttonLock";
-            this.buttonLock.Size = new System.Drawing.Size(94, 67);
-            this.buttonLock.TabIndex = 2;
-            this.buttonLock.UseVisualStyleBackColor = true;
-            this.buttonLock.Click += new System.EventHandler(this.buttonLock_Click);
-            this.buttonLock.MouseEnter += new System.EventHandler(this.buttonLock_MouseEnter);
-            this.buttonLock.MouseLeave += new System.EventHandler(this.buttonLock_MouseLeave);
-            // 
             // tableLayoutMain
             // 
             this.tableLayoutMain.ColumnCount = 2;
@@ -231,7 +211,7 @@
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.panelLeft.Controls.Add(this.tableLayoutPanel1);
+            this.panelLeft.Controls.Add(this.tableLayoutNavigation);
             this.panelLeft.Controls.Add(this.tableLayoutStatus);
             this.panelLeft.Controls.Add(this.tableLayoutLogin);
             this.panelLeft.Controls.Add(this.tableLayoutLocation);
@@ -245,31 +225,56 @@
             this.panelLeft.TabIndex = 0;
             this.panelLeft.Tag = "";
             // 
-            // tableLayoutPanel1
+            // tableLayoutNavigation
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.elementHost1, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 488);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 100);
-            this.tableLayoutPanel1.TabIndex = 3;
+            this.tableLayoutNavigation.ColumnCount = 1;
+            this.tableLayoutNavigation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutNavigation.Controls.Add(this.navbarMain, 0, 2);
+            this.tableLayoutNavigation.Controls.Add(this.navbarBoxManager, 0, 1);
+            this.tableLayoutNavigation.Controls.Add(this.navbarAdmin, 0, 0);
+            this.tableLayoutNavigation.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutNavigation.Location = new System.Drawing.Point(0, 439);
+            this.tableLayoutNavigation.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.tableLayoutNavigation.Name = "tableLayoutNavigation";
+            this.tableLayoutNavigation.RowCount = 3;
+            this.tableLayoutNavigation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutNavigation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutNavigation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutNavigation.Size = new System.Drawing.Size(200, 149);
+            this.tableLayoutNavigation.TabIndex = 3;
             // 
-            // elementHost1
+            // navbarMain
             // 
-            this.elementHost1.Location = new System.Drawing.Point(6, 55);
-            this.elementHost1.Margin = new System.Windows.Forms.Padding(6, 5, 0, 5);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(194, 40);
-            this.elementHost1.TabIndex = 0;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = this.whiteButton1;
+            this.navbarMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.navbarMain.buttonText = "Главная";
+            this.navbarMain.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.navbarMain.isChecked = true;
+            this.navbarMain.Location = new System.Drawing.Point(3, 101);
+            this.navbarMain.Name = "navbarMain";
+            this.navbarMain.Size = new System.Drawing.Size(194, 44);
+            this.navbarMain.TabIndex = 0;
+            // 
+            // navbarBoxManager
+            // 
+            this.navbarBoxManager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.navbarBoxManager.buttonText = "Управление коробами";
+            this.navbarBoxManager.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.navbarBoxManager.isChecked = false;
+            this.navbarBoxManager.Location = new System.Drawing.Point(3, 52);
+            this.navbarBoxManager.Name = "navbarBoxManager";
+            this.navbarBoxManager.Size = new System.Drawing.Size(194, 43);
+            this.navbarBoxManager.TabIndex = 1;
+            // 
+            // navbarAdmin
+            // 
+            this.navbarAdmin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.navbarAdmin.buttonText = "Админ";
+            this.navbarAdmin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.navbarAdmin.isChecked = false;
+            this.navbarAdmin.Location = new System.Drawing.Point(3, 3);
+            this.navbarAdmin.Name = "navbarAdmin";
+            this.navbarAdmin.Size = new System.Drawing.Size(194, 43);
+            this.navbarAdmin.TabIndex = 2;
             // 
             // tableLayoutStatus
             // 
@@ -390,6 +395,29 @@
             this.notifyIconMain.Text = "WIMB";
             this.notifyIconMain.Visible = true;
             // 
+            // grayButton1
+            // 
+            this.grayButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.grayButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.grayButton1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grayButton1.EnteredColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(170)))), ((int)(((byte)(255)))));
+            this.grayButton1.FlatAppearance.BorderSize = 0;
+            this.grayButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.grayButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.grayButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.grayButton1.IconChar = FontAwesome.Sharp.IconChar.Repeat;
+            this.grayButton1.IconColor = System.Drawing.Color.DimGray;
+            this.grayButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.grayButton1.IconSize = 20;
+            this.grayButton1.Location = new System.Drawing.Point(887, 3);
+            this.grayButton1.Name = "grayButton1";
+            this.grayButton1.PermissionMode = WhereIsMyBox.Classes.PermissionMode.Monopoly;
+            this.grayButton1.RequiredPermission = WhereIsMyBox.Classes.PermissionGroup.Admin;
+            this.grayButton1.Size = new System.Drawing.Size(94, 67);
+            this.grayButton1.TabIndex = 2;
+            this.grayButton1.Tag = "82; 81; 87";
+            this.grayButton1.UseVisualStyleBackColor = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -414,7 +442,7 @@
             this.tableLayoutBottomInfo.PerformLayout();
             this.tableLayoutMain.ResumeLayout(false);
             this.panelLeft.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutNavigation.ResumeLayout(false);
             this.tableLayoutStatus.ResumeLayout(false);
             this.tableLayoutStatus.PerformLayout();
             this.tableLayoutLogin.ResumeLayout(false);
@@ -439,12 +467,13 @@
         private System.Windows.Forms.ToolTip toolTipMain;
         private System.Windows.Forms.TableLayoutPanel tableLayoutStatus;
         private System.Windows.Forms.Label UserStatusLabel;
-        private FontAwesome.Sharp.IconButton buttonLock;
         private System.Windows.Forms.NotifyIcon notifyIconMain;
         private System.Windows.Forms.Panel panelContent;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Integration.ElementHost elementHost1;
-        private Forms.ReusableElements.WhiteButton whiteButton1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutNavigation;
         public System.Windows.Forms.Label Login;
+        private Forms.ReusableElements.Navbar navbarMain;
+        private Forms.ReusableElements.Navbar navbarBoxManager;
+        private Forms.ReusableElements.Navbar navbarAdmin;
+        private Forms.Elements.GrayButton grayButton1;
     }
 }

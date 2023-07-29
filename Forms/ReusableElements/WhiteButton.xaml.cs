@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,11 +21,18 @@ namespace WhereIsMyBox.Forms.ReusableElements
     /// </summary>
     public partial class WhiteButton : UserControl
     {
-        public string Text = "Текст кнопки";
+        //private string txt = "Текст кнопки";
+        
         public WhiteButton()
         {
             InitializeComponent();
+            DataContext = this;
+            
         }
+
+        [Description("Текст кнопки"), Category("Главное"), Browsable(true), EditorBrowsable(EditorBrowsableState.Always), Bindable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public string BText { get => this.ButtonText.Content.ToString() ; set => this.ButtonText.Content = value; }
+
 
         private void OnLeftMouseClick(object sender, MouseButtonEventArgs e)
         {

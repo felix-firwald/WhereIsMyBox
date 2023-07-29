@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using WhereIsMyBox.Classes.Models;
+using WhereIsMyBox.Forms.OneInstanceElements;
 
 namespace WhereIsMyBox.Forms
 {
@@ -12,12 +13,21 @@ namespace WhereIsMyBox.Forms
     {
         ModelBoxes foundBox = new ModelBoxes();
         string login;
+        //private string foundedBox;
         public UC_Boxes(string username)
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             this.Focus();
             this.login = username;
+        }
+        private bool BoxNumberValidateFormat(string number)
+        {
+            return Regex.IsMatch(number, @"^[a-zA-Z]\w*[1-9]$");
+        }
+        private bool BoxNumberValidateLength(string number)
+        {
+            return number.Length > 5;
         }
 
         private void CopyAllToolStrip_Click(object sender, EventArgs e)
@@ -47,6 +57,9 @@ namespace WhereIsMyBox.Forms
             this.inputFind.Text = this.inputFind.Text.ToUpper();
             this.HelpTextFind.Text = $"Поиск короба №{this.inputFind.Text}...";
             //ModelBoxes foundBox = new ModelBoxes();
+            foundBox.Clear();
+            Loading loadform = new Loading(this.HelpTextFind.Text);
+            loadform.Show();
             if (foundBox.GetBoxByNumber(this.inputFind.Text))
             {
                 string [] result = foundBox.GetSplitedNumber();
@@ -55,6 +68,7 @@ namespace WhereIsMyBox.Forms
                     postfix: result[1],
                     initLocation: foundBox.initialLocation,
                     currLocation: foundBox.currentPlace,
+                    type: foundBox.type,
                     status: foundBox.status,
                     comment: foundBox.note,
                     user: this.login,
@@ -68,6 +82,7 @@ namespace WhereIsMyBox.Forms
             {
                 this.HelpTextFind.Text = $"Короб №{this.inputFind.Text} не найден!";
             }
+            loadform.Close();
         }
 
         private void inputFind_Enter(object sender, EventArgs e)
@@ -97,8 +112,8 @@ namespace WhereIsMyBox.Forms
 
         private void inputFind_TextChanged(object sender, EventArgs e)
         {
-            bool regex = Regex.IsMatch(this.inputFind.Text, @"^[a-zA-Z]\w*[1-9]$");
-            bool length = this.inputFind.Text.Length > 5;
+            bool regex = BoxNumberValidateFormat(this.inputFind.Text);
+            bool length = BoxNumberValidateLength(this.inputFind.Text);
 
             if (regex && length)
             {
@@ -131,12 +146,37 @@ namespace WhereIsMyBox.Forms
             }
         }
 
-        private void MicroButtonAdd_Click(object sender, EventArgs e)
+
+
+        
+
+        private void buttonAddBox_Click(object sender, EventArgs e)
         {
             ModelUsing use = new ModelUsing();
             use.box = foundBox;
             use.customer = this.login;
             use.AddBoxIntoUsing(120);
+        }
+
+        private void buttonShowMap_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonShowQRCode_Click(object sender, EventArgs e)
+        {
+            Barcode qrWindow = new Barcode(foundBox.number);
+            qrWindow.Show();
+        }
+
+        private void buttonComment_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonMarkAsNotFound_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
