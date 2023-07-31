@@ -37,14 +37,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panelBottom = new System.Windows.Forms.Panel();
             this.tableLayoutBottom = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutBottomInfo = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutMain = new System.Windows.Forms.TableLayoutPanel();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.tableLayoutNavigation = new System.Windows.Forms.TableLayoutPanel();
-            this.navbarMain = new WhereIsMyBox.Forms.ReusableElements.Navbar();
-            this.navbarBoxManager = new WhereIsMyBox.Forms.ReusableElements.Navbar();
-            this.navbarAdmin = new WhereIsMyBox.Forms.ReusableElements.Navbar();
             this.tableLayoutStatus = new System.Windows.Forms.TableLayoutPanel();
             this.UserStatusLabel = new System.Windows.Forms.Label();
             this.tableLayoutLogin = new System.Windows.Forms.TableLayoutPanel();
@@ -54,6 +50,10 @@
             this.panelContent = new System.Windows.Forms.Panel();
             this.toolTipMain = new System.Windows.Forms.ToolTip(this.components);
             this.notifyIconMain = new System.Windows.Forms.NotifyIcon(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.navbarMain = new WhereIsMyBox.Forms.ReusableElements.Navbar();
+            this.navbarBoxManager = new WhereIsMyBox.Forms.ReusableElements.Navbar();
+            this.navbarAdmin = new WhereIsMyBox.Forms.ReusableElements.Navbar();
             this.grayButton1 = new WhereIsMyBox.Forms.Elements.GrayButton();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
@@ -62,7 +62,6 @@
             labelStatus = new System.Windows.Forms.Label();
             this.panelBottom.SuspendLayout();
             this.tableLayoutBottom.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutBottomInfo.SuspendLayout();
             this.tableLayoutMain.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -70,6 +69,7 @@
             this.tableLayoutStatus.SuspendLayout();
             this.tableLayoutLogin.SuspendLayout();
             this.tableLayoutLocation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -163,19 +163,6 @@
             this.tableLayoutBottom.Size = new System.Drawing.Size(984, 73);
             this.tableLayoutBottom.TabIndex = 0;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::WhereIsMyBox.Properties.Resources.info;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(94, 67);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // tableLayoutBottomInfo
             // 
             this.tableLayoutBottomInfo.ColumnCount = 1;
@@ -242,39 +229,6 @@
             this.tableLayoutNavigation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutNavigation.Size = new System.Drawing.Size(200, 149);
             this.tableLayoutNavigation.TabIndex = 3;
-            // 
-            // navbarMain
-            // 
-            this.navbarMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.navbarMain.buttonText = "Главная";
-            this.navbarMain.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.navbarMain.isChecked = true;
-            this.navbarMain.Location = new System.Drawing.Point(3, 101);
-            this.navbarMain.Name = "navbarMain";
-            this.navbarMain.Size = new System.Drawing.Size(194, 44);
-            this.navbarMain.TabIndex = 0;
-            // 
-            // navbarBoxManager
-            // 
-            this.navbarBoxManager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.navbarBoxManager.buttonText = "Управление коробами";
-            this.navbarBoxManager.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.navbarBoxManager.isChecked = false;
-            this.navbarBoxManager.Location = new System.Drawing.Point(3, 52);
-            this.navbarBoxManager.Name = "navbarBoxManager";
-            this.navbarBoxManager.Size = new System.Drawing.Size(194, 43);
-            this.navbarBoxManager.TabIndex = 1;
-            // 
-            // navbarAdmin
-            // 
-            this.navbarAdmin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.navbarAdmin.buttonText = "Админ";
-            this.navbarAdmin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.navbarAdmin.isChecked = false;
-            this.navbarAdmin.Location = new System.Drawing.Point(3, 3);
-            this.navbarAdmin.Name = "navbarAdmin";
-            this.navbarAdmin.Size = new System.Drawing.Size(194, 43);
-            this.navbarAdmin.TabIndex = 2;
             // 
             // tableLayoutStatus
             // 
@@ -395,6 +349,52 @@
             this.notifyIconMain.Text = "WIMB";
             this.notifyIconMain.Visible = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::WhereIsMyBox.Properties.Resources.info;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(94, 67);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // navbarMain
+            // 
+            this.navbarMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.navbarMain.buttonText = "Главная";
+            this.navbarMain.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.navbarMain.isChecked = true;
+            this.navbarMain.Location = new System.Drawing.Point(3, 101);
+            this.navbarMain.Name = "navbarMain";
+            this.navbarMain.Size = new System.Drawing.Size(194, 44);
+            this.navbarMain.TabIndex = 0;
+            // 
+            // navbarBoxManager
+            // 
+            this.navbarBoxManager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.navbarBoxManager.buttonText = "Управление коробами";
+            this.navbarBoxManager.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.navbarBoxManager.isChecked = false;
+            this.navbarBoxManager.Location = new System.Drawing.Point(3, 52);
+            this.navbarBoxManager.Name = "navbarBoxManager";
+            this.navbarBoxManager.Size = new System.Drawing.Size(194, 43);
+            this.navbarBoxManager.TabIndex = 1;
+            // 
+            // navbarAdmin
+            // 
+            this.navbarAdmin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.navbarAdmin.buttonText = "Админ";
+            this.navbarAdmin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.navbarAdmin.isChecked = false;
+            this.navbarAdmin.Location = new System.Drawing.Point(3, 3);
+            this.navbarAdmin.Name = "navbarAdmin";
+            this.navbarAdmin.Size = new System.Drawing.Size(194, 43);
+            this.navbarAdmin.TabIndex = 2;
+            // 
             // grayButton1
             // 
             this.grayButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -437,7 +437,6 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.panelBottom.ResumeLayout(false);
             this.tableLayoutBottom.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutBottomInfo.ResumeLayout(false);
             this.tableLayoutBottomInfo.PerformLayout();
             this.tableLayoutMain.ResumeLayout(false);
@@ -449,6 +448,7 @@
             this.tableLayoutLogin.PerformLayout();
             this.tableLayoutLocation.ResumeLayout(false);
             this.tableLayoutLocation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

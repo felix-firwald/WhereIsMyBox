@@ -1,13 +1,7 @@
-﻿
-using DatabaseRequests;
-using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Xml;
 using WhereIsMyBox.Classes;
 
 namespace DatabaseRequests
@@ -21,12 +15,12 @@ namespace DatabaseRequests
         ModeratorAndOperator,
         OperatorOnly
     }
-    public static class DatabaseManager
+    public static class DatabaseManager // static >> server connection must be only one per session
     {
         // Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         readonly public static string path = @"server=DESKTOP-H74SD3A\SQLEXPRESS;Database=WhereIsMyBox;Integrated Security=true";
-        readonly public static string password; // удалить если будет не нужно
-        readonly public static string database; // удалить если будет не нужно
+        readonly public static string password; // for mysql, will be terminated
+        readonly public static string database; // for mysql, will be terminated
         readonly public static SqlConnection connection;
         public static void OpenConnection()
         {
@@ -48,9 +42,6 @@ namespace DatabaseRequests
         INT,
         STR
     }
-    /// <summary>
-    /// RValue структура нужна для правильного отображения данных в зависимости от их типа
-    /// </summary>
     public abstract class Model
     {
         private string result;
@@ -65,15 +56,7 @@ namespace DatabaseRequests
         {
             return tableName;
         }
-        /// <summary>
-        /// Добавить столбец в бд. Необходимо применять перед вызовом метода CreateTable().
-        /// Например:   Request.AddColumn(name, type, true).CreateTable().Execute()
-        /// </summary>
 
-        /// <summary>
-        /// Сгенерирует запрос к базе данных о создании таблицы, для выполнения запроса применить Execute().
-        /// Например:   Request.CreateTable().Execute()
-        /// </summary>
         public Model Select(string selection)
         {
             string resulting;

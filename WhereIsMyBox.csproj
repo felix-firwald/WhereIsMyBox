@@ -130,6 +130,12 @@
     <Compile Include="Forms\OneInstanceElements\ChangeLocation.Designer.cs">
       <DependentUpon>ChangeLocation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\OneInstanceElements\UC_ListOfSeized.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\OneInstanceElements\UC_ListOfSeized.Designer.cs">
+      <DependentUpon>UC_ListOfSeized.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ReusableElements\GrayButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -197,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OneInstanceElements\ChangeLocation.resx">
       <DependentUpon>ChangeLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OneInstanceElements\UC_ListOfSeized.resx">
+      <DependentUpon>UC_ListOfSeized.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReusableElements\GrayButton.resx">
       <DependentUpon>GrayButton.cs</DependentUpon>
