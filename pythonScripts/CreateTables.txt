@@ -1,0 +1,88 @@
+CREATE DATABASE WhereIsMyBox;
+
+
+
+CREATE TABLE Locations (
+	name 			NVARCHAR(40)    		NOT NULL UNIQUE,
+);
+
+
+CREATE TABLE Places (
+	name 			NVARCHAR(4)     		NOT NULL UNIQUE,
+);
+
+
+CREATE TABLE Types (
+	name			NVARCHAR(50)     		NOT NULL UNIQUE,
+);
+
+
+CREATE TABLE Boxes (
+  	number 			VARCHAR(10)	   		NOT NULL UNIQUE,
+  	location 		NVARCHAR(40) 			FOREIGN KEY 
+											REFERENCES Locations (name) NOT NULL,
+  	status 			NVARCHAR(50)			NOT NULL 
+								CHECK(status IN ('Available', 'Seized', 'Undefined')),
+	type 			NVARCHAR(50) 			FOREIGN KEY 
+									REFERENCES Types (name),
+	note   			NVARCHAR(75) 
+);
+
+
+CREATE TABLE Batches (
+	id 			INT IDENTITY(1,1)		NOT NULL,
+	number 			VARCHAR(30)	   		NOT NULL UNIQUE,
+	box    			VARCHAR(10)			FOREIGN KEY 
+									REFERENCES Boxes (number),
+);
+
+
+
+
+
+
+CREATE TABLE Units (
+	name			NVARCHAR(50)     		NOT NULL UNIQUE,
+);
+
+
+CREATE TABLE Users (	
+	id 			INT IDENTITY(1,1) 		NOT NULL,
+	login 			VARCHAR(30)			NOT NULL UNIQUE,	
+	status			VARCHAR(25)			NOT NULL CHECK(status IN ('Admin', 'Moderator', 'Operator')),
+	unit			NVARCHAR(50)			FOREIGN KEY 
+									REFERENCES Units(name),
+	isOnline		BIT				NOT NULL DEFAULT 0						
+);
+
+
+CREATE TABLE BoxesInUse (
+	id 			INT IDENTITY(1,1) 		NOT NULL,
+	box 			VARCHAR(10)			FOREIGN KEY 
+									REFERENCES Boxes (number) NOT NULL,
+	place			NVARCHAR(4)			FOREIGN KEY 
+									REFERENCES Places (name) NOT NULL,
+	customer 		VARCHAR(30)			FOREIGN KEY 
+									REFERENCES Users (login) NOT NULL,
+	timeStarted		SMALLDATETIME			NOT NULL,
+	timeFinished		SMALLDATETIME			NOT NULL,
+	inFocus			BIT				NOT NULL DEFAULT 0,
+	finished		BIT				NOT NULL DEFAULT 0,
+);
+
+
+
+
+
+CREATE TABLE Commands (
+	id 			INT IDENTITY(1,1) 		NOT NULL,
+	sender			VARCHAR(30)			FOREIGN KEY REFERENCES Users (login) 
+									ON UPDATE CASCADE
+									ON DELETE CASCADE,
+	allUsers		BIT				NOT NULL DEFAULT 0,
+	recipient		VARCHAR(30)			FOREIGN KEY REFERENCES Users (login) 
+									ON UPDATE CASCADE
+									ON DELETE CASCADE,
+	command			NVARCHAR(256)			NOT NULL,
+	finished		BIT				NOT NULL DEFAULT 0
+);

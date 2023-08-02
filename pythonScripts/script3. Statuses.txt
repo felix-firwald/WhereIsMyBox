@@ -1,4 +1,0 @@
-INSERT INTO Statuses(name) VALUES('Изъят')
-INSERT INTO Statuses(name) VALUES('Доступен')
-INSERT INTO Statuses(name) VALUES('Отправлен в архив')
-INSERT INTO Statuses(name) VALUES('Не найден')

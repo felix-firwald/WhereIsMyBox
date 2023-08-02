@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using WhereIsMyBox.Classes;
 
 namespace DatabaseRequests
@@ -45,18 +47,27 @@ namespace DatabaseRequests
     public abstract class Model
     {
         private string result;
-        private bool isWhereAlready;
+        
         protected string tableName;
+        #region Procedural Context
+        private bool isWhereAlready;
+        private bool isUpdateAlready;
+        #endregion
         public Model()
         {
-            result = "";
+            Clear();
+        }
+        public void Clear()
+        {
             isWhereAlready = false;
+            isUpdateAlready = false;
+            result = "";
         }
         public override string ToString()
         {
             return tableName;
         }
-
+        #region Select-Insert-Update-Delete
         public Model Select(string selection)
         {
             string resulting;
@@ -70,7 +81,31 @@ namespace DatabaseRequests
             result += $"INSERT INTO {tableName} ({fields})\nVALUES ({values})";
             return this;
         }
+        public Model Update(string cell, string value, bool isStr=true)
+        {
+            string c = "'";
+            if (!isStr) { c = ""; }
+            if (isUpdateAlready)
+            {
+                result += $",\n" +
+                $"{cell}={c}{value}{c}";
+            }
+            else
+            {
+                result += $"UPDATE {tableName}\n" +
+                $"SET {cell}={c}{value}{c}";
+                isUpdateAlready = true;
+            }
+            return this;
+        }
+        protected Model Delete()
+        {
+            result += $"DELETE FROM {this.tableName}\n";
+            return this;
+        }
+        #endregion
 
+        #region Join
         public Model InnerJoin(Model innerTable, string fieldBaseTable, string fieldJoinedTable)
         {
             string resulting;
@@ -78,7 +113,9 @@ namespace DatabaseRequests
             result = resulting;
             return this;
         }
+        #endregion
 
+        #region Where
         private Model Where(string cell, string comparator, string value, bool isStr)
         {
             string resulting;
@@ -96,16 +133,11 @@ namespace DatabaseRequests
             else
             {
                 isWhereAlready = true;
-                resulting = result + $"WHERE {cell} {comparator} {c}{value}{c}\n";
+                resulting = result + $"\nWHERE {cell} {comparator} {c}{value}{c}\n";
                 result = resulting;
                 return this;
             }
 
-        }
-        protected Model Delete()
-        {
-            result += $"DELETE FROM {this.tableName}\n";
-            return this;
         }
 
         public Model WhereEqual(string cell, string value, bool isStr=true)
@@ -157,23 +189,19 @@ namespace DatabaseRequests
             resultingString += ")\n";
             return Where(cell, "IN", resultingString, false);
         }
+        #endregion
+
+        #region Connection, Request and Permission
         /// <summary>
-        /// Возвращает MySqlConnection с подставленными значениями, предварительно проверяя доступ
+        /// Возвращает SqlConnection с подставленными значениями, предварительно проверяя доступ
         /// </summary>
         /// <returns></returns>
-        protected SqlConnection GetConnection(DatabasePermissions permission, [CallerMemberName] string callerName = "")
+        private SqlConnection GetConnection()
         {
-            if (!CheckPermission(permission))
-            {
-                throw new Exception(
-                    $"Access denied: this user can`t call \"{callerName}\" " +
-                    $"for table \"{tableName}\", because is not a member of \"{permission}\" permission role."
-                );
-            }
             return new SqlConnection(
             DatabaseManager.path);
         }
-        protected string GetRequest(bool clear=true)
+        private string GetRequest(bool clear=true)
         {
             string tmp = result;
             Console.WriteLine(tmp);
@@ -183,12 +211,7 @@ namespace DatabaseRequests
             }
             return tmp;
         }
-        public void Clear()
-        {
-            isWhereAlready = false;
-            result = "";
-        }
-        protected bool CheckPermission(DatabasePermissions permission)
+        private bool CheckPermission(DatabasePermissions permission)
         {
             switch (permission)
             {
@@ -206,6 +229,43 @@ namespace DatabaseRequests
                 default: throw new Exception($"Unknown permission type \"{permission}\" got.");
             }
         }
+        protected DataTable Execute(DatabasePermissions permission, [CallerMemberName] string callerName = "")
+        {
+            if (!CheckPermission(permission))
+            {
+                throw new Exception(
+                    $"Access denied: this user can`t call \"{callerName}\" " +
+                    $"for table \"{tableName}\", because is not a member of \"{permission}\" permission role."
+                );
+            }
+            try
+            {
+                using (SqlConnection conn = GetConnection())
+                {
+                    conn.Open();
+                    SqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandText = GetRequest();
+                    SqlDataReader sqlreader = cmd.ExecuteReader();
+                    DataTable objDataTable = new DataTable();
+                    objDataTable.Load(sqlreader);
+                    return objDataTable;
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"При выполнении запроса к базе данных возникла ошибка:\n{ex}" +
+                    $"\nПроверьте правильность данных.",
+                    "Ошибка выполнения запроса",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+                return new DataTable();
+            }
+        }
+        #endregion
+        
+        
 
     }
 }

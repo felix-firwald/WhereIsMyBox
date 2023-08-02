@@ -1,5 +1,6 @@
 ﻿using DatabaseRequests;
 using System;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace WhereIsMyBox.Classes.Models
@@ -8,8 +9,7 @@ namespace WhereIsMyBox.Classes.Models
     {
         public int id { get; private set; }
         public string number { get; set; }
-        public string initialLocation { get; set; }
-        public string currentPlace { get; set; }
+        public string location { get; set; }
         public string status { get; set; }
         public string type { get; set; }
         public string note { get; set; }
@@ -35,62 +35,73 @@ namespace WhereIsMyBox.Classes.Models
             }
             return new string[2] { prefix, postfix };
         }
-        public void GetAllObjects()
-        {
-            using (var conn = GetConnection(DatabasePermissions.AdminOnly))
-            {
-                Select("*");
-                conn.Open();
-                SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = GetRequest();
-                SqlDataReader sqlreader = cmd.ExecuteReader();
-                while (sqlreader.Read())
-                {
-                    id = Convert.ToInt16(sqlreader["number"]);
-                    Console.WriteLine(sqlreader["number"].ToString());
-                }
-            }
-        }
+
+        #region Create
         public void AddBox(string onStatus="Created")   // НЕ ДОПИСАНО!
         {
-            if ((number??initialLocation??currentPlace) == null)
+            if ((number??location) == null)
             {
                 throw new Exception(
                     $"One or more of arguments for \"AddBox\" is null!\n" +
-                    $"number={number}, initialLocation={initialLocation}, " +
-                    $"currentLocation={currentPlace}."
+                    $"number={number}, location={location}"
                 );
             }
             
             this.status = onStatus;
             Insert(
-                "number, initialLocation, currentPlace, status, type, note",
-                $"{this.number}, {this.initialLocation}, {this.currentPlace}, {this.status}, {this.type}, {this.note}"
+                "number, location, status, type, note",
+                $"{this.number}, {this.location}, {this.status}, {this.type}, {this.note}"
             );
+            Execute(DatabasePermissions.All);
         }
+        #endregion
+
+        #region Read
+        //public ModelBoxes[] GetAllObjects()
+        //{
+        //    using (var conn = GetConnection(DatabasePermissions.AdminOnly))
+        //    {
+        //        Select("*");
+        //        conn.Open();
+        //        SqlCommand cmd = conn.CreateCommand();
+        //        cmd.CommandText = GetRequest();
+        //        SqlDataReader sqlreader = cmd.ExecuteReader();
+        //        while (sqlreader.Read())
+        //        {
+        //            id = Convert.ToInt16(sqlreader["number"]);
+        //            Console.WriteLine(sqlreader["number"].ToString());
+        //        }
+        //    }
+        //}
         public bool GetBoxByNumber(string num)
         {
             Select("*").WhereEqual("number", num);
-            using (var conn = GetConnection(DatabasePermissions.All))
+            DataTable dt = Execute(DatabasePermissions.All);
+            try
             {
-                conn.Open();
-                SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = GetRequest();
-                SqlDataReader sqlreader = cmd.ExecuteReader();
-                if (sqlreader.Read())
-                {
-                    id = Convert.ToInt16(sqlreader["id"].ToString());
-                    number = sqlreader["number"].ToString();
-                    initialLocation = sqlreader["initialLocation"].ToString();
-                    currentPlace = sqlreader["currentPlace"].ToString();
-                    status = sqlreader["status"].ToString();
-                    type = sqlreader["type"].ToString();
-                    note = sqlreader["note"].ToString();
-                    willFree = DateTime.Now;
-                    return true;
-                }
+                DataRow dr = dt.Rows[0];
+                //id = Convert.ToInt16(dr["id"].ToString());
+                number = dr["number"].ToString();
+                location = dr["location"].ToString();
+                //currentPlace = dr["currentPlace"].ToString();
+                status = dr["status"].ToString();
+                type = dr["type"].ToString();
+                note = dr["note"].ToString();
+                willFree = DateTime.Now;
+                return true;
             }
-            return false;
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+                return false;
+            }
         }
+        #endregion
+
+        #region Update
+        public void UpdateStatus(string onStatus)
+        {
+            Update("status", onStatus).WhereEqual("number", this.number);
+        }
+        #endregion
     }
 }

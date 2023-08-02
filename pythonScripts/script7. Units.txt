@@ -1,0 +1,6 @@
+INSERT INTO Units (name) VALUES('Изъятие')
+INSERT INTO Units (name) VALUES('Архивариусы')
+INSERT INTO Units (name) VALUES('Контроль качества')
+INSERT INTO Units (name) VALUES('Дежурные')
+INSERT INTO Units (name) VALUES('Сканировщики')
+INSERT INTO Units (name) VALUES('Группа разбора корреспонденции')

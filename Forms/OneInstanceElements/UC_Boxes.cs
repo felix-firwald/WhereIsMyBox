@@ -13,13 +13,15 @@ namespace WhereIsMyBox.Forms
     {
         ModelBoxes foundBox = new ModelBoxes();
         string login;
+        string place;
         //private string foundedBox;
-        public UC_Boxes(string username)
+        public UC_Boxes(string username, string place)
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             this.Focus();
             this.login = username;
+            this.place = place;
             this.inputSeize.KeyDown += new KeyEventHandler(inputSeize_KeyDown);
         }
         #region Validate Input Functions
@@ -33,7 +35,19 @@ namespace WhereIsMyBox.Forms
         }
         #endregion
 
-        
+        #region Common Methods
+        private void SeizeBox(int period)
+        {
+            ModelUsing use = new ModelUsing();
+            use.box = foundBox.number;
+            use.place = place;
+            use.customer = this.login;
+            use.AddBoxIntoUsing(120);
+            this.ListOfSeized.AddItemToList(foundBox.number, foundBox.location, period);
+        }
+
+        #endregion
+
         #region FindPanel Main
 
         private void buttonFind_MouseEnter(object sender, EventArgs e)
@@ -65,8 +79,8 @@ namespace WhereIsMyBox.Forms
                 this.BoxInfoPanel.changeData(
                     prefix: result[0],
                     postfix: result[1],
-                    initLocation: foundBox.initialLocation,
-                    currLocation: foundBox.currentPlace,
+                    initLocation: foundBox.location,
+                    currLocation: "-",
                     type: foundBox.type,
                     status: foundBox.status,
                     comment: foundBox.note,
@@ -142,10 +156,7 @@ namespace WhereIsMyBox.Forms
         #region FindPanel LittleButtons
         private void buttonAddBox_Click(object sender, EventArgs e)
         {
-            ModelUsing use = new ModelUsing();
-            use.box = foundBox;
-            use.customer = this.login;
-            use.AddBoxIntoUsing(120);
+            SeizeBox(1);
         }
 
         private void buttonShowMap_Click(object sender, EventArgs e)
@@ -206,6 +217,7 @@ namespace WhereIsMyBox.Forms
         private void buttonAddToSeized_Click(object sender, EventArgs e)
         {
             this.inputSeize.Text.ToUpper();
+            SeizeBox(2);
         }
         #endregion
 

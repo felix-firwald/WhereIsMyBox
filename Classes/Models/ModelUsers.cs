@@ -27,37 +27,37 @@ namespace WhereIsMyBox.Classes.Models
             SHA256 hash = SHA256.Create();
             return Convert.ToString(hash.ComputeHash(Encoding.ASCII.GetBytes(pwd)));
         }
-        public void GetAllUsers()
-        {
-            using (var conn = GetConnection(DatabasePermissions.AdminOnly))
-            {
-                Select("*");
-                conn.Open();
-                SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = GetRequest();
-                SqlDataReader sqlreader = cmd.ExecuteReader();
-                while (sqlreader.Read())
-                {
-                    Console.WriteLine(sqlreader.ToString());
-                }
-            }
-        }
-        public bool IsRightPassword() 
-        {
-            using (var conn = GetConnection(DatabasePermissions.All))
-            {
-                Select("password").WhereEqual("login", login).WhereEqual("password", password);
-                conn.Open();
-                SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = GetRequest();
-                SqlDataReader sqlreader = cmd.ExecuteReader();
-                if (sqlreader.Read()) 
-                { 
-                    return true; 
-                }
-                return false;
-            }
-        }
+        //public void GetAllUsers()
+        //{
+        //    using (var conn = GetConnection())
+        //    {
+        //        Select("*");
+        //        conn.Open();
+        //        SqlCommand cmd = conn.CreateCommand();
+        //        cmd.CommandText = GetRequest();
+        //        SqlDataReader sqlreader = cmd.ExecuteReader();
+        //        while (sqlreader.Read())
+        //        {
+        //            Console.WriteLine(sqlreader.ToString());
+        //        }
+        //    }
+        //}
+        //public bool IsRightPassword() 
+        //{
+        //    using (var conn = GetConnection())
+        //    {
+        //        Select("password").WhereEqual("login", login).WhereEqual("password", password);
+        //        conn.Open();
+        //        SqlCommand cmd = conn.CreateCommand();
+        //        cmd.CommandText = GetRequest();
+        //        SqlDataReader sqlreader = cmd.ExecuteReader();
+        //        if (sqlreader.Read()) 
+        //        { 
+        //            return true; 
+        //        }
+        //        return false;
+        //    }
+        //}
         public void GetUserById()
         {
         }

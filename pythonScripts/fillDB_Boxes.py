@@ -3,14 +3,14 @@ from string import ascii_uppercase, ascii_lowercase
 
 FILE_PATH = "D:\\Dev\\WIMB\\WhereIsMyBox\\pythonScripts\\script"
 
+FILE_MAIN = open(
+    f"{FILE_PATH}1. GeneratedData.sql", "w"
+)
 FILE_LOCATIONS = open(
-    f"{FILE_PATH}1. Locations.txt", "w"
+    f"{FILE_PATH}2. Locations.txt", "w"
 )
 FILE_PLACES = open(
-    f"{FILE_PATH}2. Places.txt", "w"
-)
-FILE_STATUSES = open(
-    f"{FILE_PATH}3. Statuses.txt", "w"
+    f"{FILE_PATH}3. Places.txt", "w"
 )
 FILE_TYPES = open(
     f"{FILE_PATH}4. Types.txt", "w"
@@ -21,16 +21,30 @@ FILE_BOXES = open(
 FILE_BATCHES = open(
     f"{FILE_PATH}6. Batches.txt", "w"
 )
-FILE_USERS = open(
-    f"{FILE_PATH}7. Users.txt", "w"
+FILE_UNITS = open(
+    f"{FILE_PATH}7. Units.txt", "w"
 )
+FILE_USERS = open(
+    f"{FILE_PATH}8. Users.txt", "w"
+)
+TABLES = [
+    "BoxesInUse",
+    "Users",
+    "Units",
 
+    "Boxes",
+    "Batches",
+
+    "Locations",
+    "Places",
+    "Types",
+]
 STATUS = [
     "Operator",
     "Moderator",
     "Admin"
 ]
-GROUP = [
+UNITS = [
     "Изъятие",
     "Архивариусы",
     "Контроль качества",
@@ -40,10 +54,9 @@ GROUP = [
 ]
 
 BOX_STATUSES = [
-    "Изъят",
-    "Доступен",
-    "Отправлен в архив",
-    "Не найден"
+    "Available",
+    "Seized",
+    "Undefined",
 ]
 
 TYPES = [
@@ -69,7 +82,7 @@ NOTES = [
     "Не забирать короб!",
     "Короб уехал нахуй",
     "Где блять этот короб ебучий?",
-    "Короб где-то у архивариуса но он в очередной раз забыл это отметить"
+    "Короб где-то у архивариуса"
 ]
 
 BOX_LOCATIONS = [
@@ -143,7 +156,8 @@ USERS_SURNAMES = [
     'larionov',
     'lavrentev',
     'lavrov',
-    'magon'
+    'magon',
+    'felix'
 ]
 
 
@@ -153,6 +167,10 @@ def random_status():
         return STATUS[0]
     else:
         return choice(STATUS)
+
+
+def random_unit():
+    return choice(UNITS)
 
 
 def random_box_status():
@@ -168,99 +186,109 @@ def random_note():
 
 
 def random_access():
-    return "Доступен" if randint(0, 1) == 1 else "Изъят"
+    return "Available" if randint(0, 1) == 1 else "Seized"
+
+
+def clearAllData():
+    string = ""
+    for tab in TABLES:
+        string += f"""DELETE FROM {tab}\n"""
+    string += "\n"
+    FILE_MAIN.write(string)
 
 
 def create_types(t):
-    FILE_TYPES.write(
-        "INSERT INTO Types" +
-        "(name) " +
-        f"VALUES('{t}')\n"
-    )
+    string = f"INSERT INTO Types (name) VALUES('{t}')\n"
+    FILE_MAIN.write(string)
+    FILE_TYPES.write(string)
 
 
 def create_box_statuses(n):
-    FILE_STATUSES.write(
-        "INSERT INTO Statuses" +
-        "(name) " +
-        f"VALUES('{n}')\n"
-    )
+    string = f"INSERT INTO Statuses (name) VALUES('{n}')\n"
+    FILE_MAIN.write(string)
+    # FILE_STATUSES.write(string)
 
 
-def create_box(number, boxloc, userloc):
-    FILE_BOXES.write(
-        "INSERT INTO Boxes" +
-        "(number, initialLocation, currentPlace, status, type, note) " +
-        f"VALUES('{number}', '{boxloc}', '{userloc}', " +
-        f"'{random_box_status()}', '{random_type()}', '{random_note()}')\n"
-    )
+def create_box(number, boxloc):
+    string = f"""INSERT INTO Boxes (number, location, status, type, note)
+        VALUES('{number}', '{boxloc}', '{random_box_status()}', '{random_type()}', '{random_note()}')\n"""
+    FILE_MAIN.write(string)
+    FILE_BOXES.write(string)
 
 
 def create_batch(number, box):
-    FILE_BATCHES.write(
-        "INSERT INTO Batches" +
-        "(number, box) " +
-        f"VALUES({number}, '{box}')\n"
-    )
+    string = f"""INSERT INTO Batches(number, box) VALUES({number}, '{box}')\n"""
+    FILE_MAIN.write(string)
+    FILE_BATCHES.write(string)
 
 
 def create_location(loc):
-    FILE_LOCATIONS.write(
-        "INSERT INTO Locations" +
-        "(name) " +
-        f"VALUES('{loc}')\n"
-    )
+    string = f"""INSERT INTO Locations (name) VALUES('{loc}')\n"""
+    FILE_MAIN.write(string)
+    FILE_LOCATIONS.write(string)
 
 
 def create_place(prefix, num):
-    FILE_PLACES.write(
-        "INSERT INTO Places" +
-        "(name) " +
-        f"VALUES('{prefix}{num}')\n"
-    )
+    string = f"""INSERT INTO Places (name) VALUES('{prefix}{num}')\n"""
+    FILE_MAIN.write(string)
+    FILE_PLACES.write(string)
+
+
+def create_unit(name):
+    print(f"{name}")
+    string = f"""INSERT INTO Units (name) VALUES('{name}')\n"""
+    FILE_MAIN.write(string)
+    FILE_UNITS.write(string)
 
 
 def create_user(name, surname):
     print(f"{name}.{surname}")
-    FILE_USERS.write(
-        "INSERT INTO Users" +
-        "(login, status, isOnline) " +
-        f"VALUES('{name}.{surname}', '{random_status()}', '0')\n"
-    )
-
-
-for surname in USERS_SURNAMES:
-    if surname != "magon":
-        create_user(choice(ascii_lowercase), surname)
+    if surname == "felix":
+        string = f"""INSERT INTO Users (login, status, unit, isOnline) VALUES('{surname}', '{random_status()}', '{random_unit()}', '0')\n"""
     else:
-        create_user("d", surname)
+        string = f"""INSERT INTO Users (login, status, unit, isOnline) VALUES('{name}.{surname}', '{random_status()}', '{random_unit()}', '0')\n"""
+    FILE_MAIN.write(string)
+    FILE_USERS.write(string)
 
 
-for type in TYPES:
-    create_types(type)
+clearAllData()
 
-for status in BOX_STATUSES:
-    create_box_statuses(status)
+# LOCATIONS
+for location in BOX_LOCATIONS:
+    create_location(location)
+    print(location)
 
+# PLACES
 for prefix in "ABCDEFJH":
     for num in range(1, 15):
         create_place(prefix, num)
         print(f"{prefix}{num}")
 
-for location in BOX_LOCATIONS:
-    create_location(location)
-    print(location)
+# TYPES
+for type in TYPES:
+    create_types(type)
 
-randing = [*range(17111, 17117), *range(17231, 17240), *range(17561, 17572)]
+# BOXES & BATCHES
+randing = [*range(17170, 17200), *range(17220, 17240)]
 batch_number = 111001
 for first in ascii_uppercase:
     for second in ascii_uppercase:
         for num in randing:
             loc = choice(BOX_LOCATIONS)
             box = f"{first}{second}{num}"
-            create_box(box, loc, "A1")
+            create_box(box, loc)
             print(f"\n\n{box} - {loc}")
-            for j in range(1, randint(3, 7)):
-                print(f"{box}: {batch_number}")
-                create_batch(batch_number, box)
-                batch_number += 1
+            # for j in range(1, 3):
+            #    print(f"{box}: {batch_number}")
+            #    create_batch(batch_number, box)
+            #    batch_number += 1
+
+# UNITS
+for unit in UNITS:
+    create_unit(unit)
+
+for surname in USERS_SURNAMES:
+    if surname != "felix":
+        create_user(choice(ascii_lowercase), surname)
+    else:
+        create_user("d", surname)
