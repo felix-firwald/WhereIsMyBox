@@ -36,25 +36,28 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
+            this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnCount = 7;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33362F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3336F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33278F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label4, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.label6, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label7, 5, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -97,7 +100,7 @@
             this.label3.ForeColor = System.Drawing.Color.DimGray;
             this.label3.Location = new System.Drawing.Point(173, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 34);
+            this.label3.Size = new System.Drawing.Size(115, 34);
             this.label3.TabIndex = 2;
             this.label3.Text = "Дата";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -108,9 +111,9 @@
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Segoe UI Light", 10F);
             this.label4.ForeColor = System.Drawing.Color.DimGray;
-            this.label4.Location = new System.Drawing.Point(320, 0);
+            this.label4.Location = new System.Drawing.Point(294, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(141, 34);
+            this.label4.Size = new System.Drawing.Size(115, 34);
             this.label4.TabIndex = 3;
             this.label4.Text = "Осталось";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -121,9 +124,9 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Segoe UI Light", 10F);
             this.label5.ForeColor = System.Drawing.Color.DimGray;
-            this.label5.Location = new System.Drawing.Point(613, 0);
+            this.label5.Location = new System.Drawing.Point(616, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 34);
+            this.label5.Size = new System.Drawing.Size(75, 34);
             this.label5.TabIndex = 4;
             this.label5.Text = "Удалить";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -134,9 +137,9 @@
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Font = new System.Drawing.Font("Segoe UI Light", 10F);
             this.label6.ForeColor = System.Drawing.Color.DimGray;
-            this.label6.Location = new System.Drawing.Point(467, 0);
+            this.label6.Location = new System.Drawing.Point(415, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(140, 34);
+            this.label6.Size = new System.Drawing.Size(115, 34);
             this.label6.TabIndex = 5;
             this.label6.Text = "Местоположение";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -156,6 +159,19 @@
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableMain.Size = new System.Drawing.Size(700, 320);
             this.tableMain.TabIndex = 1;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Light", 10F);
+            this.label7.ForeColor = System.Drawing.Color.DimGray;
+            this.label7.Location = new System.Drawing.Point(536, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(74, 34);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Фокус";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // UC_ListOfSeized
             // 
@@ -182,5 +198,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TableLayoutPanel tableMain;
+        private System.Windows.Forms.Label label7;
     }
 }

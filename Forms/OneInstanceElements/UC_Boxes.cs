@@ -27,7 +27,7 @@ namespace WhereIsMyBox.Forms
         #region Validate Input Functions
         private bool BoxNumberValidateFormat(string number)
         {
-            return Regex.IsMatch(number, @"^[a-zA-Z]\w*[1-9]$");
+            return Regex.IsMatch(number, @"^[a-zA-Z]\w*[0-9]$");
         }
         private bool BoxNumberValidateLength(string number)
         {

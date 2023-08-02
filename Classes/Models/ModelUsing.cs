@@ -47,5 +47,16 @@ namespace WhereIsMyBox.Classes.Models
                 Execute(DatabasePermissions.All);
             });
         }
+        public async void UpdateFocus()
+        {
+            await Task.Run(() =>
+            {
+
+                Update("inFocus", inFocus? "1":"0", false);
+                WhereEqual("box", box);
+                WhereEqual("timeStarted", timeStarted.ToString());
+                Execute(DatabasePermissions.All);
+            });
+        }
     }
 }

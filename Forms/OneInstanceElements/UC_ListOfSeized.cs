@@ -24,9 +24,24 @@ namespace WhereIsMyBox.Forms.OneInstanceElements
 
             DateTime started = DateTime.Now;
             //this.flowLayout.Controls.Add(new SeizedElement(num, box, started.ToString(), initialLocation, minutes));
-            Control newElement = new SeizedElement(lastNumber, box, started, initialLocation, minutes);
+            Control newElement = new SeizedElement(lastNumber, box, started, initialLocation, minutes, this);
             newElement.Dock = DockStyle.Fill;
             this.tableMain.Controls.Add(newElement);
+        }
+        public void UnfocusElementsExceptFor(SeizedElement element)
+        {
+            string typeName = element.GetType().Name;
+            foreach (Control control in this.tableMain.Controls)
+            {
+                if (control.GetType().Name == typeName)
+                {
+                    SeizedElement se = (SeizedElement)control;
+                    if (se.focused == true && se != element)
+                    {
+                        se.RemoveFromFocus();
+                    }
+                }
+            }
         }
     }
 }
