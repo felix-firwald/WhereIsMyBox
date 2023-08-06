@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.MainPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.icon = new FontAwesome.Sharp.IconPictureBox();
             this.label = new System.Windows.Forms.Label();
             this.bluePanel = new System.Windows.Forms.Panel();
+            this.icon = new FontAwesome.Sharp.IconPictureBox();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.SuspendLayout();
@@ -53,6 +53,38 @@
             this.MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.MainPanel.Size = new System.Drawing.Size(200, 50);
             this.MainPanel.TabIndex = 0;
+            this.MainPanel.Click += new System.EventHandler(this.MainPanel_Click);
+            this.MainPanel.MouseEnter += new System.EventHandler(this.MainPanel_MouseEnter);
+            this.MainPanel.MouseLeave += new System.EventHandler(this.MainPanel_MouseLeave);
+            // 
+            // label
+            // 
+            this.label.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label.AutoSize = true;
+            this.label.CausesValidation = false;
+            this.label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
+            this.label.Location = new System.Drawing.Point(13, 17);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(58, 15);
+            this.label.TabIndex = 1;
+            this.label.Text = "Главная";
+            this.label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label.Click += new System.EventHandler(this.label_Click);
+            this.label.MouseEnter += new System.EventHandler(this.label_MouseEnter);
+            this.label.MouseLeave += new System.EventHandler(this.label_MouseLeave);
+            // 
+            // bluePanel
+            // 
+            this.bluePanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.bluePanel.BackColor = System.Drawing.Color.Blue;
+            this.bluePanel.Location = new System.Drawing.Point(3, 0);
+            this.bluePanel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.bluePanel.Name = "bluePanel";
+            this.bluePanel.Size = new System.Drawing.Size(4, 50);
+            this.bluePanel.TabIndex = 2;
             // 
             // icon
             // 
@@ -71,32 +103,6 @@
             this.icon.TabIndex = 0;
             this.icon.TabStop = false;
             // 
-            // label
-            // 
-            this.label.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label.AutoSize = true;
-            this.label.CausesValidation = false;
-            this.label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
-            this.label.Location = new System.Drawing.Point(13, 17);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(58, 15);
-            this.label.TabIndex = 1;
-            this.label.Text = "Главная";
-            this.label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // bluePanel
-            // 
-            this.bluePanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.bluePanel.BackColor = System.Drawing.Color.Blue;
-            this.bluePanel.Location = new System.Drawing.Point(3, 0);
-            this.bluePanel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.bluePanel.Name = "bluePanel";
-            this.bluePanel.Size = new System.Drawing.Size(4, 50);
-            this.bluePanel.TabIndex = 2;
-            // 
             // Navbar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -106,9 +112,6 @@
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "Navbar";
             this.Size = new System.Drawing.Size(200, 50);
-            this.Click += new System.EventHandler(this.Navbar_Click);
-            this.MouseEnter += new System.EventHandler(this.Navbar_MouseEnter);
-            this.MouseLeave += new System.EventHandler(this.Navbar_MouseLeave);
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();

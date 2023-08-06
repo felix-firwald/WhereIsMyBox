@@ -30,13 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tableLayoutMain = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.tableLayoutLeft = new System.Windows.Forms.TableLayoutPanel();
             this.tableFindTop = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonFind = new FontAwesome.Sharp.IconButton();
             this.inputFind = new System.Windows.Forms.TextBox();
-            this.buttonCancelFind = new FontAwesome.Sharp.IconButton();
             this.HelpTextFind = new System.Windows.Forms.Label();
             this.tableMicroActions = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutSeizedBoxes = new System.Windows.Forms.TableLayoutPanel();
@@ -45,6 +42,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonFind = new FontAwesome.Sharp.IconButton();
+            this.buttonCancelFind = new FontAwesome.Sharp.IconButton();
             this.buttonAddBox = new WhereIsMyBox.Forms.Elements.GrayButton();
             this.buttonShowMap = new WhereIsMyBox.Forms.Elements.GrayButton();
             this.buttonShowQRCode = new WhereIsMyBox.Forms.Elements.GrayButton();
@@ -56,6 +55,7 @@
             this.buttonSettingsForSeize = new WhereIsMyBox.Forms.Elements.GrayButton();
             this.grayButton1 = new WhereIsMyBox.Forms.Elements.GrayButton();
             this.ListOfSeized = new WhereIsMyBox.Forms.OneInstanceElements.UC_ListOfSeized();
+            this.pageTitle1 = new WhereIsMyBox.Forms.ReusableElements.PageTitle();
             this.tableLayoutMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -73,37 +73,24 @@
             // 
             this.tableLayoutMain.ColumnCount = 1;
             this.tableLayoutMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutMain.Controls.Add(this.label1, 0, 0);
             this.tableLayoutMain.Controls.Add(this.splitContainerMain, 0, 2);
+            this.tableLayoutMain.Controls.Add(this.pageTitle1, 0, 0);
             this.tableLayoutMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutMain.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutMain.Name = "tableLayoutMain";
             this.tableLayoutMain.RowCount = 3;
-            this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
-            this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84F));
+            this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutMain.Size = new System.Drawing.Size(1000, 600);
             this.tableLayoutMain.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(215)))), ((int)(((byte)(235)))));
-            this.label1.Location = new System.Drawing.Point(3, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(994, 32);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ДВИЖЕНИЕ КОРОБОВ";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // splitContainerMain
             // 
             this.splitContainerMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableLayoutMain.SetColumnSpan(this.splitContainerMain, 2);
             this.splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerMain.Location = new System.Drawing.Point(3, 99);
+            this.splitContainerMain.Location = new System.Drawing.Point(3, 93);
             this.splitContainerMain.Name = "splitContainerMain";
             // 
             // splitContainerMain.Panel1
@@ -118,7 +105,7 @@
             this.splitContainerMain.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(57)))), ((int)(((byte)(61)))));
             this.splitContainerMain.Panel2.Controls.Add(this.tableLayoutSeizedBoxes);
             this.splitContainerMain.Panel2MinSize = 300;
-            this.splitContainerMain.Size = new System.Drawing.Size(994, 498);
+            this.splitContainerMain.Size = new System.Drawing.Size(994, 504);
             this.splitContainerMain.SplitterDistance = 332;
             this.splitContainerMain.TabIndex = 2;
             // 
@@ -138,7 +125,7 @@
             this.tableLayoutLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutLeft.Size = new System.Drawing.Size(330, 496);
+            this.tableLayoutLeft.Size = new System.Drawing.Size(330, 502);
             this.tableLayoutLeft.TabIndex = 0;
             // 
             // tableFindTop
@@ -158,29 +145,6 @@
             this.tableFindTop.Size = new System.Drawing.Size(324, 34);
             this.tableFindTop.TabIndex = 0;
             // 
-            // buttonFind
-            // 
-            this.buttonFind.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonFind.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonFind.Enabled = false;
-            this.buttonFind.FlatAppearance.BorderSize = 0;
-            this.buttonFind.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(57)))), ((int)(((byte)(61)))));
-            this.buttonFind.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(57)))), ((int)(((byte)(61)))));
-            this.buttonFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFind.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.buttonFind.IconColor = System.Drawing.Color.DimGray;
-            this.buttonFind.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.buttonFind.IconSize = 20;
-            this.buttonFind.Location = new System.Drawing.Point(3, 3);
-            this.buttonFind.Margin = new System.Windows.Forms.Padding(3, 3, 3, 8);
-            this.buttonFind.Name = "buttonFind";
-            this.buttonFind.Size = new System.Drawing.Size(44, 23);
-            this.buttonFind.TabIndex = 0;
-            this.buttonFind.UseVisualStyleBackColor = true;
-            this.buttonFind.Click += new System.EventHandler(this.buttonFind_Click);
-            this.buttonFind.MouseEnter += new System.EventHandler(this.buttonFind_MouseEnter);
-            this.buttonFind.MouseLeave += new System.EventHandler(this.buttonFind_MouseLeave);
-            // 
             // inputFind
             // 
             this.inputFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(65)))));
@@ -198,33 +162,13 @@
             this.inputFind.MouseClick += new System.Windows.Forms.MouseEventHandler(this.inputFind_MouseClick);
             this.inputFind.TextChanged += new System.EventHandler(this.inputFind_TextChanged);
             // 
-            // buttonCancelFind
-            // 
-            this.buttonCancelFind.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonCancelFind.FlatAppearance.BorderSize = 0;
-            this.buttonCancelFind.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(57)))), ((int)(((byte)(61)))));
-            this.buttonCancelFind.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(57)))), ((int)(((byte)(61)))));
-            this.buttonCancelFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCancelFind.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.buttonCancelFind.IconColor = System.Drawing.Color.DimGray;
-            this.buttonCancelFind.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.buttonCancelFind.IconSize = 20;
-            this.buttonCancelFind.Location = new System.Drawing.Point(277, 3);
-            this.buttonCancelFind.Name = "buttonCancelFind";
-            this.buttonCancelFind.Size = new System.Drawing.Size(44, 23);
-            this.buttonCancelFind.TabIndex = 2;
-            this.buttonCancelFind.UseVisualStyleBackColor = true;
-            this.buttonCancelFind.Click += new System.EventHandler(this.buttonCancelFind_Click);
-            this.buttonCancelFind.MouseEnter += new System.EventHandler(this.buttonCancelFind_MouseEnter);
-            this.buttonCancelFind.MouseLeave += new System.EventHandler(this.buttonCancelFind_MouseLeave);
-            // 
             // HelpTextFind
             // 
             this.HelpTextFind.AutoSize = true;
             this.HelpTextFind.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HelpTextFind.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.HelpTextFind.ForeColor = System.Drawing.Color.DimGray;
-            this.HelpTextFind.Location = new System.Drawing.Point(5, 426);
+            this.HelpTextFind.Location = new System.Drawing.Point(5, 432);
             this.HelpTextFind.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
             this.HelpTextFind.Name = "HelpTextFind";
             this.HelpTextFind.Size = new System.Drawing.Size(320, 20);
@@ -248,7 +192,7 @@
             this.tableMicroActions.Controls.Add(this.buttonComment, 2, 0);
             this.tableMicroActions.Controls.Add(this.buttonMarkAsNotFound, 1, 0);
             this.tableMicroActions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableMicroActions.Location = new System.Drawing.Point(3, 459);
+            this.tableMicroActions.Location = new System.Drawing.Point(3, 465);
             this.tableMicroActions.Name = "tableMicroActions";
             this.tableMicroActions.RowCount = 1;
             this.tableMicroActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -272,7 +216,7 @@
             this.tableLayoutSeizedBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutSeizedBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutSeizedBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutSeizedBoxes.Size = new System.Drawing.Size(656, 496);
+            this.tableLayoutSeizedBoxes.Size = new System.Drawing.Size(656, 502);
             this.tableLayoutSeizedBoxes.TabIndex = 0;
             // 
             // tableAddToSeizedBoxes
@@ -317,7 +261,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.grayButton1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 459);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 465);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -330,12 +274,55 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(3, 416);
+            this.label2.Location = new System.Drawing.Point(3, 422);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(650, 40);
             this.label2.TabIndex = 2;
             this.label2.Text = "Вы все? Не забудьте нажать на галочку ниже для сохранения данных!";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // buttonFind
+            // 
+            this.buttonFind.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonFind.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonFind.Enabled = false;
+            this.buttonFind.FlatAppearance.BorderSize = 0;
+            this.buttonFind.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(57)))), ((int)(((byte)(61)))));
+            this.buttonFind.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(57)))), ((int)(((byte)(61)))));
+            this.buttonFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFind.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.buttonFind.IconColor = System.Drawing.Color.DimGray;
+            this.buttonFind.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.buttonFind.IconSize = 20;
+            this.buttonFind.Location = new System.Drawing.Point(3, 3);
+            this.buttonFind.Margin = new System.Windows.Forms.Padding(3, 3, 3, 8);
+            this.buttonFind.Name = "buttonFind";
+            this.buttonFind.Size = new System.Drawing.Size(44, 23);
+            this.buttonFind.TabIndex = 0;
+            this.buttonFind.UseVisualStyleBackColor = true;
+            this.buttonFind.Click += new System.EventHandler(this.buttonFind_Click);
+            this.buttonFind.MouseEnter += new System.EventHandler(this.buttonFind_MouseEnter);
+            this.buttonFind.MouseLeave += new System.EventHandler(this.buttonFind_MouseLeave);
+            // 
+            // buttonCancelFind
+            // 
+            this.buttonCancelFind.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonCancelFind.FlatAppearance.BorderSize = 0;
+            this.buttonCancelFind.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(57)))), ((int)(((byte)(61)))));
+            this.buttonCancelFind.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(57)))), ((int)(((byte)(61)))));
+            this.buttonCancelFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCancelFind.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            this.buttonCancelFind.IconColor = System.Drawing.Color.DimGray;
+            this.buttonCancelFind.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.buttonCancelFind.IconSize = 20;
+            this.buttonCancelFind.Location = new System.Drawing.Point(277, 3);
+            this.buttonCancelFind.Name = "buttonCancelFind";
+            this.buttonCancelFind.Size = new System.Drawing.Size(44, 23);
+            this.buttonCancelFind.TabIndex = 2;
+            this.buttonCancelFind.UseVisualStyleBackColor = true;
+            this.buttonCancelFind.Click += new System.EventHandler(this.buttonCancelFind_Click);
+            this.buttonCancelFind.MouseEnter += new System.EventHandler(this.buttonCancelFind_MouseEnter);
+            this.buttonCancelFind.MouseLeave += new System.EventHandler(this.buttonCancelFind_MouseLeave);
             // 
             // buttonAddBox
             // 
@@ -463,7 +450,7 @@
             this.BoxInfoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BoxInfoPanel.Location = new System.Drawing.Point(3, 43);
             this.BoxInfoPanel.Name = "BoxInfoPanel";
-            this.BoxInfoPanel.Size = new System.Drawing.Size(324, 370);
+            this.BoxInfoPanel.Size = new System.Drawing.Size(324, 376);
             this.BoxInfoPanel.TabIndex = 3;
             this.BoxInfoPanel.Visible = false;
             // 
@@ -565,8 +552,19 @@
             this.ListOfSeized.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListOfSeized.Location = new System.Drawing.Point(3, 43);
             this.ListOfSeized.Name = "ListOfSeized";
-            this.ListOfSeized.Size = new System.Drawing.Size(650, 370);
+            this.ListOfSeized.Size = new System.Drawing.Size(650, 376);
             this.ListOfSeized.TabIndex = 3;
+            // 
+            // pageTitle1
+            // 
+            this.pageTitle1.Description = "Используйте этот раздел для того, чтобы найти или добавить к своему изъятию нужны" +
+    "й вам короб.";
+            this.pageTitle1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pageTitle1.Location = new System.Drawing.Point(3, 3);
+            this.pageTitle1.Name = "pageTitle1";
+            this.pageTitle1.Size = new System.Drawing.Size(994, 74);
+            this.pageTitle1.TabIndex = 3;
+            this.pageTitle1.Title = "Движение коробов";
             // 
             // UC_Boxes
             // 
@@ -575,11 +573,9 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(81)))), ((int)(((byte)(87)))));
             this.Controls.Add(this.tableLayoutMain);
-            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "UC_Boxes";
             this.Size = new System.Drawing.Size(1000, 600);
             this.tableLayoutMain.ResumeLayout(false);
-            this.tableLayoutMain.PerformLayout();
             this.splitContainerMain.Panel1.ResumeLayout(false);
             this.splitContainerMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
@@ -601,7 +597,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutMain;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.SplitContainer splitContainerMain;
         private System.Windows.Forms.TableLayoutPanel tableLayoutLeft;
         private System.Windows.Forms.TableLayoutPanel tableFindTop;
@@ -629,5 +624,6 @@
         private Elements.GrayButton grayButton1;
         private System.Windows.Forms.Label label2;
         private OneInstanceElements.UC_ListOfSeized ListOfSeized;
+        private ReusableElements.PageTitle pageTitle1;
     }
 }

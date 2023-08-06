@@ -116,5 +116,10 @@ namespace WhereIsMyBox
                 }
             }
         }
+
+        private void navbarBoxManager_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Вы нажали, да-да!");
+        }
     }
 }

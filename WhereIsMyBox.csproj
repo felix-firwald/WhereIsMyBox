@@ -145,6 +145,12 @@
     <Compile Include="Forms\OneInstanceElements\UC_ListOfSeized.Designer.cs">
       <DependentUpon>UC_ListOfSeized.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\OneInstanceElements\UC_Managment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\OneInstanceElements\UC_Managment.Designer.cs">
+      <DependentUpon>UC_Managment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ReusableElements\EmptyContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -187,6 +193,12 @@
     <Compile Include="Forms\ReusableElements\Navbar.Designer.cs">
       <DependentUpon>Navbar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ReusableElements\PageTitle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\ReusableElements\PageTitle.Designer.cs">
+      <DependentUpon>PageTitle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ReusableElements\SeizedElement.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -228,6 +240,9 @@
     <EmbeddedResource Include="Forms\OneInstanceElements\UC_ListOfSeized.resx">
       <DependentUpon>UC_ListOfSeized.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OneInstanceElements\UC_Managment.resx">
+      <DependentUpon>UC_Managment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReusableElements\EmptyContainer.resx">
       <DependentUpon>EmptyContainer.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReusableElements\Navbar.resx">
       <DependentUpon>Navbar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReusableElements\PageTitle.resx">
+      <DependentUpon>PageTitle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReusableElements\SeizedElement.resx">
       <DependentUpon>SeizedElement.cs</DependentUpon>

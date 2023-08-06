@@ -34,28 +34,51 @@ namespace WhereIsMyBox.Forms.ReusableElements
         }
         public void SelectItem()
         {
-            this.bluePanel.Visible = true;
-            this.label.ForeColor = Color.FromArgb(211, 215, 235);
-            this.icon.ForeColor = Color.DimGray;
+            this.isChecked = !this.isChecked;
+            if (!this.isChecked)
+            {
+                this.bluePanel.Visible = true;
+                this.label.ForeColor = Color.FromArgb(211, 215, 235);
+                this.icon.ForeColor = Color.DimGray;
+            }
         }
-
-        private void Navbar_MouseEnter(object sender, EventArgs e)
+        private void SetInMouseFocuse()
         {
             this.BackColor = Color.FromArgb(55, 55, 55);
         }
-
-        private void Navbar_MouseLeave(object sender, EventArgs e)
+        private void RemoveFromMouseFocuse()
         {
             this.BackColor = Color.FromArgb(35, 35, 35);
         }
 
-        private void Navbar_Click(object sender, EventArgs e)
+        private void MainPanel_MouseEnter(object sender, EventArgs e)
         {
-            this.isChecked = !this.isChecked;
-            if (!this.isChecked)
-            {
-                SelectItem();
-            }
+            SetInMouseFocuse();
+        }
+
+        private void MainPanel_MouseLeave(object sender, EventArgs e)
+        {
+            RemoveFromMouseFocuse();
+        }
+
+        private void MainPanel_Click(object sender, EventArgs e)
+        {
+            SelectItem();
+        }
+
+        private void label_MouseEnter(object sender, EventArgs e)
+        {
+            SetInMouseFocuse();
+        }
+
+        private void label_MouseLeave(object sender, EventArgs e)
+        {
+            RemoveFromMouseFocuse();
+        }
+
+        private void label_Click(object sender, EventArgs e)
+        {
+            SelectItem();
         }
     }
 }
