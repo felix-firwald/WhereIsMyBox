@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.tableLayoutMain = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutFunc = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.tableLayoutLeft = new System.Windows.Forms.TableLayoutPanel();
             this.tableFindTop = new System.Windows.Forms.TableLayoutPanel();
@@ -75,15 +74,14 @@
             this.tableLayoutMain.ColumnCount = 1;
             this.tableLayoutMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutMain.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutMain.Controls.Add(this.tableLayoutFunc, 0, 1);
             this.tableLayoutMain.Controls.Add(this.splitContainerMain, 0, 2);
             this.tableLayoutMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutMain.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutMain.Name = "tableLayoutMain";
             this.tableLayoutMain.RowCount = 3;
             this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84F));
             this.tableLayoutMain.Size = new System.Drawing.Size(1000, 600);
             this.tableLayoutMain.TabIndex = 0;
             // 
@@ -100,26 +98,12 @@
             this.label1.Text = "ДВИЖЕНИЕ КОРОБОВ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tableLayoutFunc
-            // 
-            this.tableLayoutFunc.ColumnCount = 2;
-            this.tableLayoutFunc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.44519F));
-            this.tableLayoutFunc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.55481F));
-            this.tableLayoutFunc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutFunc.Location = new System.Drawing.Point(3, 63);
-            this.tableLayoutFunc.Name = "tableLayoutFunc";
-            this.tableLayoutFunc.RowCount = 1;
-            this.tableLayoutFunc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutFunc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 84F));
-            this.tableLayoutFunc.Size = new System.Drawing.Size(994, 84);
-            this.tableLayoutFunc.TabIndex = 1;
-            // 
             // splitContainerMain
             // 
             this.splitContainerMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableLayoutMain.SetColumnSpan(this.splitContainerMain, 2);
             this.splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerMain.Location = new System.Drawing.Point(3, 153);
+            this.splitContainerMain.Location = new System.Drawing.Point(3, 99);
             this.splitContainerMain.Name = "splitContainerMain";
             // 
             // splitContainerMain.Panel1
@@ -134,7 +118,7 @@
             this.splitContainerMain.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(57)))), ((int)(((byte)(61)))));
             this.splitContainerMain.Panel2.Controls.Add(this.tableLayoutSeizedBoxes);
             this.splitContainerMain.Panel2MinSize = 300;
-            this.splitContainerMain.Size = new System.Drawing.Size(994, 444);
+            this.splitContainerMain.Size = new System.Drawing.Size(994, 498);
             this.splitContainerMain.SplitterDistance = 332;
             this.splitContainerMain.TabIndex = 2;
             // 
@@ -154,7 +138,7 @@
             this.tableLayoutLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutLeft.Size = new System.Drawing.Size(330, 442);
+            this.tableLayoutLeft.Size = new System.Drawing.Size(330, 496);
             this.tableLayoutLeft.TabIndex = 0;
             // 
             // tableFindTop
@@ -240,7 +224,7 @@
             this.HelpTextFind.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HelpTextFind.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.HelpTextFind.ForeColor = System.Drawing.Color.DimGray;
-            this.HelpTextFind.Location = new System.Drawing.Point(5, 372);
+            this.HelpTextFind.Location = new System.Drawing.Point(5, 426);
             this.HelpTextFind.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
             this.HelpTextFind.Name = "HelpTextFind";
             this.HelpTextFind.Size = new System.Drawing.Size(320, 20);
@@ -264,7 +248,7 @@
             this.tableMicroActions.Controls.Add(this.buttonComment, 2, 0);
             this.tableMicroActions.Controls.Add(this.buttonMarkAsNotFound, 1, 0);
             this.tableMicroActions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableMicroActions.Location = new System.Drawing.Point(3, 405);
+            this.tableMicroActions.Location = new System.Drawing.Point(3, 459);
             this.tableMicroActions.Name = "tableMicroActions";
             this.tableMicroActions.RowCount = 1;
             this.tableMicroActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -288,7 +272,7 @@
             this.tableLayoutSeizedBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutSeizedBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutSeizedBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutSeizedBoxes.Size = new System.Drawing.Size(656, 442);
+            this.tableLayoutSeizedBoxes.Size = new System.Drawing.Size(656, 496);
             this.tableLayoutSeizedBoxes.TabIndex = 0;
             // 
             // tableAddToSeizedBoxes
@@ -333,7 +317,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.grayButton1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 405);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 459);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -346,7 +330,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(3, 362);
+            this.label2.Location = new System.Drawing.Point(3, 416);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(650, 40);
             this.label2.TabIndex = 2;
@@ -479,7 +463,7 @@
             this.BoxInfoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BoxInfoPanel.Location = new System.Drawing.Point(3, 43);
             this.BoxInfoPanel.Name = "BoxInfoPanel";
-            this.BoxInfoPanel.Size = new System.Drawing.Size(324, 316);
+            this.BoxInfoPanel.Size = new System.Drawing.Size(324, 370);
             this.BoxInfoPanel.TabIndex = 3;
             this.BoxInfoPanel.Visible = false;
             // 
@@ -581,7 +565,7 @@
             this.ListOfSeized.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListOfSeized.Location = new System.Drawing.Point(3, 43);
             this.ListOfSeized.Name = "ListOfSeized";
-            this.ListOfSeized.Size = new System.Drawing.Size(650, 316);
+            this.ListOfSeized.Size = new System.Drawing.Size(650, 370);
             this.ListOfSeized.TabIndex = 3;
             // 
             // UC_Boxes
@@ -618,7 +602,6 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutMain;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutFunc;
         private System.Windows.Forms.SplitContainer splitContainerMain;
         private System.Windows.Forms.TableLayoutPanel tableLayoutLeft;
         private System.Windows.Forms.TableLayoutPanel tableFindTop;
