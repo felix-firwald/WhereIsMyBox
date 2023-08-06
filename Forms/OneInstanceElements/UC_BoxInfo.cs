@@ -14,7 +14,7 @@ namespace WhereIsMyBox.Forms.Elements
 {
     public partial class UC_BoxInfo : UserControl
     {
-        private string number;
+        private ModelBoxes instance;
         public UC_BoxInfo()
         {
             InitializeComponent();
@@ -23,12 +23,12 @@ namespace WhereIsMyBox.Forms.Elements
         public void ChangeData(ModelBoxes box)
         {
             string[] result = box.GetSplitedNumber();
-            this.number = box.number;
             this.labelPrefix.Text = result[0];
             this.labelPostfix.Text = result[1];
             this.type.Text = box.type;
             this.status.Text = box.GetStringNameOfStatus();
             this.note.Text = box.note;
+            this.instance = box;
 
             if (box.status == BoxStatus.Seized || box.status == BoxStatus.Focused)
             {
@@ -64,9 +64,20 @@ namespace WhereIsMyBox.Forms.Elements
                 this.willFree.Text = "∞";
             }
         }
-        public string GetNumber()
+        public void UpdateData()
         {
-            return this.number;
+            using (ModelBoxes mb = new ModelBoxes())
+            {
+                if (mb.GetBoxByNumber(this.instance.number))
+                {
+                    ChangeData(mb);
+                }
+            }
+        }
+
+        public ModelBoxes GetData()
+        {
+            return this.instance;
         }
     }
 }

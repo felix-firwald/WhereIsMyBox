@@ -210,16 +210,13 @@ namespace WhereIsMyBox.Forms
 
         }
 
-        private async void buttonMarkAsNotFound_Click(object sender, EventArgs e)
+        private void buttonMarkAsNotFound_Click(object sender, EventArgs e)
         {
-            await Task.Run(() =>
+            using (ModelBoxes mb = this.BoxInfoPanel.GetData())
             {
-                using (ModelBoxes mb = new ModelBoxes())
-                {
-                    mb.number = this.BoxInfoPanel.GetNumber();
-                    mb.UpdateStatus(BoxStatus.Lost);
-                }
-            });
+                mb.UpdateStatus(BoxStatus.Lost);
+                this.BoxInfoPanel.UpdateData();
+            }
         }
 
         #endregion
