@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.mainTable = new System.Windows.Forms.TableLayoutPanel();
-            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            this.iconPicture = new FontAwesome.Sharp.IconPictureBox();
             this.mainLabel = new System.Windows.Forms.Label();
             this.textTable = new System.Windows.Forms.TableLayoutPanel();
             this.divider = new System.Windows.Forms.Panel();
             this.descriptionLabel = new System.Windows.Forms.Label();
             this.mainTable.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPicture)).BeginInit();
             this.textTable.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +45,7 @@
             this.mainTable.ColumnCount = 2;
             this.mainTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.mainTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainTable.Controls.Add(this.iconPictureBox1, 0, 0);
+            this.mainTable.Controls.Add(this.iconPicture, 0, 0);
             this.mainTable.Controls.Add(this.textTable, 1, 0);
             this.mainTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTable.Location = new System.Drawing.Point(0, 0);
@@ -56,21 +56,21 @@
             this.mainTable.Size = new System.Drawing.Size(800, 80);
             this.mainTable.TabIndex = 0;
             // 
-            // iconPictureBox1
+            // iconPicture
             // 
-            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(81)))), ((int)(((byte)(87)))));
-            this.iconPictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iconPictureBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.BoxesPacking;
-            this.iconPictureBox1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
-            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 74;
-            this.iconPictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(74, 74);
-            this.iconPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.iconPictureBox1.TabIndex = 0;
-            this.iconPictureBox1.TabStop = false;
+            this.iconPicture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(81)))), ((int)(((byte)(87)))));
+            this.iconPicture.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iconPicture.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
+            this.iconPicture.IconChar = FontAwesome.Sharp.IconChar.BoxesPacking;
+            this.iconPicture.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(163)))), ((int)(((byte)(17)))));
+            this.iconPicture.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPicture.IconSize = 74;
+            this.iconPicture.Location = new System.Drawing.Point(3, 3);
+            this.iconPicture.Name = "iconPicture";
+            this.iconPicture.Size = new System.Drawing.Size(74, 74);
+            this.iconPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.iconPicture.TabIndex = 0;
+            this.iconPicture.TabStop = false;
             // 
             // mainLabel
             // 
@@ -97,7 +97,7 @@
             this.textTable.Name = "textTable";
             this.textTable.RowCount = 3;
             this.textTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.textTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.textTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 7F));
             this.textTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.textTable.Size = new System.Drawing.Size(714, 74);
             this.textTable.TabIndex = 2;
@@ -108,17 +108,17 @@
             this.divider.Dock = System.Windows.Forms.DockStyle.Fill;
             this.divider.Location = new System.Drawing.Point(3, 36);
             this.divider.Name = "divider";
-            this.divider.Size = new System.Drawing.Size(708, 2);
+            this.divider.Size = new System.Drawing.Size(708, 1);
             this.divider.TabIndex = 2;
             // 
             // descriptionLabel
             // 
             this.descriptionLabel.AutoSize = true;
-            this.descriptionLabel.Font = new System.Drawing.Font("SF UI Text", 10F, System.Drawing.FontStyle.Bold);
+            this.descriptionLabel.Font = new System.Drawing.Font("SF UI Text", 9F, System.Drawing.FontStyle.Bold);
             this.descriptionLabel.ForeColor = System.Drawing.Color.DarkGray;
-            this.descriptionLabel.Location = new System.Drawing.Point(3, 41);
+            this.descriptionLabel.Location = new System.Drawing.Point(3, 40);
             this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(153, 16);
+            this.descriptionLabel.Size = new System.Drawing.Size(135, 14);
             this.descriptionLabel.TabIndex = 3;
             this.descriptionLabel.Text = "Описание страницы";
             // 
@@ -130,7 +130,7 @@
             this.Name = "PageTitle";
             this.Size = new System.Drawing.Size(800, 80);
             this.mainTable.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPicture)).EndInit();
             this.textTable.ResumeLayout(false);
             this.textTable.PerformLayout();
             this.ResumeLayout(false);
@@ -140,7 +140,7 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel mainTable;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private FontAwesome.Sharp.IconPictureBox iconPicture;
         private System.Windows.Forms.TableLayoutPanel textTable;
         private System.Windows.Forms.Label mainLabel;
         private System.Windows.Forms.Panel divider;

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using FontAwesome.Sharp;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace WhereIsMyBox.Forms.ReusableElements
@@ -14,5 +16,8 @@ namespace WhereIsMyBox.Forms.ReusableElements
 
         [Description("Описание"), Category("Главное")]
         public string Description { get => descriptionLabel.Text; set => descriptionLabel.Text = value; }
+
+        [Description("Иконка"), Category("Главное")]
+        public IconChar Icon { get => iconPicture.IconChar; set => iconPicture.IconChar = value; }
     }
 }
