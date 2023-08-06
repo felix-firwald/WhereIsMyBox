@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
+using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -309,6 +310,17 @@ namespace DatabaseRequests
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
                 return new DataTable();
+            }
+        }
+
+        protected void Validate(DataRow dr)
+        {
+            foreach (var prop in this.GetType().GetProperties())
+            {
+                Type t = prop.DeclaringType;
+                
+                prop.SetValue(this, Convert.ChangeType(dr[prop.Name], prop.DeclaringType)); // берет из datarow по названию переменной столбец и устанавливает значение к свойству
+                Console.WriteLine(prop.Name, prop.DeclaringType);
             }
         }
         #endregion

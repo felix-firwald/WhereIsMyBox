@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework.Drawing.Html;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WhereIsMyBox.Classes.Models;
 using WhereIsMyBox.Forms.ReusableElements;
 
 namespace WhereIsMyBox.Forms.OneInstanceElements
@@ -18,13 +20,12 @@ namespace WhereIsMyBox.Forms.OneInstanceElements
         {
             InitializeComponent();
         }
-        public void AddItemToList(string box, string initialLocation, int minutes)
+        public void AddItemToList(ModelUsing use, string location, int minutes)
         {
             lastNumber++;
 
             DateTime started = DateTime.Now;
-            //this.flowLayout.Controls.Add(new SeizedElement(num, box, started.ToString(), initialLocation, minutes));
-            Control newElement = new SeizedElement(lastNumber, box, started, initialLocation, minutes, this);
+            Control newElement = new SeizedElement(lastNumber, use.box, started, location, minutes, this);
             newElement.Dock = DockStyle.Fill;
             this.tableMain.Controls.Add(newElement);
         }

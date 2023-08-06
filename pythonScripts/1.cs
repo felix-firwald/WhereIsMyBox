@@ -1,4 +1,4 @@
-﻿namespace WhereIsMyBox.Forms
+namespace WhereIsMyBox.Forms
 {
     partial class UC_Boxes
     {
@@ -40,23 +40,23 @@
             this.buttonCancelFind = new FontAwesome.Sharp.IconButton();
             this.HelpTextFind = new System.Windows.Forms.Label();
             this.tableMicroActions = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutSeizedBoxes = new System.Windows.Forms.TableLayoutPanel();
-            this.tableAddToSeizedBoxes = new System.Windows.Forms.TableLayoutPanel();
-            this.inputSeize = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.buttonAddBox = new WhereIsMyBox.Forms.Elements.GrayButton();
             this.buttonShowMap = new WhereIsMyBox.Forms.Elements.GrayButton();
             this.buttonShowQRCode = new WhereIsMyBox.Forms.Elements.GrayButton();
             this.buttonComment = new WhereIsMyBox.Forms.Elements.GrayButton();
             this.buttonMarkAsNotFound = new WhereIsMyBox.Forms.Elements.GrayButton();
             this.BoxInfoPanel = new WhereIsMyBox.Forms.Elements.UC_BoxInfo();
+            this.tableLayoutSeizedBoxes = new System.Windows.Forms.TableLayoutPanel();
+            this.tableAddToSeizedBoxes = new System.Windows.Forms.TableLayoutPanel();
             this.buttonAddToSeized = new WhereIsMyBox.Forms.Elements.GrayButton();
+            this.inputSeize = new System.Windows.Forms.TextBox();
             this.buttonClearSeizingBox = new WhereIsMyBox.Forms.Elements.GrayButton();
             this.buttonSettingsForSeize = new WhereIsMyBox.Forms.Elements.GrayButton();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.grayButton1 = new WhereIsMyBox.Forms.Elements.GrayButton();
+            this.label2 = new System.Windows.Forms.Label();
             this.ListOfSeized = new WhereIsMyBox.Forms.OneInstanceElements.UC_ListOfSeized();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -272,87 +272,6 @@
             this.tableMicroActions.TabIndex = 2;
             this.tableMicroActions.Visible = false;
             // 
-            // tableLayoutSeizedBoxes
-            // 
-            this.tableLayoutSeizedBoxes.ColumnCount = 1;
-            this.tableLayoutSeizedBoxes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutSeizedBoxes.Controls.Add(this.tableAddToSeizedBoxes, 0, 0);
-            this.tableLayoutSeizedBoxes.Controls.Add(this.tableLayoutPanel1, 0, 3);
-            this.tableLayoutSeizedBoxes.Controls.Add(this.label2, 0, 2);
-            this.tableLayoutSeizedBoxes.Controls.Add(this.ListOfSeized, 0, 1);
-            this.tableLayoutSeizedBoxes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutSeizedBoxes.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutSeizedBoxes.Name = "tableLayoutSeizedBoxes";
-            this.tableLayoutSeizedBoxes.RowCount = 4;
-            this.tableLayoutSeizedBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutSeizedBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutSeizedBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutSeizedBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutSeizedBoxes.Size = new System.Drawing.Size(656, 442);
-            this.tableLayoutSeizedBoxes.TabIndex = 0;
-            // 
-            // tableAddToSeizedBoxes
-            // 
-            this.tableAddToSeizedBoxes.ColumnCount = 4;
-            this.tableAddToSeizedBoxes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableAddToSeizedBoxes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableAddToSeizedBoxes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableAddToSeizedBoxes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableAddToSeizedBoxes.Controls.Add(this.buttonAddToSeized, 0, 0);
-            this.tableAddToSeizedBoxes.Controls.Add(this.inputSeize, 1, 0);
-            this.tableAddToSeizedBoxes.Controls.Add(this.buttonClearSeizingBox, 2, 0);
-            this.tableAddToSeizedBoxes.Controls.Add(this.buttonSettingsForSeize, 3, 0);
-            this.tableAddToSeizedBoxes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableAddToSeizedBoxes.Location = new System.Drawing.Point(3, 3);
-            this.tableAddToSeizedBoxes.Name = "tableAddToSeizedBoxes";
-            this.tableAddToSeizedBoxes.RowCount = 1;
-            this.tableAddToSeizedBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableAddToSeizedBoxes.Size = new System.Drawing.Size(650, 34);
-            this.tableAddToSeizedBoxes.TabIndex = 0;
-            // 
-            // inputSeize
-            // 
-            this.inputSeize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(65)))));
-            this.inputSeize.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.inputSeize.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inputSeize.Font = new System.Drawing.Font("Segoe UI Symbol", 12F);
-            this.inputSeize.ForeColor = System.Drawing.Color.Chartreuse;
-            this.inputSeize.Location = new System.Drawing.Point(53, 3);
-            this.inputSeize.Name = "inputSeize";
-            this.inputSeize.Size = new System.Drawing.Size(494, 22);
-            this.inputSeize.TabIndex = 1;
-            this.inputSeize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.inputSeize.TextChanged += new System.EventHandler(this.inputSeize_TextChanged);
-            this.inputSeize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.inputSeize_KeyDown);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.grayButton1, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 405);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(650, 34);
-            this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(3, 362);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(650, 40);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Вы все? Не забудьте нажать на галочку ниже для сохранения данных!";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // buttonAddBox
             // 
             this.buttonAddBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -483,6 +402,44 @@
             this.BoxInfoPanel.TabIndex = 3;
             this.BoxInfoPanel.Visible = false;
             // 
+            // tableLayoutSeizedBoxes
+            // 
+            this.tableLayoutSeizedBoxes.ColumnCount = 1;
+            this.tableLayoutSeizedBoxes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutSeizedBoxes.Controls.Add(this.tableAddToSeizedBoxes, 0, 0);
+            this.tableLayoutSeizedBoxes.Controls.Add(this.tableLayoutPanel1, 0, 3);
+            this.tableLayoutSeizedBoxes.Controls.Add(this.label2, 0, 2);
+            this.tableLayoutSeizedBoxes.Controls.Add(this.ListOfSeized, 0, 1);
+            this.tableLayoutSeizedBoxes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutSeizedBoxes.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutSeizedBoxes.Name = "tableLayoutSeizedBoxes";
+            this.tableLayoutSeizedBoxes.RowCount = 4;
+            this.tableLayoutSeizedBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutSeizedBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutSeizedBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutSeizedBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutSeizedBoxes.Size = new System.Drawing.Size(656, 442);
+            this.tableLayoutSeizedBoxes.TabIndex = 0;
+            // 
+            // tableAddToSeizedBoxes
+            // 
+            this.tableAddToSeizedBoxes.ColumnCount = 4;
+            this.tableAddToSeizedBoxes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableAddToSeizedBoxes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableAddToSeizedBoxes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableAddToSeizedBoxes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableAddToSeizedBoxes.Controls.Add(this.buttonAddToSeized, 0, 0);
+            this.tableAddToSeizedBoxes.Controls.Add(this.inputSeize, 1, 0);
+            this.tableAddToSeizedBoxes.Controls.Add(this.buttonClearSeizingBox, 2, 0);
+            this.tableAddToSeizedBoxes.Controls.Add(this.buttonSettingsForSeize, 3, 0);
+            this.tableAddToSeizedBoxes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableAddToSeizedBoxes.Location = new System.Drawing.Point(3, 3);
+            this.tableAddToSeizedBoxes.Name = "tableAddToSeizedBoxes";
+            this.tableAddToSeizedBoxes.RowCount = 1;
+            this.tableAddToSeizedBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableAddToSeizedBoxes.Size = new System.Drawing.Size(650, 34);
+            this.tableAddToSeizedBoxes.TabIndex = 0;
+            // 
             // buttonAddToSeized
             // 
             this.buttonAddToSeized.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -505,6 +462,21 @@
             this.buttonAddToSeized.Tag = "82; 81; 87";
             this.buttonAddToSeized.UseVisualStyleBackColor = false;
             this.buttonAddToSeized.Click += new System.EventHandler(this.buttonAddToSeized_Click);
+            // 
+            // inputSeize
+            // 
+            this.inputSeize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(65)))));
+            this.inputSeize.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.inputSeize.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inputSeize.Font = new System.Drawing.Font("Segoe UI Symbol", 12F);
+            this.inputSeize.ForeColor = System.Drawing.Color.Chartreuse;
+            this.inputSeize.Location = new System.Drawing.Point(53, 3);
+            this.inputSeize.Name = "inputSeize";
+            this.inputSeize.Size = new System.Drawing.Size(494, 22);
+            this.inputSeize.TabIndex = 1;
+            this.inputSeize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.inputSeize.TextChanged += new System.EventHandler(this.inputSeize_TextChanged);
+            this.inputSeize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.inputSeize_KeyDown);
             // 
             // buttonClearSeizingBox
             // 
@@ -552,6 +524,21 @@
             this.buttonSettingsForSeize.UseVisualStyleBackColor = false;
             this.buttonSettingsForSeize.Click += new System.EventHandler(this.buttonSettingsForSeize_Click);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.grayButton1, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 405);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(650, 34);
+            this.tableLayoutPanel1.TabIndex = 1;
+            // 
             // grayButton1
             // 
             this.grayButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -574,6 +561,19 @@
             this.grayButton1.Tag = "82; 81; 87";
             this.toolTip1.SetToolTip(this.grayButton1, "Сохранить изменения");
             this.grayButton1.UseVisualStyleBackColor = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.label2.ForeColor = System.Drawing.Color.DimGray;
+            this.label2.Location = new System.Drawing.Point(3, 362);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(650, 40);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Вы все? Не забудьте нажать на галочку ниже для сохранения данных!";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ListOfSeized
             // 

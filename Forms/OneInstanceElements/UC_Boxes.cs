@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WhereIsMyBox.Classes.Models;
 using WhereIsMyBox.Forms.OneInstanceElements;
@@ -12,17 +13,13 @@ namespace WhereIsMyBox.Forms
     public partial class UC_Boxes : UserControl
     {
         ModelBoxes foundBox = new ModelBoxes();
-        string login;
-        string place;
         //private string foundedBox;
-        public UC_Boxes(string username, string place)
+        public UC_Boxes()
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             this.Focus();
-            this.login = username;
-            this.place = place;
-            this.inputSeize.KeyDown += new KeyEventHandler(inputSeize_KeyDown);
+            //this.inputSeize.KeyDown += new KeyEventHandler(inputSeize_KeyDown);
         }
         #region Validate Input Functions
         private bool BoxNumberValidateFormat(string number)
@@ -36,14 +33,54 @@ namespace WhereIsMyBox.Forms
         #endregion
 
         #region Common Methods
-        private void SeizeBox(int period)
+        private void SeizeBox(string number, int period, bool safety=true)
         {
-            ModelUsing use = new ModelUsing();
-            use.box = foundBox.number;
-            use.place = place;
-            use.customer = this.login;
-            use.AddBoxIntoUsing(120);
-            this.ListOfSeized.AddItemToList(foundBox.number, foundBox.location, period);
+            using (ModelUsing use = new ModelUsing())
+            {
+                use.box = number;
+                use.place = CommonData.place;
+                use.customer = CommonData.login;
+                try
+                {
+                    string loc = "";
+                    if (safety)
+                    {
+                        using (ModelBoxes mb = new ModelBoxes())
+                        {
+                            if (mb.GetBoxByNumber(number))  // если короб есть
+                            {
+                                loc = mb.location;
+                                if (!mb.SwitchAccessOnStatus())
+                                {
+                                    MessageBox.Show($"Короб находится в статусе \"{mb.GetStringNameOfStatus()}\".", "Ошибка"); 
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Короб не найден или удален.", "Короб не найден");
+                                return;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (!foundBox.SwitchAccessOnStatus())
+                        {
+                            MessageBox.Show($"Короб находится в статусе \"{foundBox.GetStringNameOfStatus()}\".", "Ошибка");
+                            return;
+                        }
+                        loc = foundBox.location;
+                    }
+                    use.AddBoxIntoUsing(period);
+                    this.ListOfSeized.AddItemToList(use, loc, period);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Невозможно добавить несуществующий короб.", "Ошибка");
+                    return;
+                }
+            }
         }
 
         #endregion
@@ -152,8 +189,9 @@ namespace WhereIsMyBox.Forms
         private void buttonAddBox_Click(object sender, EventArgs e)
         {
             CloseFindPanel();
+            string num = this.foundBox.number;
             this.inputFind.Text = "";
-            SeizeBox(60); 
+            SeizeBox(num, 60, false); 
         }
 
         private void buttonShowMap_Click(object sender, EventArgs e)
@@ -172,9 +210,16 @@ namespace WhereIsMyBox.Forms
 
         }
 
-        private void buttonMarkAsNotFound_Click(object sender, EventArgs e)
+        private async void buttonMarkAsNotFound_Click(object sender, EventArgs e)
         {
-
+            await Task.Run(() =>
+            {
+                using (ModelBoxes mb = new ModelBoxes())
+                {
+                    mb.number = this.BoxInfoPanel.GetNumber();
+                    mb.UpdateStatus(BoxStatus.Lost);
+                }
+            });
         }
 
         #endregion
@@ -213,8 +258,8 @@ namespace WhereIsMyBox.Forms
         }
         private void buttonAddToSeized_Click(object sender, EventArgs e)
         {
-            this.inputSeize.Text.ToUpper();
-            SeizeBox(2);
+            this.inputSeize.Text = this.inputSeize.Text.ToUpper();
+            SeizeBox(this.inputSeize.Text, 2);
         }
         #endregion
 
@@ -226,6 +271,12 @@ namespace WhereIsMyBox.Forms
             }
         }
 
-        
+        private void inputFind_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonAddBox_Click(sender, e);
+            }
+        }
     }
 }

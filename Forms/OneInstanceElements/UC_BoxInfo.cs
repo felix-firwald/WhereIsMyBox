@@ -14,6 +14,7 @@ namespace WhereIsMyBox.Forms.Elements
 {
     public partial class UC_BoxInfo : UserControl
     {
+        private string number;
         public UC_BoxInfo()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace WhereIsMyBox.Forms.Elements
         public void ChangeData(ModelBoxes box)
         {
             string[] result = box.GetSplitedNumber();
+            this.number = box.number;
             this.labelPrefix.Text = result[0];
             this.labelPostfix.Text = result[1];
             this.type.Text = box.type;
@@ -61,6 +63,10 @@ namespace WhereIsMyBox.Forms.Elements
                 this.user.Text = "-";
                 this.willFree.Text = "∞";
             }
+        }
+        public string GetNumber()
+        {
+            return this.number;
         }
     }
 }
