@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Controls;
 using WhereIsMyBox.Classes;
 
 namespace DatabaseRequests
@@ -44,8 +46,9 @@ namespace DatabaseRequests
         INT,
         STR
     }
-    public abstract class Model
+    public abstract class Model : System.IDisposable
     {
+        private bool disposed = false;
         private string result;
         
         protected string tableName;
@@ -56,6 +59,27 @@ namespace DatabaseRequests
         public Model()
         {
             Clear();
+            GetFields();
+        }
+        public override string ToString()
+        {
+            return tableName;
+        }
+        #region Service
+        public void Dispose()
+        {
+            CleanUp(true);
+            GC.SuppressFinalize(this);
+        }
+        private void CleanUp(bool clean)
+        {
+            if (!this.disposed)
+            {
+                if (clean)
+                {
+                    this.disposed = true;
+                }
+            }
         }
         public void Clear()
         {
@@ -63,12 +87,20 @@ namespace DatabaseRequests
             isUpdateAlready = false;
             result = "";
         }
-        public override string ToString()
+        protected List<string> GetFields()
         {
-            return tableName;
+            List<string> result = new List<string>();
+            foreach (var prop in this.GetType().GetProperties())
+            {
+                result.Add(prop.Name);
+                Console.WriteLine(prop.Name, prop.DeclaringType);
+            }
+            return result;
         }
+        #endregion
+
         #region Select-Insert-Update-Delete
-        public Model Select(string selection)
+        protected Model Select(string selection)
         {
             string resulting;
             resulting = $"SELECT {selection}\nFROM {tableName}\n";
@@ -76,12 +108,12 @@ namespace DatabaseRequests
             return this;
         }
 
-        public Model Insert(string fields, string values)
+        protected Model Insert(string fields, string values)
         {
             result += $"INSERT INTO {tableName} ({fields})\nVALUES ({values})";
             return this;
         }
-        public Model Update(string cell, string value, bool isStr=true)
+        protected Model Update(string cell, string value, bool isStr=true)
         {
             string c = "'";
             if (!isStr) { c = ""; }
@@ -106,7 +138,7 @@ namespace DatabaseRequests
         #endregion
 
         #region Join
-        public Model InnerJoin(Model innerTable, string fieldBaseTable, string fieldJoinedTable)
+        protected Model InnerJoin(Model innerTable, string fieldBaseTable, string fieldJoinedTable)
         {
             string resulting;
             resulting = result + $"INNER JOIN {innerTable}\nON {tableName}.{fieldBaseTable}={innerTable}.{fieldJoinedTable}\n";
@@ -140,32 +172,32 @@ namespace DatabaseRequests
 
         }
 
-        public Model WhereEqual(string cell, string value, bool isStr=true)
+        protected Model WhereEqual(string cell, string value, bool isStr=true)
         // Where A (left arg) = B (right arg)
         {
             return Where(cell, "=", value, isStr);
         }
-        public Model WhereNotEqual(string cell, string value, bool isStr = true)
+        protected Model WhereNotEqual(string cell, string value, bool isStr = true)
         // Where A (left arg) != B (right arg)
         {
             return Where(cell, "<>", value, isStr);
         }
-        public Model WhereLess(string cell, string value, bool isStr = true)
+        protected Model WhereLess(string cell, string value, bool isStr = true)
         // Where A (left arg) < B (right arg)
         {
             return Where(cell, "<", value, isStr);
         }
-        public Model WhereMore(string cell, string value, bool isStr = true)
+        protected Model WhereMore(string cell, string value, bool isStr = true)
         // Where A (left arg) > B (right arg)
         {
             return Where(cell, ">", value, isStr);
         }
-        public Model WhereBetween(string cell, string left, string right, bool isStr = true)
+        protected Model WhereBetween(string cell, string left, string right, bool isStr = true)
         // Where A (left arg) BETWEEN B (central arg) AND C (right arg)
         {
             return Where(cell, "BETWEEN", $"{left} AND {right}", isStr);
         }
-        public Model WhereIn(String cell, string[] args)
+        protected Model WhereIn(String cell, string[] args)
         // Where A (left arg) IN (args)
         {
             String resultingString = "(";
@@ -191,6 +223,23 @@ namespace DatabaseRequests
         }
         #endregion
 
+        #region Order By
+        private void OrderBy(string columns, string type)
+        {
+            this.result += $"\nORDER BY {columns} {type}";
+        }
+        protected Model OrderByASC(string columns)
+        {
+            OrderBy(columns, "ASC");
+            return this;
+        }
+        protected Model OrderByDESC(string columns)
+        {
+            OrderBy(columns, "DESC");
+            return this;
+        }
+        #endregion
+
         #region Connection, Request and Permission
         /// <summary>
         /// Возвращает SqlConnection с подставленными значениями, предварительно проверяя доступ
@@ -198,8 +247,7 @@ namespace DatabaseRequests
         /// <returns></returns>
         private SqlConnection GetConnection()
         {
-            return new SqlConnection(
-            DatabaseManager.path);
+            return new SqlConnection(DatabaseManager.path);
         }
         private string GetRequest(bool clear=true)
         {
@@ -265,7 +313,10 @@ namespace DatabaseRequests
         }
         #endregion
         
-        
+        protected DataRow GetOne(DataTable dt)
+        {
+            return dt.Rows[0];
+        }
 
     }
 }

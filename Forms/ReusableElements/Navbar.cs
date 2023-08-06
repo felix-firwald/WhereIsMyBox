@@ -26,25 +26,6 @@ namespace WhereIsMyBox.Forms.ReusableElements
         [Description("Выбран"), Category("Главное")]
         public bool isChecked { get; set; }
 
-        private void MainPanel_MouseEnter(object sender, EventArgs e)
-        {
-            this.BackColor = Color.FromArgb(55, 55, 55);
-        }
-
-        private void MainPanel_MouseLeave(object sender, EventArgs e)
-        {
-            this.BackColor = Color.FromArgb(35, 35, 35);
-        }
-
-        private void MainPanel_Click(object sender, EventArgs e)
-        {
-            this.isChecked = !this.isChecked;
-            if (!this.isChecked)
-            {
-                SelectItem();
-            }
-        }
-
         public void DeselectItem()
         {
             this.bluePanel.Visible = false;
@@ -56,6 +37,25 @@ namespace WhereIsMyBox.Forms.ReusableElements
             this.bluePanel.Visible = true;
             this.label.ForeColor = Color.FromArgb(211, 215, 235);
             this.icon.ForeColor = Color.DimGray;
+        }
+
+        private void Navbar_MouseEnter(object sender, EventArgs e)
+        {
+            this.BackColor = Color.FromArgb(55, 55, 55);
+        }
+
+        private void Navbar_MouseLeave(object sender, EventArgs e)
+        {
+            this.BackColor = Color.FromArgb(35, 35, 35);
+        }
+
+        private void Navbar_Click(object sender, EventArgs e)
+        {
+            this.isChecked = !this.isChecked;
+            if (!this.isChecked)
+            {
+                SelectItem();
+            }
         }
     }
 }

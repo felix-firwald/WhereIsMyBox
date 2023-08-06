@@ -388,6 +388,7 @@
             this.buttonMarkAsNotFound.Size = new System.Drawing.Size(34, 23);
             this.buttonMarkAsNotFound.TabIndex = 4;
             this.buttonMarkAsNotFound.Tag = "82; 81; 87";
+            this.toolTip1.SetToolTip(this.buttonMarkAsNotFound, "Пометить как не найденный");
             this.buttonMarkAsNotFound.UseVisualStyleBackColor = false;
             this.buttonMarkAsNotFound.Click += new System.EventHandler(this.buttonMarkAsNotFound_Click);
             // 

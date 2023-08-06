@@ -53,9 +53,6 @@
             this.MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.MainPanel.Size = new System.Drawing.Size(200, 50);
             this.MainPanel.TabIndex = 0;
-            this.MainPanel.Click += new System.EventHandler(this.MainPanel_Click);
-            this.MainPanel.MouseEnter += new System.EventHandler(this.MainPanel_MouseEnter);
-            this.MainPanel.MouseLeave += new System.EventHandler(this.MainPanel_MouseLeave);
             // 
             // icon
             // 
@@ -109,6 +106,9 @@
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "Navbar";
             this.Size = new System.Drawing.Size(200, 50);
+            this.Click += new System.EventHandler(this.Navbar_Click);
+            this.MouseEnter += new System.EventHandler(this.Navbar_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.Navbar_MouseLeave);
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();

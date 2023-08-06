@@ -10,6 +10,7 @@ using WhereIsMyBox.Classes.Models;
 using MySql.Data.MySqlClient;
 using System.Windows.Shapes;
 using System.Xml;
+using System.Runtime.CompilerServices;
 
 namespace Common
 {
@@ -31,6 +32,13 @@ namespace Common
 
 namespace WhereIsMyBox
 {
+    public static class CommonData
+    {
+        public static string login { get; set; }
+        public static string place { get; set; }
+
+    }
+
     internal static class Program
     {
         /// <summary>

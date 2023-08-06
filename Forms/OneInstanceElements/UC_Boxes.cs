@@ -67,6 +67,7 @@ namespace WhereIsMyBox.Forms
 
         private void buttonFind_Click(object sender, EventArgs e)
         {
+            CloseFindPanel();
             this.inputFind.Text = this.inputFind.Text.ToUpper();
             this.HelpTextFind.Text = $"Поиск короба №{this.inputFind.Text}...";
             //ModelBoxes foundBox = new ModelBoxes();
@@ -75,18 +76,7 @@ namespace WhereIsMyBox.Forms
             loadform.Show();
             if (foundBox.GetBoxByNumber(this.inputFind.Text))
             {
-                string [] result = foundBox.GetSplitedNumber();
-                this.BoxInfoPanel.changeData(
-                    prefix: result[0],
-                    postfix: result[1],
-                    initLocation: foundBox.location,
-                    currLocation: "-",
-                    type: foundBox.type,
-                    status: foundBox.status,
-                    comment: foundBox.note,
-                    user: this.login,
-                    willBeFree: foundBox.willFree
-                );
+                this.BoxInfoPanel.ChangeData(foundBox);
                 this.tableMicroActions.Visible = true;
                 this.BoxInfoPanel.Visible = true;
                 this.HelpTextFind.Visible = false;
@@ -94,10 +84,16 @@ namespace WhereIsMyBox.Forms
             else
             {
                 this.HelpTextFind.Text = $"Короб №{this.inputFind.Text} не найден!";
+                this.HelpTextFind.Visible = true;
             }
             loadform.Close();
         }
 
+        private void CloseFindPanel()
+        {
+            this.tableMicroActions.Visible = false;
+            this.BoxInfoPanel.Visible = false;
+        }
 
         private void buttonCancelFind_Click(object sender, EventArgs e)
         {
@@ -105,8 +101,7 @@ namespace WhereIsMyBox.Forms
             this.buttonFind.Enabled = false;
             this.HelpTextFind.Visible = true;
             this.HelpTextFind.Text = "Вы и сами знаете, что делать.";
-            this.tableMicroActions.Visible = false;
-            this.BoxInfoPanel.Visible = false;
+            CloseFindPanel();
         }
 
         private void buttonCancelFind_MouseEnter(object sender, EventArgs e)
@@ -156,7 +151,9 @@ namespace WhereIsMyBox.Forms
         #region FindPanel LittleButtons
         private void buttonAddBox_Click(object sender, EventArgs e)
         {
-            SeizeBox(1);
+            CloseFindPanel();
+            this.inputFind.Text = "";
+            SeizeBox(60); 
         }
 
         private void buttonShowMap_Click(object sender, EventArgs e)

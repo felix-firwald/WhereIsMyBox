@@ -1,0 +1,8 @@
+DROP TABLE BoxesInUse;
+DROP TABLE Users;
+DROP TABLE Units;
+DROP TABLE Batches;
+DROP TABLE Boxes;
+DROP TABLE Types;
+DROP TABLE Places;
+DROP TABLE Locations;

@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="D:\Dev\WIMB\WhereIsMyBox\python DON`T INCLUDE IN ASSEMBLY\venv"
+$env:VIRTUAL_ENV="D:\Dev\WIMB\WhereIsMyBox\pythonScripts\venv"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name

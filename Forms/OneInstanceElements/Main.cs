@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using WhereIsMyBox.Classes;
-using WhereIsMyBox.Classes.Models;
 using WhereIsMyBox.Forms;
 using WhereIsMyBox.Forms.ReusableElements;
 
@@ -28,7 +27,9 @@ namespace WhereIsMyBox
         {
             ConfigInfo config = new ConfigInfo().ReadConfig();
             this.LocationOfUser.Text = config.location;
+            CommonData.place = config.location;
             this.Login.Text = config.login;
+            CommonData.login = config.login;
             this.UserStatusLabel.Text = config.status;
             Permission.SetPermissionGroup(Permission.GetGroupByVisibleName(config.status));
             setLabelStatus();

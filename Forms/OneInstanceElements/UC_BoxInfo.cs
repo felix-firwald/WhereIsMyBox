@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlX.XDevAPI.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WhereIsMyBox.Classes.Models;
 
 namespace WhereIsMyBox.Forms.Elements
 {
@@ -17,35 +19,47 @@ namespace WhereIsMyBox.Forms.Elements
             InitializeComponent();
 
         }
-        public void changeData(
-            string prefix,
-            string postfix,
-            string initLocation,
-            string currLocation,
-            string type,
-            string status,
-            string comment,
-            string user,
-            DateTime willBeFree // добавить остальное
-        )
+        public void ChangeData(ModelBoxes box)
         {
-            this.labelPrefix.Text = prefix;
-            this.labelPostfix.Text = postfix;
-            this.initialLocation.Text = initLocation;
-            this.type.Text = type;
-            this.status.Text = status;
-            this.note.Text = comment;
-            if (status == "Доступен")
+            string[] result = box.GetSplitedNumber();
+            this.labelPrefix.Text = result[0];
+            this.labelPostfix.Text = result[1];
+            this.type.Text = box.type;
+            this.status.Text = box.GetStringNameOfStatus();
+            this.note.Text = box.note;
+
+            if (box.status == BoxStatus.Seized || box.status == BoxStatus.Focused)
             {
-                this.currentLocation.Text = initLocation;
-                this.user.Text = "-";
-                this.willFree.Text = "СЕЙЧАС";
+                using (ModelUsing use = new ModelUsing())
+                {
+                    if (use.GetUsingByBox(box.number))
+                    {
+                        this.currentLocation.Text = use.place;
+                        this.user.Text = use.customer;
+                        this.willFree.Text = use.timeFinished.ToString();
+                    }
+                    else
+                    {
+                        this.currentLocation.Text = "Неизвестно (ошибка)";
+                        this.user.Text = "Неизвестно (ошибка)";
+                        this.willFree.Text = "Неизвестно (ошибка)";
+                    }
+                }
+                
             }
-            else
+            else if (box.status == BoxStatus.Available) // если доступен
             {
-                this.currentLocation.Text = currLocation;
-                this.user.Text = user;
-                this.willFree.Text = willBeFree.ToString();
+                this.initialLocation.Text = box.location;
+                this.currentLocation.Text = this.initialLocation.Text;
+                this.user.Text = "-";
+                this.willFree.Text = "сейчас";
+            }
+            else // если утерян
+            {
+                this.initialLocation.Text = box.location;
+                this.currentLocation.Text = "Неизвестно";
+                this.user.Text = "-";
+                this.willFree.Text = "∞";
             }
         }
     }

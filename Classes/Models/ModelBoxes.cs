@@ -2,22 +2,31 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace WhereIsMyBox.Classes.Models
 {
-    internal sealed class ModelBoxes : Model
+    public enum BoxStatus
     {
-        public int id { get; private set; }
+        Available,
+        Seized,
+        Focused,
+        Lost,
+        Undefined
+    }
+    public sealed class ModelBoxes : Model
+    {
         public string number { get; set; }
         public string location { get; set; }
-        public string status { get; set; }
+        public BoxStatus status { get; set; }
         public string type { get; set; }
         public string note { get; set; }
-        public DateTime willFree { get; set; }
         public ModelBoxes() : base()
         {
             tableName = "Boxes";
         }
+        #region NotSQL functions
         public string[] GetSplitedNumber()
         {
             string prefix = "";
@@ -35,9 +44,63 @@ namespace WhereIsMyBox.Classes.Models
             }
             return new string[2] { prefix, postfix };
         }
+        public BoxStatus GetEnumerableStatusOn(string key)
+        {
+            switch (key)
+            {
+                case "1":
+                    return BoxStatus.Available;
+                case "2":
+                    return BoxStatus.Seized;
+                case "3":
+                    return BoxStatus.Focused;
+                case "4":
+                    return BoxStatus.Lost;
+                default:
+                    return BoxStatus.Undefined;
+            }
+        }
+        public string GetSqlTypeOnEnumerableStatus(BoxStatus status)
+        {
+            switch (status)
+            {
+                case BoxStatus.Available: return "1";
+                case BoxStatus.Seized: return "2";
+                case BoxStatus.Focused: return "3";
+                case BoxStatus.Lost: return "4";
+                default: return "0";
+            }
+        }
+        public string GetStringNameOfStatus()
+        {
+            switch (this.status)
+            {
+                case BoxStatus.Seized: case BoxStatus.Focused:
+                    return "Изъят";
+                case BoxStatus.Available: 
+                    return "Доступен";
+                case BoxStatus.Lost:
+                    return "Не найден";
+                default: return "Не определен";
+            }
+        }
+        public bool SwitchAccessOnStatus()
+        {
+            switch (status)
+            {
+                case BoxStatus.Seized:
+                case BoxStatus.Available:
+                case BoxStatus.Lost:
+                    return true;
+                case BoxStatus.Focused: 
+                default:
+                    return false;
+            }
+        }
+        #endregion
 
         #region Create
-        public void AddBox(string onStatus="Created")   // НЕ ДОПИСАНО!
+        public void AddBox()   // НЕ ДОПИСАНО!
         {
             if ((number??location) == null)
             {
@@ -46,48 +109,29 @@ namespace WhereIsMyBox.Classes.Models
                     $"number={number}, location={location}"
                 );
             }
-            
-            this.status = onStatus;
+            string status = GetSqlTypeOnEnumerableStatus(this.status);
             Insert(
                 "number, location, status, type, note",
-                $"{this.number}, {this.location}, {this.status}, {this.type}, {this.note}"
+                $"'{this.number}', '{this.location}', {status}, '{this.type}', '{this.note}'"
             );
             Execute(DatabasePermissions.All);
         }
         #endregion
 
         #region Read
-        //public ModelBoxes[] GetAllObjects()
-        //{
-        //    using (var conn = GetConnection(DatabasePermissions.AdminOnly))
-        //    {
-        //        Select("*");
-        //        conn.Open();
-        //        SqlCommand cmd = conn.CreateCommand();
-        //        cmd.CommandText = GetRequest();
-        //        SqlDataReader sqlreader = cmd.ExecuteReader();
-        //        while (sqlreader.Read())
-        //        {
-        //            id = Convert.ToInt16(sqlreader["number"]);
-        //            Console.WriteLine(sqlreader["number"].ToString());
-        //        }
-        //    }
-        //}
         public bool GetBoxByNumber(string num)
         {
-            Select("*").WhereEqual("number", num);
-            DataTable dt = Execute(DatabasePermissions.All);
+            Select("*");
+            WhereEqual("number", num);
+            
             try
             {
-                DataRow dr = dt.Rows[0];
-                //id = Convert.ToInt16(dr["id"].ToString());
+                DataRow dr = GetOne(Execute(DatabasePermissions.All));
                 number = dr["number"].ToString();
                 location = dr["location"].ToString();
-                //currentPlace = dr["currentPlace"].ToString();
-                status = dr["status"].ToString();
+                status = GetEnumerableStatusOn(dr["status"].ToString());
                 type = dr["type"].ToString();
                 note = dr["note"].ToString();
-                willFree = DateTime.Now;
                 return true;
             }
             catch (Exception e) {
@@ -95,12 +139,34 @@ namespace WhereIsMyBox.Classes.Models
                 return false;
             }
         }
+
+        public bool IsBoxCanUse(string num)
+        {
+            Select("status");
+            WhereEqual("number", num);
+            try
+            {
+                DataRow dr = GetOne(Execute(DatabasePermissions.All));
+                this.status = GetEnumerableStatusOn(dr["status"].ToString());
+                return SwitchAccessOnStatus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Невозможно выполнить операцию");
+                return false;
+            }
+        }
         #endregion
 
         #region Update
-        public void UpdateStatus(string onStatus)
+        public async void UpdateStatus(BoxStatus onStatus)
         {
-            Update("status", onStatus).WhereEqual("number", this.number);
+            await Task.Run(() =>
+            {
+                Update("status", this.GetSqlTypeOnEnumerableStatus(onStatus));
+                WhereEqual("number", this.number);
+                Execute(DatabasePermissions.All);
+            });
         }
         #endregion
     }
