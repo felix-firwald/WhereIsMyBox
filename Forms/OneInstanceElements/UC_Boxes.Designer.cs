@@ -64,7 +64,6 @@
             this.splitContainerMain.SuspendLayout();
             this.tableLayoutLeft.SuspendLayout();
             this.tableFindTop.SuspendLayout();
-            this.tableMicroActions.SuspendLayout();
             this.tableLayoutSeizedBoxes.SuspendLayout();
             this.tableAddToSeizedBoxes.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -258,11 +257,6 @@
             this.tableMicroActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableMicroActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableMicroActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableMicroActions.Controls.Add(this.buttonAddBox, 5, 0);
-            this.tableMicroActions.Controls.Add(this.buttonShowMap, 4, 0);
-            this.tableMicroActions.Controls.Add(this.buttonShowQRCode, 3, 0);
-            this.tableMicroActions.Controls.Add(this.buttonComment, 2, 0);
-            this.tableMicroActions.Controls.Add(this.buttonMarkAsNotFound, 1, 0);
             this.tableMicroActions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableMicroActions.Location = new System.Drawing.Point(3, 405);
             this.tableMicroActions.Name = "tableMicroActions";
@@ -271,126 +265,6 @@
             this.tableMicroActions.Size = new System.Drawing.Size(324, 34);
             this.tableMicroActions.TabIndex = 2;
             this.tableMicroActions.Visible = false;
-            // 
-            // buttonAddBox
-            // 
-            this.buttonAddBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonAddBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonAddBox.EnteredColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(170)))), ((int)(((byte)(255)))));
-            this.buttonAddBox.FlatAppearance.BorderSize = 0;
-            this.buttonAddBox.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonAddBox.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonAddBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddBox.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
-            this.buttonAddBox.IconColor = System.Drawing.Color.DimGray;
-            this.buttonAddBox.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.buttonAddBox.IconSize = 20;
-            this.buttonAddBox.Location = new System.Drawing.Point(225, 3);
-            this.buttonAddBox.Name = "buttonAddBox";
-            this.buttonAddBox.PermissionMode = WhereIsMyBox.Classes.PermissionMode.Cascade;
-            this.buttonAddBox.RequiredPermission = WhereIsMyBox.Classes.PermissionGroup.Moderator;
-            this.buttonAddBox.Size = new System.Drawing.Size(34, 23);
-            this.buttonAddBox.TabIndex = 0;
-            this.buttonAddBox.Tag = "82; 81; 87";
-            this.toolTip1.SetToolTip(this.buttonAddBox, "Изъять (если короб физически изъят вами)");
-            this.buttonAddBox.UseVisualStyleBackColor = false;
-            this.buttonAddBox.Click += new System.EventHandler(this.buttonAddBox_Click);
-            // 
-            // buttonShowMap
-            // 
-            this.buttonShowMap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonShowMap.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonShowMap.EnteredColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(170)))), ((int)(((byte)(255)))));
-            this.buttonShowMap.FlatAppearance.BorderSize = 0;
-            this.buttonShowMap.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonShowMap.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonShowMap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonShowMap.IconChar = FontAwesome.Sharp.IconChar.LocationArrow;
-            this.buttonShowMap.IconColor = System.Drawing.Color.DimGray;
-            this.buttonShowMap.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.buttonShowMap.IconSize = 20;
-            this.buttonShowMap.Location = new System.Drawing.Point(185, 3);
-            this.buttonShowMap.Name = "buttonShowMap";
-            this.buttonShowMap.PermissionMode = WhereIsMyBox.Classes.PermissionMode.Cascade;
-            this.buttonShowMap.RequiredPermission = WhereIsMyBox.Classes.PermissionGroup.Admin;
-            this.buttonShowMap.Size = new System.Drawing.Size(34, 23);
-            this.buttonShowMap.TabIndex = 1;
-            this.buttonShowMap.Tag = "82; 81; 87";
-            this.toolTip1.SetToolTip(this.buttonShowMap, "Показать местоположение короба на карте");
-            this.buttonShowMap.UseVisualStyleBackColor = false;
-            this.buttonShowMap.Click += new System.EventHandler(this.buttonShowMap_Click);
-            // 
-            // buttonShowQRCode
-            // 
-            this.buttonShowQRCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonShowQRCode.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonShowQRCode.EnteredColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(170)))), ((int)(((byte)(255)))));
-            this.buttonShowQRCode.FlatAppearance.BorderSize = 0;
-            this.buttonShowQRCode.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonShowQRCode.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonShowQRCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonShowQRCode.IconChar = FontAwesome.Sharp.IconChar.Barcode;
-            this.buttonShowQRCode.IconColor = System.Drawing.Color.DimGray;
-            this.buttonShowQRCode.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.buttonShowQRCode.IconSize = 20;
-            this.buttonShowQRCode.Location = new System.Drawing.Point(145, 3);
-            this.buttonShowQRCode.Name = "buttonShowQRCode";
-            this.buttonShowQRCode.PermissionMode = WhereIsMyBox.Classes.PermissionMode.Rising;
-            this.buttonShowQRCode.RequiredPermission = WhereIsMyBox.Classes.PermissionGroup.Operator;
-            this.buttonShowQRCode.Size = new System.Drawing.Size(34, 23);
-            this.buttonShowQRCode.TabIndex = 2;
-            this.buttonShowQRCode.Tag = "82; 81; 87";
-            this.toolTip1.SetToolTip(this.buttonShowQRCode, "Показать QR-код");
-            this.buttonShowQRCode.UseVisualStyleBackColor = false;
-            this.buttonShowQRCode.Click += new System.EventHandler(this.buttonShowQRCode_Click);
-            // 
-            // buttonComment
-            // 
-            this.buttonComment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonComment.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonComment.EnteredColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(170)))), ((int)(((byte)(255)))));
-            this.buttonComment.FlatAppearance.BorderSize = 0;
-            this.buttonComment.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonComment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonComment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonComment.IconChar = FontAwesome.Sharp.IconChar.Pen;
-            this.buttonComment.IconColor = System.Drawing.Color.DimGray;
-            this.buttonComment.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.buttonComment.IconSize = 20;
-            this.buttonComment.Location = new System.Drawing.Point(105, 3);
-            this.buttonComment.Name = "buttonComment";
-            this.buttonComment.PermissionMode = WhereIsMyBox.Classes.PermissionMode.Rising;
-            this.buttonComment.RequiredPermission = WhereIsMyBox.Classes.PermissionGroup.Operator;
-            this.buttonComment.Size = new System.Drawing.Size(34, 23);
-            this.buttonComment.TabIndex = 3;
-            this.buttonComment.Tag = "82; 81; 87";
-            this.toolTip1.SetToolTip(this.buttonComment, "Добавить комментарий");
-            this.buttonComment.UseVisualStyleBackColor = false;
-            this.buttonComment.Click += new System.EventHandler(this.buttonComment_Click);
-            // 
-            // buttonMarkAsNotFound
-            // 
-            this.buttonMarkAsNotFound.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonMarkAsNotFound.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonMarkAsNotFound.EnteredColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(170)))), ((int)(((byte)(255)))));
-            this.buttonMarkAsNotFound.FlatAppearance.BorderSize = 0;
-            this.buttonMarkAsNotFound.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonMarkAsNotFound.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonMarkAsNotFound.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMarkAsNotFound.IconChar = FontAwesome.Sharp.IconChar.Warning;
-            this.buttonMarkAsNotFound.IconColor = System.Drawing.Color.DimGray;
-            this.buttonMarkAsNotFound.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.buttonMarkAsNotFound.IconSize = 20;
-            this.buttonMarkAsNotFound.Location = new System.Drawing.Point(65, 3);
-            this.buttonMarkAsNotFound.Name = "buttonMarkAsNotFound";
-            this.buttonMarkAsNotFound.PermissionMode = WhereIsMyBox.Classes.PermissionMode.Rising;
-            this.buttonMarkAsNotFound.RequiredPermission = WhereIsMyBox.Classes.PermissionGroup.Operator;
-            this.buttonMarkAsNotFound.Size = new System.Drawing.Size(34, 23);
-            this.buttonMarkAsNotFound.TabIndex = 4;
-            this.buttonMarkAsNotFound.Tag = "82; 81; 87";
-            this.toolTip1.SetToolTip(this.buttonMarkAsNotFound, "Пометить как не найденный");
-            this.buttonMarkAsNotFound.UseVisualStyleBackColor = false;
-            this.buttonMarkAsNotFound.Click += new System.EventHandler(this.buttonMarkAsNotFound_Click);
             // 
             // BoxInfoPanel
             // 
@@ -428,10 +302,7 @@
             this.tableAddToSeizedBoxes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableAddToSeizedBoxes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableAddToSeizedBoxes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableAddToSeizedBoxes.Controls.Add(this.buttonAddToSeized, 0, 0);
             this.tableAddToSeizedBoxes.Controls.Add(this.inputSeize, 1, 0);
-            this.tableAddToSeizedBoxes.Controls.Add(this.buttonClearSeizingBox, 2, 0);
-            this.tableAddToSeizedBoxes.Controls.Add(this.buttonSettingsForSeize, 3, 0);
             this.tableAddToSeizedBoxes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableAddToSeizedBoxes.Location = new System.Drawing.Point(3, 3);
             this.tableAddToSeizedBoxes.Name = "tableAddToSeizedBoxes";
@@ -439,29 +310,6 @@
             this.tableAddToSeizedBoxes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableAddToSeizedBoxes.Size = new System.Drawing.Size(650, 34);
             this.tableAddToSeizedBoxes.TabIndex = 0;
-            // 
-            // buttonAddToSeized
-            // 
-            this.buttonAddToSeized.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonAddToSeized.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonAddToSeized.EnteredColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(170)))), ((int)(((byte)(255)))));
-            this.buttonAddToSeized.FlatAppearance.BorderSize = 0;
-            this.buttonAddToSeized.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonAddToSeized.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonAddToSeized.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddToSeized.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
-            this.buttonAddToSeized.IconColor = System.Drawing.Color.DimGray;
-            this.buttonAddToSeized.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.buttonAddToSeized.IconSize = 20;
-            this.buttonAddToSeized.Location = new System.Drawing.Point(3, 3);
-            this.buttonAddToSeized.Name = "buttonAddToSeized";
-            this.buttonAddToSeized.PermissionMode = WhereIsMyBox.Classes.PermissionMode.Cascade;
-            this.buttonAddToSeized.RequiredPermission = WhereIsMyBox.Classes.PermissionGroup.Admin;
-            this.buttonAddToSeized.Size = new System.Drawing.Size(44, 23);
-            this.buttonAddToSeized.TabIndex = 0;
-            this.buttonAddToSeized.Tag = "82; 81; 87";
-            this.buttonAddToSeized.UseVisualStyleBackColor = false;
-            this.buttonAddToSeized.Click += new System.EventHandler(this.buttonAddToSeized_Click);
             // 
             // inputSeize
             // 
@@ -478,59 +326,12 @@
             this.inputSeize.TextChanged += new System.EventHandler(this.inputSeize_TextChanged);
             this.inputSeize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.inputSeize_KeyDown);
             // 
-            // buttonClearSeizingBox
-            // 
-            this.buttonClearSeizingBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonClearSeizingBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonClearSeizingBox.EnteredColor = System.Drawing.Color.Red;
-            this.buttonClearSeizingBox.FlatAppearance.BorderSize = 0;
-            this.buttonClearSeizingBox.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonClearSeizingBox.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonClearSeizingBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClearSeizingBox.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.buttonClearSeizingBox.IconColor = System.Drawing.Color.DimGray;
-            this.buttonClearSeizingBox.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.buttonClearSeizingBox.IconSize = 20;
-            this.buttonClearSeizingBox.Location = new System.Drawing.Point(553, 3);
-            this.buttonClearSeizingBox.Name = "buttonClearSeizingBox";
-            this.buttonClearSeizingBox.PermissionMode = WhereIsMyBox.Classes.PermissionMode.Cascade;
-            this.buttonClearSeizingBox.RequiredPermission = WhereIsMyBox.Classes.PermissionGroup.Admin;
-            this.buttonClearSeizingBox.Size = new System.Drawing.Size(44, 23);
-            this.buttonClearSeizingBox.TabIndex = 2;
-            this.buttonClearSeizingBox.Tag = "82; 81; 87";
-            this.buttonClearSeizingBox.UseVisualStyleBackColor = false;
-            this.buttonClearSeizingBox.Click += new System.EventHandler(this.buttonClearSeizingBox_Click);
-            // 
-            // buttonSettingsForSeize
-            // 
-            this.buttonSettingsForSeize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonSettingsForSeize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonSettingsForSeize.EnteredColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(170)))), ((int)(((byte)(255)))));
-            this.buttonSettingsForSeize.FlatAppearance.BorderSize = 0;
-            this.buttonSettingsForSeize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonSettingsForSeize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonSettingsForSeize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSettingsForSeize.IconChar = FontAwesome.Sharp.IconChar.Gear;
-            this.buttonSettingsForSeize.IconColor = System.Drawing.Color.DimGray;
-            this.buttonSettingsForSeize.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.buttonSettingsForSeize.IconSize = 20;
-            this.buttonSettingsForSeize.Location = new System.Drawing.Point(603, 3);
-            this.buttonSettingsForSeize.Name = "buttonSettingsForSeize";
-            this.buttonSettingsForSeize.PermissionMode = WhereIsMyBox.Classes.PermissionMode.Cascade;
-            this.buttonSettingsForSeize.RequiredPermission = WhereIsMyBox.Classes.PermissionGroup.Admin;
-            this.buttonSettingsForSeize.Size = new System.Drawing.Size(44, 23);
-            this.buttonSettingsForSeize.TabIndex = 3;
-            this.buttonSettingsForSeize.Tag = "82; 81; 87";
-            this.buttonSettingsForSeize.UseVisualStyleBackColor = false;
-            this.buttonSettingsForSeize.Click += new System.EventHandler(this.buttonSettingsForSeize_Click);
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.grayButton1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 405);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -538,29 +339,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(650, 34);
             this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // grayButton1
-            // 
-            this.grayButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.grayButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.grayButton1.EnteredColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(170)))), ((int)(((byte)(255)))));
-            this.grayButton1.FlatAppearance.BorderSize = 0;
-            this.grayButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.grayButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.grayButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.grayButton1.IconChar = FontAwesome.Sharp.IconChar.Check;
-            this.grayButton1.IconColor = System.Drawing.Color.DimGray;
-            this.grayButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.grayButton1.IconSize = 20;
-            this.grayButton1.Location = new System.Drawing.Point(308, 3);
-            this.grayButton1.Name = "grayButton1";
-            this.grayButton1.PermissionMode = WhereIsMyBox.Classes.PermissionMode.Monopoly;
-            this.grayButton1.RequiredPermission = WhereIsMyBox.Classes.PermissionGroup.Admin;
-            this.grayButton1.Size = new System.Drawing.Size(34, 23);
-            this.grayButton1.TabIndex = 0;
-            this.grayButton1.Tag = "82; 81; 87";
-            this.toolTip1.SetToolTip(this.grayButton1, "Сохранить изменения");
-            this.grayButton1.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
@@ -604,7 +382,6 @@
             this.tableLayoutLeft.PerformLayout();
             this.tableFindTop.ResumeLayout(false);
             this.tableFindTop.PerformLayout();
-            this.tableMicroActions.ResumeLayout(false);
             this.tableLayoutSeizedBoxes.ResumeLayout(false);
             this.tableLayoutSeizedBoxes.PerformLayout();
             this.tableAddToSeizedBoxes.ResumeLayout(false);
