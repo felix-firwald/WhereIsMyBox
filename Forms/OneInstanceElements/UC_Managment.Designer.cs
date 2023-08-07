@@ -53,7 +53,7 @@
             this.pageTitle1.Description = "На этой странице можно добавить, отредактировать или удалить короб, а также отфил" +
     "ьтровать список коробов по нужному фильтру";
             this.pageTitle1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pageTitle1.Icon = FontAwesome.Sharp.IconChar.CircleHalfStroke;
+            this.pageTitle1.Icon = FontAwesome.Sharp.IconChar.PenToSquare;
             this.pageTitle1.Location = new System.Drawing.Point(3, 3);
             this.pageTitle1.Name = "pageTitle1";
             this.pageTitle1.Size = new System.Drawing.Size(994, 74);

@@ -19,7 +19,10 @@ namespace WhereIsMyBox.Classes.Models
     {
         public string number { get; set; }
         public string location { get; set; }
-        public BoxStatus status { get; set; }
+        public BoxStatus status {
+            get { return status; } 
+            set { status = value; } 
+        }
         public string type { get; set; }
         public string note { get; set; }
         public ModelBoxes() : base()
@@ -127,11 +130,12 @@ namespace WhereIsMyBox.Classes.Models
             try
             {
                 DataRow dr = GetOne(Execute(DatabasePermissions.All));
-                number = dr["number"].ToString();
-                location = dr["location"].ToString();
-                status = GetEnumerableStatusOn(dr["status"].ToString());
-                type = dr["type"].ToString();
-                note = dr["note"].ToString();
+                Validate(dr);
+                //number = dr["number"].ToString();
+                //location = dr["location"].ToString();
+                //status = GetEnumerableStatusOn(dr["status"].ToString());
+                //type = dr["type"].ToString();
+                //note = dr["note"].ToString();
                 return true;
             }
             catch (Exception e) {

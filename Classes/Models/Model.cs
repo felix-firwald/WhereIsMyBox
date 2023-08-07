@@ -317,10 +317,17 @@ namespace DatabaseRequests
         {
             foreach (var prop in this.GetType().GetProperties())
             {
-                Type t = prop.DeclaringType;
-                
-                prop.SetValue(this, Convert.ChangeType(dr[prop.Name], prop.DeclaringType)); // берет из datarow по названию переменной столбец и устанавливает значение к свойству
-                Console.WriteLine(prop.Name, prop.DeclaringType);
+                try
+                {
+                    prop.SetValue(this, Convert.ChangeType(dr[prop.Name], prop.PropertyType)); // берет из datarow по названию переменной столбец и устанавливает значение к свойству
+                    Console.WriteLine($"{prop.Name} = {prop.GetValue(this)}, ТИП: {prop.PropertyType}");
+                }
+                catch (Exception ex)
+                {
+                    prop.SetValue(this, null);
+                    Console.WriteLine($"Ошибка валидации!!! \n{ex}");
+                    continue;
+                }
             }
         }
         #endregion

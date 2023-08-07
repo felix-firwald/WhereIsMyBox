@@ -81,24 +81,6 @@ namespace WhereIsMyBox
             this.LocationOfUser.ForeColor = Color.FromArgb(211, 215, 235);
         }
 
-        //private void buttonLock_MouseEnter(object sender, EventArgs e)
-       // {
-         //   this.buttonLock.IconColor = ColorTheme.TextHovered;
-       // }
-
-        //private void buttonLock_MouseLeave(object sender, EventArgs e)
-        //{
-          //  this.buttonLock.IconColor = Color.DimGray;
-        //}
-
-       // private void buttonLock_Click(object sender, EventArgs e)
-        //{
-        //    this.Hide();
-         //   AuthForm auth = new AuthForm(TypeOfAuth.Unlock);
-         //   auth.ShowDialog();
-          //  this.Show();
-        //}
-
         private void NavbarSwitch()
         {
             List<Navbar> navbarList = new List<Navbar> { 
