@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Markup;
-using System.Windows.Media.Media3D;
-using WhereIsMyBox.Forms;
 
 namespace WhereIsMyBox.Classes
 {
@@ -15,7 +9,7 @@ namespace WhereIsMyBox.Classes
         Admin,  // администрирование программой и базой данных, включая выдачу ролей
         Moderator,  // модератор может создавать короба и партии, принудительно переназначать их или удалять
         Operator,   // обычный сотрудник
-        Special // обычный сотрудник, но с предоставленным правом определенного действия
+        Special // обычный сотрудник, но с предоставленным правом определенного действия (возможно будет удалено)
     }
     public enum PermissionMode
     {
@@ -27,18 +21,18 @@ namespace WhereIsMyBox.Classes
     {
         private static readonly Dictionary<PermissionGroup, string> visibleName = new Dictionary<PermissionGroup, string>()
         {
-            { PermissionGroup.Admin, "Администратор"},
-            { PermissionGroup.Moderator, "Модератор"},
-            { PermissionGroup.Special, "Оператор со специальными правами"},
-            { PermissionGroup.Operator, "Оператор"},
+            {PermissionGroup.Admin, "Администратор"},
+            {PermissionGroup.Moderator, "Модератор"},
+            {PermissionGroup.Special, "Оператор со специальными правами"},
+            {PermissionGroup.Operator, "Оператор"},
             
         };
         private static readonly Dictionary<PermissionGroup, int> levelAccess = new Dictionary<PermissionGroup, int>()
         {
-            { PermissionGroup.Admin, 4},
-            { PermissionGroup.Moderator, 3},
-            { PermissionGroup.Special, 2},
-            { PermissionGroup.Operator, 1},
+            {PermissionGroup.Admin, 4},
+            {PermissionGroup.Moderator, 3},
+            {PermissionGroup.Special, 2},
+            {PermissionGroup.Operator, 1},
             
         };
         public static PermissionGroup CurrentUserPermission;
@@ -105,8 +99,6 @@ namespace WhereIsMyBox.Classes
             string description = $"Это действие может совершать только {groupName}{addToDescription}. " +
                 $"Если вас добавили в группу \"{groupName}\" недавно — попробуйте перезапустить программу";
             MessageBox.Show(description, "Ошибка прав доступа!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //Rejected form = new Rejected("Ошибка прав доступа!", description);
-            //form.ShowDialog();
         }
     }
 }
