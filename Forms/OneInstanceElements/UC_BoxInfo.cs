@@ -14,15 +14,15 @@ namespace WhereIsMyBox.Forms.Elements
 {
     public partial class UC_BoxInfo : UserControl
     {
-        private ModelBoxes instance;
+        private ModelBox instance;
         public UC_BoxInfo()
         {
             InitializeComponent();
 
         }
-        public void ChangeData(ModelBoxes box)
+        public void ChangeData(ModelBox box)
         {
-            string[] result = box.GetSplitedNumber();
+            string[] result = ModelBox.GetSplitedNumber(box.number);
             this.labelPrefix.Text = result[0];
             this.labelPostfix.Text = result[1];
             this.type.Text = box.type;
@@ -66,7 +66,7 @@ namespace WhereIsMyBox.Forms.Elements
         }
         public void UpdateData()
         {
-            using (ModelBoxes mb = new ModelBoxes())
+            using (ModelBox mb = new ModelBox())
             {
                 if (mb.GetBoxByNumber(this.instance.number))
                 {
@@ -75,7 +75,7 @@ namespace WhereIsMyBox.Forms.Elements
             }
         }
 
-        public ModelBoxes GetData()
+        public ModelBox GetData()
         {
             return this.instance;
         }

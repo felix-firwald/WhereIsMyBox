@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
+using System.Linq;
 using System.Net.NetworkInformation;
+using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Security.Principal;
 using System.Windows;
 using System.Windows.Controls;
 using WhereIsMyBox.Classes;
@@ -20,47 +23,39 @@ namespace DatabaseRequests
         ModeratorAndOperator,
         OperatorOnly
     }
-    public static class DatabaseManager // static >> server connection must be only one per session
-    {
-        // Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-        readonly public static string path = @"server=DESKTOP-H74SD3A\SQLEXPRESS;Database=WhereIsMyBox;Integrated Security=true";
-        readonly public static string password; // for mysql, will be terminated
-        readonly public static string database; // for mysql, will be terminated
-        readonly public static SqlConnection connection;
-        public static void OpenConnection()
-        {
-            if (connection.State != ConnectionState.Open)
-            {
-                connection.Open();
-            }
-        }
-        public static void CloseConnection()
-        {
-            if (connection.State == ConnectionState.Open)
-            {
-                connection.Close();
-            }
-        }
-    }
     public enum Types
     {
         INT,
         STR
     }
+
+    public class InvalidIstructionException : Exception 
+    {
+        public InvalidIstructionException(string message) : base(message) 
+        {
+
+        }
+    }
+    public class CreateOnValidate : Attribute
+    {
+    }
+
     public abstract class Model : System.IDisposable
     {
         private bool disposed = false;
-        private string result;
-        
+
         protected string tableName;
+
         #region Procedural Context
+        private string result;
         private bool isWhereAlready;
         private bool isUpdateAlready;
         #endregion
+
         public Model()
         {
             Clear();
-            GetFields();
+            GetFields(); // потом удалить!
         }
         public override string ToString()
         {
@@ -87,6 +82,33 @@ namespace DatabaseRequests
             isWhereAlready = false;
             isUpdateAlready = false;
             result = "";
+        }
+        private void ValidateInstruction()
+        {
+            string[] checkList = { "SELECT", "UPDATE", "DELETE" };
+            bool isHavingWhere = this.result.Contains("WHERE");
+            foreach (string checkItem in checkList)
+            {
+                if (this.result.Contains(checkItem))
+                {
+                    if (!isHavingWhere)
+                    {
+                        throw new InvalidIstructionException($"WHERE instruction is required for \"{this.result}\"");
+                    }
+                }
+            }
+            if (isHavingWhere)
+            {
+                foreach (string checkItem in checkList)
+                {
+                    if (this.result.Contains(checkItem))
+                    {
+                        return;
+                    }
+                }
+                throw new InvalidIstructionException($"WHERE statement without RUD: \"{this.result}\"");
+            }
+            
         }
         protected List<string> GetFields()
         {
@@ -280,6 +302,7 @@ namespace DatabaseRequests
         }
         protected DataTable Execute(DatabasePermissions permission, [CallerMemberName] string callerName = "")
         {
+            //ValidateInstruction();
             if (!CheckPermission(permission))
             {
                 throw new Exception(
@@ -313,19 +336,28 @@ namespace DatabaseRequests
             }
         }
 
+        /// <summary>
+        /// Does not support custom types and sets such fields to null
+        /// </summary>
         protected void Validate(DataRow dr)
         {
-            foreach (var prop in this.GetType().GetProperties())
+            foreach (var property in this.GetType().GetProperties())
             {
                 try
                 {
-                    prop.SetValue(this, Convert.ChangeType(dr[prop.Name], prop.PropertyType)); // берет из datarow по названию переменной столбец и устанавливает значение к свойству
-                    Console.WriteLine($"{prop.Name} = {prop.GetValue(this)}, ТИП: {prop.PropertyType}");
+                    //if (Attribute.IsDefined(property, typeof(CreateOnValidate)))
+                    //{
+                    //    Type T = property.PropertyType;
+                    //    var constructors = T.GetConstructors(System.Reflection.BindingFlags.Public);
+                    //    constructors[0].Invoke(new object);
+                    //    property.SetValue(this, Activator.CreateInstance(T).);
+                    //}
+                    property.SetValue(this, Convert.ChangeType(dr[property.Name], property.PropertyType)); // берет из datarow по названию переменной столбец и устанавливает значение к свойству
+                    Console.WriteLine($"{property.Name} = {property.GetValue(this)}, ТИП: {property.PropertyType}");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    prop.SetValue(this, null);
-                    Console.WriteLine($"Ошибка валидации!!! \n{ex}");
+                    property.SetValue(this, null);
                     continue;
                 }
             }

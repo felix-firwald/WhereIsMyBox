@@ -9,7 +9,7 @@ using static System.Security.Cryptography.SHA256;
 
 namespace WhereIsMyBox.Classes.Models
 {
-    internal class ModelUsers : Model
+    internal class ModelUser : Model
     {
         public int id { get; private set; }
         public string login { get; set; }
@@ -17,7 +17,7 @@ namespace WhereIsMyBox.Classes.Models
             private get { return password; }
             set { password = HashPassword(value); } 
         }
-        public ModelUsers() : base()
+        public ModelUser() : base()
         {
             tableName = "Users";
             

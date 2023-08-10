@@ -12,7 +12,7 @@ namespace WhereIsMyBox.Forms
     // [Docking(DockingBehavior.Ask)]
     public partial class UC_Boxes : UserControl
     {
-        ModelBoxes foundBox = new ModelBoxes();
+        ModelBox foundBox = new ModelBox();
         //private string foundedBox;
         public UC_Boxes()
         {
@@ -45,7 +45,7 @@ namespace WhereIsMyBox.Forms
                     string loc = "";
                     if (safety)
                     {
-                        using (ModelBoxes mb = new ModelBoxes())
+                        using (ModelBox mb = new ModelBox())
                         {
                             if (mb.GetBoxByNumber(number))  // если короб есть
                             {
@@ -212,7 +212,7 @@ namespace WhereIsMyBox.Forms
 
         private void buttonMarkAsNotFound_Click(object sender, EventArgs e)
         {
-            using (ModelBoxes mb = this.BoxInfoPanel.GetData())
+            using (ModelBox mb = this.BoxInfoPanel.GetData())
             {
                 mb.UpdateStatus(BoxStatus.Lost);
                 this.BoxInfoPanel.UpdateData();

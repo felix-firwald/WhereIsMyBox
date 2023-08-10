@@ -1,7 +1,6 @@
 ﻿using DatabaseRequests;
 using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -15,26 +14,23 @@ namespace WhereIsMyBox.Classes.Models
         Lost,
         Undefined
     }
-    public sealed class ModelBoxes : Model
+    public sealed class ModelBox : Model
     {
         public string number { get; set; }
         public string location { get; set; }
-        public BoxStatus status {
-            get { return status; } 
-            set { status = value; } 
-        }
+        public BoxStatus status { get; set; }
         public string type { get; set; }
         public string note { get; set; }
-        public ModelBoxes() : base()
+        public ModelBox() : base()
         {
             tableName = "Boxes";
         }
         #region NotSQL functions
-        public string[] GetSplitedNumber()
+        public static string[] GetSplitedNumber(string onNumber)
         {
             string prefix = "";
             string postfix = "";
-            foreach (var item in number) 
+            foreach (var item in onNumber) 
             { 
                 if (char.IsDigit(item))
                 {
@@ -47,7 +43,7 @@ namespace WhereIsMyBox.Classes.Models
             }
             return new string[2] { prefix, postfix };
         }
-        public BoxStatus GetEnumerableStatusOn(string key)
+        public static BoxStatus GetEnumerableStatusOn(string key)
         {
             switch (key)
             {
@@ -63,7 +59,7 @@ namespace WhereIsMyBox.Classes.Models
                     return BoxStatus.Undefined;
             }
         }
-        public string GetSqlTypeOnEnumerableStatus(BoxStatus status)
+        public static string GetSqlTypeOnEnumerableStatus(BoxStatus status)
         {
             switch (status)
             {
@@ -89,7 +85,7 @@ namespace WhereIsMyBox.Classes.Models
         }
         public bool SwitchAccessOnStatus()
         {
-            switch (status)
+            switch (this.status)
             {
                 case BoxStatus.Seized:
                 case BoxStatus.Available:
@@ -131,11 +127,7 @@ namespace WhereIsMyBox.Classes.Models
             {
                 DataRow dr = GetOne(Execute(DatabasePermissions.All));
                 Validate(dr);
-                //number = dr["number"].ToString();
-                //location = dr["location"].ToString();
-                //status = GetEnumerableStatusOn(dr["status"].ToString());
-                //type = dr["type"].ToString();
-                //note = dr["note"].ToString();
+                this.status = GetEnumerableStatusOn(dr["status"].ToString());
                 return true;
             }
             catch (Exception e) {
@@ -167,7 +159,7 @@ namespace WhereIsMyBox.Classes.Models
         {
             await Task.Run(() =>
             {
-                Update("status", this.GetSqlTypeOnEnumerableStatus(onStatus));
+                Update("status", GetSqlTypeOnEnumerableStatus(onStatus));
                 WhereEqual("number", this.number);
                 Execute(DatabasePermissions.All);
             });

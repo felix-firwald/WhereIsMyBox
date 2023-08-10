@@ -116,9 +116,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\C_ConfigInfo.cs" />
+    <Compile Include="Classes\Models\DatabaseManager.cs" />
     <Compile Include="Classes\Models\Model.cs" />
-    <Compile Include="Classes\Models\ModelBoxes.cs" />
-    <Compile Include="Classes\Models\ModelUsers.cs" />
+    <Compile Include="Classes\Models\ModelBox.cs" />
+    <Compile Include="Classes\Models\ModelUser.cs" />
     <Compile Include="Classes\Models\ModelUsing.cs" />
     <Compile Include="Classes\Permission.cs" />
     <Compile Include="Forms\OneInstanceElements\AuthForm.cs">

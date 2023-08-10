@@ -33,7 +33,7 @@ namespace WhereIsMyBox.Classes.Models
         {
             await Task.Run(() =>
             {
-                using (ModelBoxes boxUse = new ModelBoxes())
+                using (ModelBox boxUse = new ModelBox())
                 {
 
                 }
@@ -81,7 +81,7 @@ namespace WhereIsMyBox.Classes.Models
         #region Update
         private void UpdateBoxStatus(BoxStatus onStatus)
         {
-            ModelBoxes updateBox = new ModelBoxes();
+            ModelBox updateBox = new ModelBox();
             updateBox.number = this.box;
             updateBox.UpdateStatus(onStatus);
         }
