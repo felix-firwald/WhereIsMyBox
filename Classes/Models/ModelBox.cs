@@ -43,17 +43,17 @@ namespace WhereIsMyBox.Classes.Models
             }
             return new string[2] { prefix, postfix };
         }
-        public static BoxStatus GetEnumerableStatusOn(string key)
+        public static BoxStatus GetEnumerableStatusOn(byte key)
         {
             switch (key)
             {
-                case "1":
+                case 1:
                     return BoxStatus.Available;
-                case "2":
+                case 2:
                     return BoxStatus.Seized;
-                case "3":
+                case 3:
                     return BoxStatus.Focused;
-                case "4":
+                case 4:
                     return BoxStatus.Lost;
                 default:
                     return BoxStatus.Undefined;
@@ -127,7 +127,7 @@ namespace WhereIsMyBox.Classes.Models
             {
                 DataRow dr = GetOne(Execute(DatabasePermissions.All));
                 Validate(dr);
-                this.status = GetEnumerableStatusOn(dr["status"].ToString());
+                this.status = GetEnumerableStatusOn((byte)dr["status"]);
                 return true;
             }
             catch (Exception e) {
@@ -143,7 +143,7 @@ namespace WhereIsMyBox.Classes.Models
             try
             {
                 DataRow dr = GetOne(Execute(DatabasePermissions.All));
-                this.status = GetEnumerableStatusOn(dr["status"].ToString());
+                this.status = GetEnumerableStatusOn((byte)dr["status"]);
                 return SwitchAccessOnStatus();
             }
             catch (Exception ex)
