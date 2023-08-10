@@ -2,14 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data.SqlTypes;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Security.Principal;
 using System.Windows;
-using System.Windows.Controls;
 using WhereIsMyBox.Classes;
 
 namespace DatabaseRequests
@@ -35,9 +29,6 @@ namespace DatabaseRequests
         {
 
         }
-    }
-    public class CreateOnValidate : Attribute
-    {
     }
 
     public abstract class Model : System.IDisposable
@@ -302,7 +293,7 @@ namespace DatabaseRequests
         }
         protected DataTable Execute(DatabasePermissions permission, [CallerMemberName] string callerName = "")
         {
-            //ValidateInstruction();
+            ValidateInstruction();
             if (!CheckPermission(permission))
             {
                 throw new Exception(
